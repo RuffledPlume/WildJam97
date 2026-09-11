@@ -410,6 +410,42 @@ texture = ExtResource("1_8mlnv")
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_squqs")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8mlnv"]
+atlas = ExtResource("1_8mlnv")
+region = Rect2(0, 192, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_squqs"]
+atlas = ExtResource("1_8mlnv")
+region = Rect2(80, 192, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aw5qw"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_8mlnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_squqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8mlnv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_squqs")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_8mlnv")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
 [node name="platform_main" type="Node2D" unique_id=1539982560]
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=1219593542]
@@ -436,3 +472,10 @@ scale = Vector2(3, 3)
 tile_map_data = PackedByteArray("AAAGAAcAAQALAAkAAAAHAAcAAQALAAkAAAAIAAcAAQALAAkAAAAJAAcAAQALAAkAAAAKAAcAAQALAAkAAAAFAAcAAQALAAkAAAAOAAMAAQALAAkAAAANAAMAAQALAAkAAAAMAAMAAQALAAkAAAALAAMAAQALAAkAAAAEAAMAAQALAAkAAAADAAMAAQALAAkAAAACAAMAAQALAAkAAAABAAMAAQALAAkAAAAHAAQAAQALAAkAAAAIAAQAAQALAAkAAAABAAoAAQALAAkAAAACAAoAAQALAAkAAAADAAoAAQALAAkAAAAEAAoAAQALAAkAAAAFAAoAAQALAAkAAAAKAAoAAQALAAkAAAALAAoAAQALAAkAAAAMAAoAAQALAAkAAAANAAoAAQALAAkAAAAOAAoAAQALAAkAAAD//wcAAQAQABIAAAD//wAAAQAQABIAAAD//wEAAQAQABIAAAD//wIAAQAQABIAAAD//wMAAQAQABIAAAD//wQAAQAQABIAAAD//wUAAQAQABIAAAD//wYAAQAQABIAAAD//wgAAQAQABIAAAD//wkAAQAQABIAAAD//woAAQAQABIAAAD//wsAAQAQABIAAAAAAP//AQAQABIAAFABAP//AQAQABIAAFACAP//AQAQABIAAFADAP//AQAQABIAAFAEAP//AQAQABIAAFAFAP//AQAQABIAAFAGAP//AQAQABIAAFAHAP//AQAQABIAAFAIAP//AQAQABIAAFAJAP//AQAQABIAAFAKAP//AQAQABIAAFALAP//AQAQABIAAFAMAP//AQAQABIAAFANAP//AQAQABIAAFAOAP//AQAQABIAAFAPAP//AQAQABIAAFAQAAAAAQAQABIAADAQAAEAAQAQABIAADAQAAIAAQAQABIAADAQAAMAAQAQABIAADAQAAQAAQAQABIAADAQAAUAAQAQABIAADAQAAYAAQAQABIAADAQAAcAAQAQABIAADAQAAgAAQAQABIAADAQAAkAAQAQABIAADAQAAoAAQAQABIAADAQAAsAAQAQABIAADAPAAwAAQAQABIAAGAOAAwAAQAQABIAAGANAAwAAQAQABIAAGAMAAwAAQAQABIAAGALAAwAAQAQABIAAGAKAAwAAQAQABIAAGAJAAwAAQAQABIAAGAIAAwAAQAQABIAAGAHAAwAAQAQABIAAGAGAAwAAQAQABIAAGAFAAwAAQAQABIAAGAEAAwAAQAQABIAAGADAAwAAQAQABIAAGACAAwAAQAQABIAAGABAAwAAQAQABIAAGAAAAwAAQAQABIAAGD//wwAAQAPABIAAAD/////AQAPABIAAAAQAP//AQAPABIAAAAQAAwAAQAPABIAAAA=")
 tile_set = SubResource("TileSet_aw5qw")
 collision_visibility_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1538450612]
+position = Vector2(573, 347)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_aw5qw")
+animation = &"idle"
+frame_progress = 0.48189715
