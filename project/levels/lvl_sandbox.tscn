@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://ccj8tt5cnw6v2"]
 
 [ext_resource type="PackedScene" uid="uid://c72mf508kj7j3" path="res://prefabs/pf_main_player.tscn" id="1_pj36p"]
+[ext_resource type="PackedScene" uid="uid://d2dejs4wlbtlq" path="res://prefabs/pf_example_arcade_machine.tscn" id="2_gfot2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gfot2"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -31,3 +32,6 @@ use_collision = true
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1451904502]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49206543, -0.16343701, 0.019042969)
 size = Vector3(115, 0.32373047, 126)
+
+[node name="ExampleArcadeMachine" parent="." unique_id=1824771371 instance=ExtResource("2_gfot2")]
+transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, 3.0394742, 0.50563294, 4.3236146)
