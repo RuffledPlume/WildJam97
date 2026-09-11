@@ -4,8 +4,9 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rltbh"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" unique_id=835210181]
+[node name="CharacterBody3D" type="CharacterBody3D" unique_id=835210181 node_paths=PackedStringArray("camera")]
 script = ExtResource("1_gu7ql")
+camera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1259420550]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5979123, 0)
