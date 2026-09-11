@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://b4xvo1k3mtc0l"]
 
 [ext_resource type="Texture2D" uid="uid://ciwnwnfludroi" path="res://assets/platformer/kenney_1-bit-platformer-pack/Tilemap/monochrome_tilemap_transparent_packed.png" id="1_8mlnv"]
+[ext_resource type="Script" uid="uid://c0m4k34026jij" path="res://arcade_platformer_player.gd" id="2_squqs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_squqs"]
 texture = ExtResource("1_8mlnv")
@@ -410,6 +411,10 @@ texture = ExtResource("1_8mlnv")
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_squqs")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sgscd"]
+atlas = ExtResource("1_8mlnv")
+region = Rect2(80, 192, 16, 16)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_8mlnv"]
 atlas = ExtResource("1_8mlnv")
 region = Rect2(0, 192, 16, 16)
@@ -418,8 +423,32 @@ region = Rect2(0, 192, 16, 16)
 atlas = ExtResource("1_8mlnv")
 region = Rect2(80, 192, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ai831"]
+atlas = ExtResource("1_8mlnv")
+region = Rect2(48, 192, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyjlu"]
+atlas = ExtResource("1_8mlnv")
+region = Rect2(64, 192, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wpxg"]
+atlas = ExtResource("1_8mlnv")
+region = Rect2(16, 192, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j42p"]
+atlas = ExtResource("1_8mlnv")
+region = Rect2(32, 192, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_aw5qw"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sgscd")
+}],
+"loop": 1,
+"name": &"falling",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 5.0,
 "texture": SubResource("AtlasTexture_8mlnv")
@@ -440,11 +469,31 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ai831")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyjlu")
+}],
+"loop": 0,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wpxg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8j42p")
+}],
 "loop": 1,
-"name": &"new_animation",
+"name": &"walking",
 "speed": 5.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5jvox"]
+radius = 18.0
 
 [node name="platform_main" type="Node2D" unique_id=1539982560]
 
@@ -473,9 +522,16 @@ tile_map_data = PackedByteArray("AAAGAAcAAQALAAkAAAAHAAcAAQALAAkAAAAIAAcAAQALAAk
 tile_set = SubResource("TileSet_aw5qw")
 collision_visibility_mode = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1538450612]
+[node name="player" type="CharacterBody2D" parent="." unique_id=861666152]
+script = ExtResource("2_squqs")
+
+[node name="player_sprite" type="AnimatedSprite2D" parent="player" unique_id=1538450612]
 position = Vector2(573, 347)
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_aw5qw")
-animation = &"idle"
-frame_progress = 0.48189715
+animation = &"falling"
+frame_progress = 0.68869185
+
+[node name="player_collision" type="CollisionShape2D" parent="player" unique_id=611599184]
+position = Vector2(573, 353)
+shape = SubResource("CircleShape2D_5jvox")

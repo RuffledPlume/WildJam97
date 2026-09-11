@@ -1,0 +1,36 @@
+extends CharacterBody2D
+
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+
+@onready var sprite_animation = $player_sprite
+
+func play(param):
+	sprite_animation.play(param)
+
+func _ready() -> void:
+	play("idle")
+
+func _physics_process(delta: float) -> void:
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		play("falling")
+
+	# Handle jump.
+	if Input.is_action_just_pressed("platformer_player_jump") and is_on_floor():
+		play("jump")
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction := Input.get_axis("platformer_player_left", "platformer_player_right")
+	if direction:
+		velocity.x = direction * SPEED
+		play("walking")
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		play("idle")
+
+	move_and_slide()
