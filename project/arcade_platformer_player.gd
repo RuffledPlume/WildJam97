@@ -6,6 +6,8 @@ const JUMP_VELOCITY = -500.0
 
 @onready var sprite_animation = $player_sprite
 
+var can_doublejump = false
+
 func play(param):
 	sprite_animation.play(param)
 
@@ -22,6 +24,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("platformer_player_jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		play("jump")
+		can_doublejump = true
+	elif Input.is_action_just_pressed("platformer_player_jump") and can_doublejump == true and !is_on_floor():
+		velocity.y = JUMP_VELOCITY
+		play("jump")
+		can_doublejump = false
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
