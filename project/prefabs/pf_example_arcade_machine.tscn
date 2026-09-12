@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cntpcve5rjgqy" path="res://prefabs/pf_arcade_machine_base.tscn" id="1_34as7"]
 [ext_resource type="PackedScene" uid="uid://i07ybshp4770" path="res://levels/lvl_example_arcade_game.tscn" id="2_vq7cp"]
 [ext_resource type="Shader" uid="uid://dp27kn2wv3fv1" path="res://shaders/arcade_crt.gdshader" id="3_varhu"]
+[ext_resource type="Script" uid="uid://dbfpvu5etb6yk" path="res://scripts/arcade_screen_light.gd" id="4_2su1k"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_rltbh"]
 
@@ -14,6 +15,12 @@ resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_varhu")
 shader_parameter/screen_texture = SubResource("ViewportTexture_navsu")
+
+[sub_resource type="DrawableTexture2D" id="DrawableTexture2D_navsu"]
+resource_local_to_scene = true
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_varhu"]
+viewport_path = NodePath("SubViewport")
 
 [node name="ExampleArcadeMachine" type="Node3D" unique_id=1824771371]
 
@@ -29,6 +36,18 @@ size = Vector2i(1024, 1024)
 [node name="Node2D" type="Node2D" parent="." unique_id=1374641989]
 
 [node name="Screen" type="MeshInstance3D" parent="." unique_id=785006571]
-transform = Transform3D(0.92252755, 0, 0, 0, 0.7499286, 0.11711964, 0, -0.08844003, 0.9931178, 0, 0.90966964, -0.0051443093)
+transform = Transform3D(0.92252755, 0, 0, 0, 0.7532775, 0.06991987, 0, -0.05279828, 0.99755263, 0, 0.90670174, -0.040445868)
 mesh = SubResource("QuadMesh_rltbh")
 surface_material_override/0 = SubResource("ShaderMaterial_varhu")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="Screen" unique_id=1962434662]
+transform = Transform3D(-1.0839785, 0, 8.787355e-08, 0, 1.3203738, 0, -9.476441e-08, 0, -1.0051563, -1.7078858e-09, 0.0014294833, 0.016810631)
+light_energy = 3.0
+light_indirect_energy = 3.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
+area_range = 7.0
+area_size = Vector2(1, 0.826)
+area_texture = SubResource("DrawableTexture2D_navsu")
+script = ExtResource("4_2su1k")
+screen_texture = SubResource("ViewportTexture_varhu")
