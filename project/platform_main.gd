@@ -6,6 +6,7 @@ var door_area_active = false
 @onready var pick_up = %pick_up
 @onready var locked_door = %locked_door
 @onready var press_to_start = %press2start
+@onready var two_way_platform = %two_way_platform
 
 func start_game():
 	if Input.is_anything_pressed() and press_to_start.visible == true:
@@ -24,6 +25,11 @@ func _physics_process(_delta: float) -> void:
 		locked_door.play("open")
 	else:
 		pass
+	
+	if Input.is_action_just_pressed("platformer_player_drop"):
+		two_way_platform.collision_enabled = false
+	elif Input.is_action_just_released("platformer_player_drop"):
+		two_way_platform.collision_enabled = true
 
 func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 	picked_up = true
