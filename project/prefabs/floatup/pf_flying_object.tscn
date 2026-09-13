@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://lyfqotn1ox6k"]
+
+[ext_resource type="Script" uid="uid://ql0dy0kqc6cj" path="res://scripts/floatup/flying_object.gd" id="1_kck2o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bacrr"]
+size = Vector2(38, 39)
+
+[node name="SidewaysFlyingObject" type="AnimatableBody2D" unique_id=651001113 groups=["Hazard"]]
+sync_to_physics = false
+script = ExtResource("1_kck2o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1075988089]
+position = Vector2(20, 20.5)
+shape = SubResource("RectangleShape2D_bacrr")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1264494544]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.32941177, 1, 1, 1)

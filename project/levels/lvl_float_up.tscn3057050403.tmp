@@ -1,0 +1,199 @@
+[gd_scene format=3 uid="uid://c25o5c4kei4ib"]
+
+[ext_resource type="Script" uid="uid://cmt3lpag58rws" path="res://scripts/floatup/arcade_game_float_up.gd" id="1_u3qgh"]
+[ext_resource type="Shader" uid="uid://djbjtk7eq612n" path="res://shaders/scrolling_bg_blue.gdshader" id="1_ym2jc"]
+[ext_resource type="Texture2D" uid="uid://pwbvj7xqop63" path="res://assets/background/bg_yellow.png" id="2_ym2jc"]
+[ext_resource type="FontFile" uid="uid://b6wp23t6o3aeu" path="res://assets/font/BNGAMMA.OTF" id="4_53lfo"]
+[ext_resource type="Script" uid="uid://dd3q7t67ewfnb" path="res://scripts/floatup/player_float_up.gd" id="5_w36lc"]
+[ext_resource type="Texture2D" uid="uid://xjuay0xwtk3" path="res://assets/player/player.png" id="6_shggk"]
+[ext_resource type="Texture2D" uid="uid://dr0nhpi8eb7li" path="res://assets/interactables/logs.png" id="7_b7fmq"]
+[ext_resource type="Script" uid="uid://c4ju43e1bk5wy" path="res://scripts/floatup/fire.gd" id="7_raika"]
+[ext_resource type="Texture2D" uid="uid://cgojwbbvnvkdx" path="res://assets/interactables/fire.png" id="8_raika"]
+[ext_resource type="Script" uid="uid://cmey5vg42dm3b" path="res://scripts/floatup/spawn_manager.gd" id="10_yuhyp"]
+[ext_resource type="PackedScene" uid="uid://cvdlq376avl1f" path="res://prefabs/floatup/pf_falling_object.tscn" id="11_y3spn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shggk"]
+size = Vector2(650, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bacrr"]
+shader = ExtResource("1_ym2jc")
+shader_parameter/tiling = Vector2(20, 20)
+shader_parameter/offset = Vector2(0, -0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bacrr"]
+size = Vector2(1152, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w36lc"]
+size = Vector2(48, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvdk0"]
+size = Vector2(80, 26)
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=148948161 groups=["CanvasLayer"]]
+script = ExtResource("1_u3qgh")
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=758026311]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+ratio = 1.333
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="AspectRatioContainer" unique_id=67074137]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SubViewport" type="SubViewport" parent="AspectRatioContainer/SubViewportContainer" unique_id=1439870601]
+handle_input_locally = false
+size = Vector2i(640, 480)
+render_target_update_mode = 4
+
+[node name="FlyingBorders" type="StaticBody2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=2079503659]
+
+[node name="Top" type="CollisionShape2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/FlyingBorders" unique_id=1589160502]
+z_index = 3
+position = Vector2(320.89197, 4)
+shape = SubResource("RectangleShape2D_shggk")
+
+[node name="Bottom" type="CollisionShape2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/FlyingBorders" unique_id=1209539897]
+z_index = 1
+position = Vector2(315.89197, 476)
+shape = SubResource("RectangleShape2D_shggk")
+
+[node name="Left" type="CollisionShape2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/FlyingBorders" unique_id=1678049164]
+z_index = 1
+position = Vector2(0.8919678, 308)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_shggk")
+
+[node name="Right" type="CollisionShape2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/FlyingBorders" unique_id=1772811036]
+z_index = 1
+position = Vector2(640.89197, 308)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_shggk")
+
+[node name="ScrollingBackground" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=875015753]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_bacrr")
+position = Vector2(319.89197, 256)
+scale = Vector2(12, 12)
+texture = ExtResource("2_ym2jc")
+
+[node name="Ground" type="StaticBody2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1484851563]
+z_index = 50
+position = Vector2(-15.108032, -148)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Ground" unique_id=1003214055]
+z_index = 218
+position = Vector2(577, 621)
+shape = SubResource("RectangleShape2D_bacrr")
+
+[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Ground" unique_id=341607317]
+custom_minimum_size = Vector2(1152, 83.5)
+offset_left = -2.0
+offset_top = 575.0
+offset_right = 1152.0
+offset_bottom = 661.0
+color = Color(0.39215687, 0.6745098, 0.32941177, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Player" type="CharacterBody2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=929873299 groups=["Player"]]
+texture_filter = 1
+position = Vector2(96.89197, 404)
+script = ExtResource("5_w36lc")
+
+[node name="Sprite2D" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Player" unique_id=839767947]
+z_index = 100
+scale = Vector2(2, 2)
+texture = ExtResource("6_shggk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Player" unique_id=1967872732]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_w36lc")
+
+[node name="TitlePage" type="CanvasLayer" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=2007218745]
+unique_name_in_owner = true
+offset = Vector2(0, -83.95)
+transform = Transform2D(1, 0, 0, 1, 0, -83.95)
+
+[node name="GameTitle" type="Label" parent="AspectRatioContainer/SubViewportContainer/SubViewport/TitlePage" unique_id=448018477]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.10803
+offset_top = 27.949997
+offset_right = 220.89197
+offset_bottom = 89.95
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_53lfo")
+theme_override_font_sizes/font_size = 32
+text = "FLOAT UP"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SubTitle" type="Label" parent="AspectRatioContainer/SubViewportContainer/SubViewport/TitlePage" unique_id=1779699278]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -280.10803
+offset_top = 107.95
+offset_right = 283.89197
+offset_bottom = 169.95001
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("4_53lfo")
+theme_override_font_sizes/font_size = 12
+text = "Insert Coin"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Fire" type="Area2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=334758974]
+position = Vector2(320.89197, 420)
+script = ExtResource("7_raika")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Fire" unique_id=1089539544]
+z_index = 101
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_xvdk0")
+
+[node name="Logs" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Fire" unique_id=952448031]
+z_index = 101
+texture_filter = 1
+position = Vector2(0, -2)
+scale = Vector2(2, 2)
+texture = ExtResource("7_b7fmq")
+
+[node name="Fire" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Fire" unique_id=971336887]
+unique_name_in_owner = true
+visible = false
+z_index = 101
+texture_filter = 1
+position = Vector2(-4, -23)
+scale = Vector2(2, 2)
+texture = ExtResource("8_raika")
+
+[node name="SpawnPoint" type="Node2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1973041525]
+unique_name_in_owner = true
+position = Vector2(320.89197, 132)
+
+[node name="SpawnManager" type="Node2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1147170435 groups=["SpawnManager"]]
+unique_name_in_owner = true
+position = Vector2(320.89197, 60)
+script = ExtResource("10_yuhyp")
+spawnables = Array[PackedScene]([ExtResource("11_y3spn")])
+
+[connection signal="body_entered" from="AspectRatioContainer/SubViewportContainer/SubViewport/Fire" to="AspectRatioContainer/SubViewportContainer/SubViewport/Fire" method="_on_body_entered"]

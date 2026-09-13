@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bd3y20mn4t04o"]
+
+[ext_resource type="Script" uid="uid://dpwiw8kcafg17" path="res://scripts/floatup/floatup_spawnable.gd" id="1_ko5h5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bacrr"]
+size = Vector2(100, 40)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" unique_id=1005891516 groups=["Hazard"]]
+sync_to_physics = false
+script = ExtResource("1_ko5h5")
+direction = Vector2(0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=263079408]
+custom_minimum_size = Vector2(100, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1038471641]
+position = Vector2(50, 20)
+shape = SubResource("RectangleShape2D_bacrr")
