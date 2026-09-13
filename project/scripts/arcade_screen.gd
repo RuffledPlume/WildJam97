@@ -5,7 +5,7 @@ class_name ArcadeScreen extends Node
 
 @export var screen_shader : Shader
 @export var screen_mesh : MeshInstance3D
-@export var screen_light : AreaLight3D
+@export var screen_light_array : Array[SpotLight3D]
 @export var notifier : VisibleOnScreenNotifier3D
 @export var on_screen_delay := 0.1
 @export var off_screen_delay := 1.0
@@ -33,17 +33,14 @@ func _process(_delta: float) -> void:
 	if next_update > 0:
 		next_update -= _delta
 		return
-				
-	var screen_width := screen_texture.get_width()
-	var screen_height := screen_texture.get_height()
-	if screen_width <= 0 || screen_height <= 0:
-		return
-		
-	screen_light.area_texture = null
-	if drawable_texture.get_width() != screen_width || drawable_texture.get_height() != screen_height:
-		drawable_texture.setup(screen_width, screen_height, DrawableTexture2D.DRAWABLE_FORMAT_RGBA8, Color.WHITE, true)
-		
-	drawable_texture.blit_rect(Rect2i(0, 0, screen_width, screen_height), screen_texture)
-	screen_light.area_texture = drawable_texture
-	
 	next_update = on_screen_delay if notifier.is_on_screen() else off_screen_delay
+
+	var array_size := sqrt(screen_light_array.size()) as int
+	var screen_image := screen_texture.get_image()
+
+	screen_image.resize(array_size, array_size, Image.INTERPOLATE_TRILINEAR)
+
+	for i in screen_light_array.size():
+		var offset_x := i % array_size
+		var offset_y := floor(i / (array_size as float)) as int
+		screen_light_array[i].light_color = screen_image.get_pixel(offset_x, offset_y)

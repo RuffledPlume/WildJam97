@@ -54,3 +54,7 @@ main_player_move_right={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+renderer/rendering_method="gl_compatibility"
+limits/opengl/max_renderable_lights=256
+limits/opengl/max_lights_per_object=32
+occlusion_culling/use_occlusion_culling=true
