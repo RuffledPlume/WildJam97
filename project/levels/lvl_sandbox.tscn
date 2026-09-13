@@ -39,7 +39,7 @@ transform = Transform3D(0.5759856, 0, -0.8174598, 0, 1, 0, 0.8174598, 0, 0.57598
 [node name="ExampleArcadeMachine3" parent="." unique_id=839034064 instance=ExtResource("2_gfot2")]
 transform = Transform3D(-0.02659759, 0, -0.9996462, 0, 1, 0, 0.9996462, 0, -0.02659759, 9.711819, 0.50568414, 5.8979006)
 
-[node name="Screen" parent="ExampleArcadeMachine3" index="3" unique_id=785006571]
+[node name="Screen" parent="ExampleArcadeMachine3" index="4" unique_id=785006571]
 surface_material_override/0 = SubResource("ShaderMaterial_75r4t")
 
 [node name="AreaLight3D" parent="ExampleArcadeMachine3/Screen" index="0" unique_id=1962434662]

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://ckwv01j5apesh"]
+
+[ext_resource type="Script" uid="uid://bc6iikjpbrjxo" path="res://scripts/arcade_screen.gd" id="1_nna46"]
+[ext_resource type="Material" uid="uid://bk1mmavk2yfcf" path="res://materials/m_arcade_screen.tres" id="2_nna46"]
+[ext_resource type="Shader" uid="uid://dp27kn2wv3fv1" path="res://shaders/arcade_crt.gdshader" id="2_rysxw"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_nna46"]
+size = Vector2(1024, 1024)
+
+[sub_resource type="QuadMesh" id="QuadMesh_2mwys"]
+
+[node name="ArcadeScreen" type="Node3D" unique_id=192009638 node_paths=PackedStringArray("screen_mesh", "screen_light", "notifier")]
+process_mode = 4
+script = ExtResource("1_nna46")
+screen_shader = ExtResource("2_rysxw")
+screen_mesh = NodePath("ScreenMesh")
+screen_light = NodePath("ScreenLight")
+notifier = NodePath("VisibleOnScreenNotifier3D")
+
+[node name="ScreenLight" type="AreaLight3D" parent="." unique_id=974240821]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 2.3315323e-09, 0, 0.026669621)
+light_energy = 3.0
+light_indirect_energy = 3.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
+area_range = 7.0
+area_size = Vector2(1, 1.0119863)
+area_texture = SubResource("PlaceholderTexture2D_nna46")
+
+[node name="ScreenMesh" type="MeshInstance3D" parent="." unique_id=1746502718]
+mesh = SubResource("QuadMesh_2mwys")
+surface_material_override/0 = ExtResource("2_nna46")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=993755341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5859034)
+aabb = AABB(-1, -1, -0.957, 2, 2, 2)
