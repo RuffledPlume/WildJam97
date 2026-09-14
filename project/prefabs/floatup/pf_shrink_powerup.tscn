@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b256xhtmy6ye8"]
+
+[ext_resource type="Script" uid="uid://bgmuemldp0f6x" path="res://scripts/floatup/pf_shrink_powerup.gd" id="1_64weo"]
+[ext_resource type="Texture2D" uid="uid://dg6aracchcseu" path="res://assets/background/shrink_arrow.png" id="1_lu11g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bacrr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lu11g")
+}],
+"loop": 1,
+"name": &"animate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lu11g")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bacrr"]
+
+[node name="ShrinkPowerup" type="Node2D" unique_id=263718726 groups=["Shrink"]]
+script = ExtResource("1_64weo")
+direction = Vector2(0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2110854691]
+sprite_frames = SubResource("SpriteFrames_bacrr")
+animation = &"animate"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=291450215 groups=["Shrink"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=748687520]
+shape = SubResource("CircleShape2D_bacrr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

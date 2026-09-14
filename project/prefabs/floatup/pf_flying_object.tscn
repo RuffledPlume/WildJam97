@@ -1,9 +1,29 @@
 [gd_scene format=3 uid="uid://lyfqotn1ox6k"]
 
 [ext_resource type="Script" uid="uid://ql0dy0kqc6cj" path="res://scripts/floatup/flying_object.gd" id="1_kck2o"]
+[ext_resource type="Texture2D" uid="uid://daephr2x6foox" path="res://assets/enemies/flyboy.png" id="2_c5olt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bacrr"]
 size = Vector2(38, 39)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bacrr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c5olt")
+}],
+"loop": 1,
+"name": &"animate",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c5olt")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="SidewaysFlyingObject" type="AnimatableBody2D" unique_id=651001113 groups=["Hazard"]]
 sync_to_physics = false
@@ -13,7 +33,7 @@ script = ExtResource("1_kck2o")
 position = Vector2(20, 20.5)
 shape = SubResource("RectangleShape2D_bacrr")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1264494544]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.32941177, 1, 1, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=978862866]
+position = Vector2(20, 20)
+sprite_frames = SubResource("SpriteFrames_bacrr")
+animation = &"animate"

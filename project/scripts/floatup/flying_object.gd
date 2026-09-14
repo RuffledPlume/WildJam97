@@ -5,6 +5,8 @@ extends Node2D
 
 var spawn_manager : Node2D
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
 func _ready() -> void:
 	spawn_manager = get_tree().get_first_node_in_group("SpawnManager")
 	
@@ -16,3 +18,6 @@ func _process(delta: float) -> void:
 	
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
+
+func play_anim() -> void:
+	animated_sprite_2d.play("animate")

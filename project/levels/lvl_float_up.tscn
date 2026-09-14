@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://pwbvj7xqop63" path="res://assets/background/bg_yellow.png" id="2_ym2jc"]
 [ext_resource type="Script" uid="uid://dpwiw8kcafg17" path="res://scripts/floatup/floatup_spawnable.gd" id="4_1v4jr"]
 [ext_resource type="FontFile" uid="uid://b6wp23t6o3aeu" path="res://assets/font/BNGAMMA.OTF" id="4_53lfo"]
+[ext_resource type="PackedScene" uid="uid://b256xhtmy6ye8" path="res://prefabs/floatup/pf_shrink_powerup.tscn" id="5_k5oxv"]
+[ext_resource type="PackedScene" uid="uid://dlkcwjrbbpn7e" path="res://prefabs/floatup/pf_steer_powerup.tscn" id="5_v56gy"]
 [ext_resource type="Script" uid="uid://dd3q7t67ewfnb" path="res://scripts/floatup/player_float_up.gd" id="5_w36lc"]
 [ext_resource type="Texture2D" uid="uid://xjuay0xwtk3" path="res://assets/player/player.png" id="6_shggk"]
 [ext_resource type="Texture2D" uid="uid://dr0nhpi8eb7li" path="res://assets/interactables/logs.png" id="7_b7fmq"]
@@ -16,26 +18,361 @@
 [ext_resource type="PackedScene" uid="uid://cxu0qesfjbwce" path="res://prefabs/floatup/pf_falling_object_large.tscn" id="13_vkjjv"]
 [ext_resource type="PackedScene" uid="uid://bd3y20mn4t04o" path="res://prefabs/floatup/pf_falling_object_long.tscn" id="14_y1j1w"]
 [ext_resource type="PackedScene" uid="uid://befcd674fqd0l" path="res://prefabs/floatup/pf_falling_object_tall.tscn" id="15_wj86m"]
+[ext_resource type="Texture2D" uid="uid://b0jfwy36pcb4o" path="res://assets/background/scene_mtn_front.png" id="17_gjakv"]
+[ext_resource type="Script" uid="uid://cw6hq8yuhfn5o" path="res://scripts/floatup/ui.gd" id="17_wj86m"]
+[ext_resource type="Texture2D" uid="uid://ds0232hojx0ax" path="res://assets/player/heart.png" id="17_y1j1w"]
+[ext_resource type="Texture2D" uid="uid://dsjlfge5cwhan" path="res://assets/background/scene_mtn_mid.png" id="18_k5oxv"]
+[ext_resource type="Texture2D" uid="uid://clxscera7ci1n" path="res://assets/background/scene_sky.png" id="18_lymac"]
+[ext_resource type="Texture2D" uid="uid://nfl5t0ep7mh6" path="res://assets/background/scene_mtn_back.png" id="19_v56gy"]
+[ext_resource type="Texture2D" uid="uid://dbfyjsm7ov4dd" path="res://assets/background/bg_blue.png" id="19_x8h5e"]
+[ext_resource type="PackedScene" uid="uid://vfhg0txpkf0b" path="res://prefabs/floatup/pf_key.tscn" id="24_yx21f"]
+[ext_resource type="Shader" uid="uid://b64sp2qocrmfq" path="res://shaders/floatup_crt.gdshader" id="25_hk1ll"]
+[ext_resource type="Texture2D" uid="uid://dg6aracchcseu" path="res://assets/background/shrink_arrow.png" id="25_lvuo8"]
+[ext_resource type="Texture2D" uid="uid://5lf7pyqxuhsf" path="res://assets/background/wheel.png" id="26_dboxl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shggk"]
 size = Vector2(650, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bacrr"]
+size = Vector2(1152, 74)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bacrr"]
+animations = [{
+"frames": [],
+"loop": 1,
+"name": &"animate",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w36lc"]
+size = Vector2(35, 55)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_he4c8"]
+size = Vector2(40, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvdk0"]
+size = Vector2(80, 26)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bacrr"]
 shader = ExtResource("1_ym2jc")
 shader_parameter/tiling = Vector2(20, 20)
 shader_parameter/offset = Vector2(0, -0.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bacrr"]
-size = Vector2(1152, 74)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbb1a"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w36lc"]
-size = Vector2(48, 56)
+[sub_resource type="Animation" id="Animation_wj86m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AspectRatioContainer/SubViewportContainer/SubViewport/ScrollingBackground:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(319.89197, 308)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CRTOverlay:material:shader_parameter/curvature")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xvdk0"]
-size = Vector2(80, 26)
+[sub_resource type="Animation" id="Animation_1vcat"]
+resource_name = "remove_scrolling_bg"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AspectRatioContainer/SubViewportContainer/SubViewport/ScrollingBackground:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(319.89197, 308), Vector2(320.89197, 820)]
+}
+
+[sub_resource type="Animation" id="Animation_lvuo8"]
+resource_name = "turn_on"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CRTOverlay:material:shader_parameter/curvature")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 4.0000000596048]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8jp7u"]
+_data = {
+&"RESET": SubResource("Animation_wj86m"),
+&"remove_scrolling_bg": SubResource("Animation_1vcat"),
+&"turn_on": SubResource("Animation_lvuo8")
+}
+
+[sub_resource type="Animation" id="Animation_k5oxv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%AnimationPlayer/../AspectRatioContainer/SubViewportContainer/SubViewport/SceneMountains:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320.89197, 236)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AnimationPlayer/../AspectRatioContainer/SubViewportContainer/SubViewport/SceneMountainsMid:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320.89197, 236)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%AnimationPlayer/../AspectRatioContainer/SubViewportContainer/SubViewport/SceneMountainsBack:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(320.89197, 236)]
+}
+
+[sub_resource type="Animation" id="Animation_gjakv"]
+resource_name = "scroll_mountains"
+length = 70.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%AnimationPlayer/../AspectRatioContainer/SubViewportContainer/SubViewport/SceneMountains:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 40),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(320.89197, 236), Vector2(320.89197, 724.10944)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%AnimationPlayer/../AspectRatioContainer/SubViewportContainer/SubViewport/SceneMountainsMid:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 55),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(320.89197, 236), Vector2(320.89197, 724.10944)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%AnimationPlayer/../AspectRatioContainer/SubViewportContainer/SubViewport/SceneMountainsBack:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 65),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(320.89197, 236), Vector2(320.89197, 724.10944)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k5oxv"]
+_data = {
+&"RESET": SubResource("Animation_k5oxv"),
+&"scroll_mountains": SubResource("Animation_gjakv")
+}
+
+[sub_resource type="Animation" id="Animation_x8h5e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Key:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(316.89197, -148)]
+}
+
+[sub_resource type="Animation" id="Animation_yx21f"]
+resource_name = "drop_key"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%Key:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(316.89197, -148), Vector2(316.89197, 361)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2k0x2"]
+_data = {
+&"RESET": SubResource("Animation_x8h5e"),
+&"drop_key": SubResource("Animation_yx21f")
+}
+
+[sub_resource type="Animation" id="Animation_v56gy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AspectRatioContainer/SubViewportContainer/SubViewport/SceneSky:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(319.89197, -796)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AspectRatioContainer/SubViewportContainer/SubViewport/ScrollingBackground2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(319.89197, -349.00003)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AspectRatioContainer/SubViewportContainer/SubViewport/NewGround:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.10803223, 488)]
+}
+
+[sub_resource type="Animation" id="Animation_k8w82"]
+resource_name = "new_ground"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AspectRatioContainer/SubViewportContainer/SubViewport/NewGround:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.10803223, 488), Vector2(-0.10803223, 426)]
+}
+
+[sub_resource type="Animation" id="Animation_2k0x2"]
+resource_name = "new_sky"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AspectRatioContainer/SubViewportContainer/SubViewport/ScrollingBackground2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(319.89197, -349.00003), Vector2(319.89197, 154.99997)]
+}
+
+[sub_resource type="Animation" id="Animation_5snws"]
+resource_name = "remove_sky"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AspectRatioContainer/SubViewportContainer/SubViewport/SceneSky:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(319.89197, 1276), Vector2(319.89197, 1784)]
+}
+
+[sub_resource type="Animation" id="Animation_hk1ll"]
+resource_name = "scroll_sky"
+length = 90.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AspectRatioContainer/SubViewportContainer/SubViewport/SceneSky:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 90),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(319.89197, -796), Vector2(319.89197, 1276)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5snws"]
+_data = {
+&"RESET": SubResource("Animation_v56gy"),
+&"new_ground": SubResource("Animation_k8w82"),
+&"new_sky": SubResource("Animation_2k0x2"),
+&"remove_sky": SubResource("Animation_5snws"),
+&"scroll_sky": SubResource("Animation_hk1ll")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xvdk0"]
+shader = ExtResource("25_hk1ll")
+shader_parameter/curvature = 0.0
+shader_parameter/border_color = Color(0, 0, 0, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=148948161 groups=["CanvasLayer"]]
 script = ExtResource("1_u3qgh")
+metadata/_edit_vertical_guides_ = [572.0]
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=758026311]
 anchors_preset = 15
@@ -82,14 +419,8 @@ position = Vector2(640.89197, 308)
 rotation = 1.5707964
 shape = SubResource("RectangleShape2D_shggk")
 
-[node name="ScrollingBackground" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=875015753]
-texture_repeat = 2
-material = SubResource("ShaderMaterial_bacrr")
-position = Vector2(319.89197, 256)
-scale = Vector2(12, 12)
-texture = ExtResource("2_ym2jc")
-
 [node name="Ground" type="AnimatableBody2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=170750398]
+z_index = 1
 position = Vector2(-15.108032, -148)
 sync_to_physics = false
 script = ExtResource("4_1v4jr")
@@ -109,9 +440,13 @@ offset_bottom = 661.0
 color = Color(0.39215687, 0.6745098, 0.32941177, 1)
 metadata/_edit_use_anchors_ = true
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Ground" unique_id=972181202]
+sprite_frames = SubResource("SpriteFrames_bacrr")
+animation = &"animate"
+
 [node name="Player" type="CharacterBody2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=929873299 groups=["Player"]]
 texture_filter = 1
-position = Vector2(96.89197, 404)
+position = Vector2(110.89197, 390)
 script = ExtResource("5_w36lc")
 
 [node name="Sprite2D" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Player" unique_id=839767947]
@@ -120,12 +455,28 @@ scale = Vector2(2, 2)
 texture = ExtResource("6_shggk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Player" unique_id=1967872732]
-position = Vector2(1, 1)
+position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_w36lc")
 
 [node name="DamageTimer" type="Timer" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Player" unique_id=359484508]
 unique_name_in_owner = true
 one_shot = true
+
+[node name="ShrinkTimer" type="Timer" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Player" unique_id=475231734]
+unique_name_in_owner = true
+wait_time = 10.0
+one_shot = true
+
+[node name="SteerTimer" type="Timer" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Player" unique_id=1819343994]
+unique_name_in_owner = true
+wait_time = 10.0
+
+[node name="Area2D" type="Area2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Player" unique_id=279835693]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Player/Area2D" unique_id=1642942723]
+z_index = 100
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_he4c8")
 
 [node name="TitlePage" type="CanvasLayer" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=2007218745]
 unique_name_in_owner = true
@@ -167,7 +518,8 @@ grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("4_53lfo")
 theme_override_font_sizes/font_size = 12
-text = "Insert Coin"
+text = "Insert Coin
+[press enter]"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
@@ -198,18 +550,38 @@ position = Vector2(-4, -23)
 scale = Vector2(2, 2)
 texture = ExtResource("8_raika")
 
+[node name="Label" type="Label" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Fire" unique_id=1526146972]
+unique_name_in_owner = true
+visible = false
+z_index = 100
+offset_left = -20.0
+offset_top = -52.0
+offset_right = 20.0
+offset_bottom = -29.0
+theme_override_fonts/font = ExtResource("4_53lfo")
+text = "E"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="SpawnManager" type="Node2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1147170435 groups=["SpawnManager"]]
 unique_name_in_owner = true
 position = Vector2(320.89197, -60)
 script = ExtResource("10_yuhyp")
 spawnables = Array[PackedScene]([ExtResource("11_y3spn"), ExtResource("13_vkjjv"), ExtResource("14_y1j1w"), ExtResource("15_wj86m")])
 flyables = Array[PackedScene]([ExtResource("13_44dkg")])
+powerups = Array[PackedScene]([ExtResource("5_k5oxv"), ExtResource("5_v56gy")])
 
 [node name="UpperTimer" type="Timer" parent="AspectRatioContainer/SubViewportContainer/SubViewport/SpawnManager" unique_id=2046744462]
 unique_name_in_owner = true
 
 [node name="SideTimer" type="Timer" parent="AspectRatioContainer/SubViewportContainer/SubViewport/SpawnManager" unique_id=1212586226]
 unique_name_in_owner = true
+
+[node name="PowerTimer" type="Timer" parent="AspectRatioContainer/SubViewportContainer/SubViewport/SpawnManager" unique_id=1244236679]
+unique_name_in_owner = true
+wait_time = 10.0
+one_shot = true
+autostart = true
 
 [node name="UpperSpawnPoints" type="Node2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=853533635]
 position = Vector2(-15.108032, -68)
@@ -266,4 +638,151 @@ position = Vector2(-40, -88)
 [node name="RSpawnPoint3" type="Node2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/RightSpawnPoints" unique_id=1947847782 groups=["RSpawnPoint"]]
 position = Vector2(-40, 96)
 
+[node name="ScrollingBackground" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=875015753]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_bacrr")
+position = Vector2(319.89197, 308)
+scale = Vector2(10.28125, 10.28125)
+texture = ExtResource("2_ym2jc")
+
+[node name="ScrollingBackground2" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1288968339]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_bacrr")
+position = Vector2(319.89197, -349.00003)
+scale = Vector2(10.28125, 10.28125)
+texture = ExtResource("19_x8h5e")
+
+[node name="SceneMountains" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=770236935]
+z_index = -7
+position = Vector2(320.89197, 236)
+texture = ExtResource("17_gjakv")
+offset = Vector2(1.4589653, 3.8905792)
+
+[node name="SceneMountainsMid" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1725430366]
+z_index = -8
+position = Vector2(320.89197, 236)
+texture = ExtResource("18_k5oxv")
+offset = Vector2(1.4589653, 3.8905792)
+
+[node name="SceneMountainsBack" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=358832468]
+z_index = -9
+position = Vector2(320.89197, 236)
+texture = ExtResource("19_v56gy")
+offset = Vector2(1.4589653, 3.8905792)
+
+[node name="SceneSky" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1648880556]
+z_index = -10
+position = Vector2(319.89197, -796)
+texture = ExtResource("18_lymac")
+
+[node name="Key" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=33377022 instance=ExtResource("24_yx21f")]
+unique_name_in_owner = true
+position = Vector2(316.89197, -148)
+
+[node name="NewGround" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1720963716]
+position = Vector2(-0.10803223, 488)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/NewGround" unique_id=1048486437]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/NewGround/AnimatableBody2D" unique_id=1200113730]
+shape = SubResource("RectangleShape2D_rbb1a")
+
+[node name="ColorRect" type="ColorRect" parent="AspectRatioContainer/SubViewportContainer/SubViewport/NewGround" unique_id=447983854]
+custom_minimum_size = Vector2(640, 60)
+offset_right = 640.0
+offset_bottom = 60.0
+color = Color(0.28199658, 0.4902655, 0.27691758, 1)
+
+[node name="UI" type="Control" parent="." unique_id=1830636579]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("17_wj86m")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI" unique_id=111716426]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 516.0
+offset_top = 456.0
+offset_right = 596.0
+offset_bottom = 496.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 4
+
+[node name="HeartIcon" type="TextureRect" parent="UI/HBoxContainer" unique_id=1977517944]
+layout_mode = 2
+texture = ExtResource("17_y1j1w")
+stretch_mode = 2
+
+[node name="HeartIcon2" type="TextureRect" parent="UI/HBoxContainer" unique_id=47969921]
+layout_mode = 2
+texture = ExtResource("17_y1j1w")
+stretch_mode = 2
+
+[node name="HeartIcon3" type="TextureRect" parent="UI/HBoxContainer" unique_id=1105696355]
+layout_mode = 2
+texture = ExtResource("17_y1j1w")
+stretch_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI" unique_id=1144935482]
+layout_mode = 0
+offset_left = 549.0
+offset_top = 460.0
+offset_right = 601.0
+offset_bottom = 486.0
+
+[node name="ShrinkIcon" type="TextureRect" parent="UI/HBoxContainer2" unique_id=1679212263]
+visible = false
+layout_mode = 2
+texture = ExtResource("25_lvuo8")
+stretch_mode = 2
+
+[node name="SteerIcon" type="TextureRect" parent="UI/HBoxContainer2" unique_id=2082802637]
+visible = false
+layout_mode = 2
+texture = ExtResource("26_dboxl")
+stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=302128172]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_8jp7u")
+
+[node name="AnimPlayerMountain" type="AnimationPlayer" parent="." unique_id=344784869]
+unique_name_in_owner = true
+root_node = NodePath("../AnimationPlayer")
+libraries/ = SubResource("AnimationLibrary_k5oxv")
+
+[node name="AnimPlayerKey" type="AnimationPlayer" parent="." unique_id=1946222423]
+unique_name_in_owner = true
+root_node = NodePath("../AnimPlayerMountain")
+libraries/ = SubResource("AnimationLibrary_2k0x2")
+
+[node name="AnimPlayerSky" type="AnimationPlayer" parent="." unique_id=858627604]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_5snws")
+
+[node name="CRTOverlay" type="ColorRect" parent="." unique_id=1091198159]
+visible = false
+material = SubResource("ShaderMaterial_xvdk0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 243.65845
+offset_top = 73.0
+offset_right = -253.65845
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="area_entered" from="AspectRatioContainer/SubViewportContainer/SubViewport/Player/Area2D" to="AspectRatioContainer/SubViewportContainer/SubViewport/Player" method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="AspectRatioContainer/SubViewportContainer/SubViewport/Player/Area2D" to="AspectRatioContainer/SubViewportContainer/SubViewport/Player" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="AspectRatioContainer/SubViewportContainer/SubViewport/Fire" to="AspectRatioContainer/SubViewportContainer/SubViewport/Fire" method="_on_body_entered"]

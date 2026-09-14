@@ -1,20 +1,42 @@
 [gd_scene format=3 uid="uid://bd3y20mn4t04o"]
 
 [ext_resource type="Script" uid="uid://dpwiw8kcafg17" path="res://scripts/floatup/floatup_spawnable.gd" id="1_ko5h5"]
+[ext_resource type="Texture2D" uid="uid://xpmal63nbyes" path="res://assets/enemies/fallboy_long_normal.png" id="2_wke8n"]
+[ext_resource type="Texture2D" uid="uid://dhqno2037edmm" path="res://assets/enemies/fallboy_long.png" id="3_voaqs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bacrr"]
 size = Vector2(100, 40)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bacrr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_wke8n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_voaqs")
+}],
+"loop": 1,
+"name": &"animate",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" unique_id=1005891516 groups=["Hazard"]]
 sync_to_physics = false
 script = ExtResource("1_ko5h5")
 direction = Vector2(0, 1)
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=263079408]
-custom_minimum_size = Vector2(100, 0)
-offset_right = 40.0
-offset_bottom = 40.0
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1038471641]
 position = Vector2(50, 20)
 shape = SubResource("RectangleShape2D_bacrr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=526523655]
+position = Vector2(50, 20)
+sprite_frames = SubResource("SpriteFrames_bacrr")
+animation = &"animate"
+speed_scale = 0.8
