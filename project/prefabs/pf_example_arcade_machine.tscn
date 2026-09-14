@@ -1,11 +1,21 @@
 [gd_scene format=3 uid="uid://d2dejs4wlbtlq"]
 
 [ext_resource type="PackedScene" uid="uid://cntpcve5rjgqy" path="res://prefabs/pf_arcade_machine_base.tscn" id="1_34as7"]
+[ext_resource type="PackedScene" uid="uid://ckwv01j5apesh" path="res://prefabs/pf_arcade_screen.tscn" id="1_navsu"]
+[ext_resource type="PackedScene" uid="uid://i07ybshp4770" path="res://levels/lvl_example_arcade_game.tscn" id="2_vq7cp"]
 
 [node name="ExampleArcadeMachine" type="Node3D" unique_id=1824771371]
+
+[node name="ArcadeScreen" parent="." unique_id=192009638 node_paths=PackedStringArray("viewport_target") instance=ExtResource("1_navsu")]
+process_mode = 0
+transform = Transform3D(0.9998195, 0, 0, 0, 0.7435655, 0.06613269, 0, -0.049281895, 0.99781036, 0, 0.90721846, -0.043967143)
+viewport_target = NodePath("../SubViewport")
 
 [node name="BaseArcadeMachine" parent="." unique_id=1087995022 instance=ExtResource("1_34as7")]
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=728090255]
+disable_3d = true
+own_world_3d = true
+size = Vector2i(1024, 1024)
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1374641989]
+[node name="Node2D" parent="SubViewport" unique_id=1313414700 instance=ExtResource("2_vq7cp")]

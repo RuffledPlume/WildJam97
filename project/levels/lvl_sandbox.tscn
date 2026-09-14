@@ -2,29 +2,38 @@
 
 [ext_resource type="PackedScene" uid="uid://c72mf508kj7j3" path="res://prefabs/pf_main_player.tscn" id="1_pj36p"]
 [ext_resource type="PackedScene" uid="uid://d2dejs4wlbtlq" path="res://prefabs/pf_example_arcade_machine.tscn" id="2_gfot2"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gfot2"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-
-[sub_resource type="Sky" id="Sky_p4efw"]
-sky_material = SubResource("ProceduralSkyMaterial_gfot2")
+[ext_resource type="Script" uid="uid://bg16tdgeajwvt" path="res://scripts/fps_counter.gd" id="3_p4efw"]
 
 [sub_resource type="Environment" id="Environment_75r4t"]
-background_mode = 2
-sky = SubResource("Sky_p4efw")
+ambient_light_color = Color(0.01973007, 0.1839292, 0.41201982, 1)
+ambient_light_energy = 3.05
+ssao_enabled = true
+ssil_enabled = true
+ssil_intensity = 1.5
+sdfgi_use_occlusion = true
 glow_enabled = true
 
 [node name="LvlSandbox" type="Node3D" unique_id=103237972]
+
+[node name="ExampleArcadeMachine" parent="." unique_id=1824771371 instance=ExtResource("2_gfot2")]
+transform = Transform3D(0.88026094, 0, -0.47448996, 0, 1, 0, 0.47448996, 0, 0.88026094, 6.2213016, 0.50568414, -0.7640904)
+
+[node name="ExampleArcadeMachine2" parent="." unique_id=1544364039 instance=ExtResource("2_gfot2")]
+transform = Transform3D(0.5759856, 0, -0.8174598, 0, 1, 0, 0.8174598, 0, 0.5759856, 9.140249, 0.50568414, 1.7136841)
+
+[node name="ExampleArcadeMachine3" parent="." unique_id=839034064 instance=ExtResource("2_gfot2")]
+transform = Transform3D(-0.02659759, 0, -0.9996462, 0, 1, 0, 0.9996462, 0, -0.02659759, 9.711819, 0.50568414, 5.8979006)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1607199037]
+transform = Transform3D(-0.01785189, -0.86588746, 0.49992025, 2.7805946e-08, 0.49999994, 0.86602545, -0.9998407, 0.015460163, -0.0089259595, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_mode = 0
+sky_mode = 2
 
 [node name="CharacterBody3D" parent="." unique_id=835210181 instance=ExtResource("1_pj36p")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=236298632]
 environment = SubResource("Environment_75r4t")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=943372227]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 2.098584, 0)
-shadow_enabled = true
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1492821613]
 use_collision = true
@@ -33,5 +42,19 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49206543, -0.16343701, 0.019042969)
 size = Vector3(115, 0.32373047, 126)
 
-[node name="ExampleArcadeMachine" parent="." unique_id=1824771371 instance=ExtResource("2_gfot2")]
-transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, 3.0394742, 0.50563294, 4.3236146)
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=28121360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9156149, 2.080431, -4.2823076)
+
+[node name="Control" type="Control" parent="." unique_id=399168336]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control" unique_id=1453716743]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("3_p4efw")
+
+[editable path="ExampleArcadeMachine3"]
