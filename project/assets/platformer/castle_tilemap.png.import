@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cjxmeeilisb3f"
-path="res://.godot/imported/castle_tilemap.png-623876e6e045139d3c88cb6eca6c81ff.ctex"
+path="res://.godot/imported/castle_tilemap.png-9ad8135d925396843b98371d8591d885.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/platformer/kenney_1-bit-platformer-pack/Tilemap/castle_tilemap.png"
-dest_files=["res://.godot/imported/castle_tilemap.png-623876e6e045139d3c88cb6eca6c81ff.ctex"]
+source_file="res://assets/platformer/castle_tilemap.png"
+dest_files=["res://.godot/imported/castle_tilemap.png-9ad8135d925396843b98371d8591d885.ctex"]
 
 [params]
 
