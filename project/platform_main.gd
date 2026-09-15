@@ -1,12 +1,12 @@
 extends Node2D
 
 var picked_up = false
-var door_area_active = false
 
-@onready var pick_up = %pick_up
+@onready var pick_up = %pick_up1
 @onready var locked_door = %locked_door
 @onready var press_to_start = %press2start
 @onready var two_way_platform = %two_way_platform
+@onready var foreground_layer = %foreground
 
 func start_game():
 	if Input.is_anything_pressed() and press_to_start.visible == true:
@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 	start_game()
 
 func _physics_process(_delta: float) -> void:
-	if Input.is_action_just_pressed("platformer_player_interact") and door_area_active == true and picked_up == true:
+	if Input.is_action_just_pressed("platformer_player_interact") and picked_up == true:
 		locked_door.play("open")
 	else:
 		pass
@@ -31,12 +31,11 @@ func _physics_process(_delta: float) -> void:
 	elif Input.is_action_just_released("platformer_player_drop"):
 		two_way_platform.collision_enabled = true
 
-func _on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	picked_up = true
-	pick_up.visible = false
+func foreground_on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("platform_player"):
+		create_tween().tween_property(foreground_layer, "modulate:a", .2, .5)
 
-func door_on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	door_area_active = true
 
-func door_on_area_2d_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	door_area_active = false
+func foreground_on_area_2d_body_exited(body: Node2D) -> void:
+	if body.is_in_group("platform_player"):
+		create_tween().tween_property(foreground_layer, "modulate:a", 1, .5)
