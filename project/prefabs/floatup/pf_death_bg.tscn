@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://wkpbrbg34fsi"]
+
+[ext_resource type="Shader" uid="uid://djbjtk7eq612n" path="res://shaders/scrolling_bg_blue.gdshader" id="1_u84yb"]
+[ext_resource type="Texture2D" uid="uid://d3b5svg6mv66u" path="res://assets/background/bg_red.png" id="2_0h2ha"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bacrr"]
+shader = ExtResource("1_u84yb")
+shader_parameter/tiling = Vector2(20, 20)
+shader_parameter/offset = Vector2(0, -0.5)
+
+[node name="ScrollingBackgroundDeath" type="Sprite2D" unique_id=1790154345]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_bacrr")
+scale = Vector2(10.28125, 10.28125)
+texture = ExtResource("2_0h2ha")

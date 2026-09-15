@@ -4,6 +4,7 @@ signal interacted
 signal health_changed(int)
 signal shrinked
 signal steering
+signal player_died
 
 @export var speed         : float = 3.0
 @export var drag          : float = 0.5
@@ -14,6 +15,7 @@ var health            : int = 3
 var is_flying         : bool = false
 var allow_shrink      : bool = false
 var allow_steer       : bool = false
+var disable_player    : bool = false
 var gravity           : float = 980.0
 var canvas_layer      : CanvasLayer
 var resize_factor     : float = 1.0
@@ -22,12 +24,14 @@ var resize_multiplier : float = 0.01
 @onready var damage_timer: Timer = %DamageTimer
 @onready var shrink_timer: Timer = %ShrinkTimer
 @onready var steer_timer: Timer = %SteerTimer
+@onready var anim_player_main: AnimationPlayer = %AnimPlayerMain
 
 func _ready() -> void:
 	canvas_layer = get_tree().get_first_node_in_group("CanvasLayer")
 	canvas_layer.start_flying.connect(set_to_flying)
 	shrink_timer.timeout.connect(remove_shrink)
 	steer_timer.timeout.connect(remove_steer)
+	player_died.connect(disable_input)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
@@ -38,14 +42,24 @@ func _input(event: InputEvent) -> void:
 		self.scale = Vector2(resize_factor, resize_factor)
 
 func _process(delta: float) -> void:
-	print(is_flying)
 	if resize_factor < 1.0:
 		resize_factor += 0.001
 		self.scale = Vector2(resize_factor, resize_factor)
 	resize_factor = clamp(resize_factor, 0.5, 1.0)
 	
+	if health <= 0:
+		player_died.emit()
+		
+
+func disable_input() ->  void:
+	disable_player = true
+	anim_player_main.play("death")
+	
 func _physics_process(delta: float) -> void:
 	
+	if disable_player:
+		return 
+		
 	if not is_on_floor() and not is_flying:
 		velocity.y += gravity * delta
 		

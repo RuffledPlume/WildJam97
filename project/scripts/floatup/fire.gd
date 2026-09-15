@@ -1,6 +1,5 @@
 extends Area2D
 
-
 @export var direction : Vector2 = Vector2(0.0, 0.0)
 
 var player        : CharacterBody2D
@@ -19,7 +18,8 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	position += direction * spawn_manager.speed * delta
-	# Change to animation or tween movement.
+	if position.y > 700.0:
+		queue_free()
 	
 func interact() -> void:
 	if is_within:

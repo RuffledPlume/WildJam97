@@ -11,7 +11,7 @@ var upper_spawn_points : Array[Node2D]
 var side_spawn_points  : Array[Node2D]
 var player        : CharacterBody2D
 var canvas_layer  : CanvasLayer
-var elapsed_time  : float = 80.0
+var elapsed_time  : float = 0.0
 var min_timer     : float = 5.0
 var max_timer     : float = 10.0
 var end_game      : bool = false
@@ -77,7 +77,6 @@ func spawn_upper_objects() -> void:
 func spawn_flying_objects() -> void:
 	if end_game:
 		return
-		
 
 	var spawned_item : Node2D = flyables.pick_random().instantiate()
 	add_child(spawned_item)
