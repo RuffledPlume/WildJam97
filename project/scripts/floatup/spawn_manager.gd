@@ -51,13 +51,16 @@ func _process(delta: float) -> void:
 		max_timer = 5.0
 	if elapsed_time > 25.0:
 		min_timer = 2.5
-		max_timer = 4.5
+		max_timer = 4.0
 	if elapsed_time > 40.0:
-		min_timer = 1.5
-		max_timer = 3.5
+		min_timer = 1.0
+		max_timer = 2.5
 	if elapsed_time > 50.0:
 		min_timer = 0.5
 		max_timer = 1.5
+	if elapsed_time > 80:
+		min_timer = 0.5
+		max_timer = 0.9
 	if elapsed_time > 90.0:
 		stop_spawning = true
 	if elapsed_time > 95.0 and not end_game:

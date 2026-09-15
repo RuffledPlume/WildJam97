@@ -25,6 +25,7 @@ var resize_multiplier : float = 0.01
 @onready var shrink_timer: Timer = %ShrinkTimer
 @onready var steer_timer: Timer = %SteerTimer
 @onready var anim_player_main: AnimationPlayer = %AnimPlayerMain
+@onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 
 func _ready() -> void:
 	canvas_layer = get_tree().get_first_node_in_group("CanvasLayer")
@@ -68,10 +69,17 @@ func _physics_process(delta: float) -> void:
 	
 	# HANDLE GROUND INPUTS AND SPEEDS
 	if not is_flying:
+		animated_sprite_2d.play("idle")
 		if Input.is_action_pressed("main_player_move_left"):
+			animated_sprite_2d.play("walk")
+			animated_sprite_2d.flip_h = true
 			velocity += Vector2(-10.0, 0.0)
 		elif Input.is_action_pressed("main_player_move_right"):
+			animated_sprite_2d.play("walk")
+			animated_sprite_2d.flip_h = false
 			velocity += Vector2(10.0, 0.0)
+		else:
+			animated_sprite_2d.play("idle")
 		
 		velocity = velocity.move_toward(Vector2.ZERO, 5.0)
 		velocity = velocity.limit_length(max_speed)
@@ -79,8 +87,12 @@ func _physics_process(delta: float) -> void:
 	# HANDLE FLYING INPUTS AND SPEEDS
 	if is_flying:
 		if Input.is_action_pressed("main_player_move_left"):
+			animated_sprite_2d.play("flying")
+			animated_sprite_2d.flip_h = true
 			velocity += Vector2(-speed, 0.0)
 		if Input.is_action_pressed("main_player_move_right"):
+			animated_sprite_2d.play("flying")
+			animated_sprite_2d.flip_h = false
 			velocity += Vector2(speed, 0.0)
 		if Input.is_action_pressed("main_player_move_forward"):
 			velocity += Vector2(0.0, -speed * 0.7)

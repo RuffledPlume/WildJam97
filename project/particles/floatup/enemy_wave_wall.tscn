@@ -54,6 +54,7 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_bacrr")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1111822082]
+position = Vector2(-1, 5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=274043203]
 position = Vector2(0, -35.5)
