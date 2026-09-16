@@ -4,13 +4,16 @@
 [ext_resource type="Shader" uid="uid://djbjtk7eq612n" path="res://shaders/scrolling_bg_blue.gdshader" id="1_ym2jc"]
 [ext_resource type="Texture2D" uid="uid://pwbvj7xqop63" path="res://assets/background/bg_yellow.png" id="2_ym2jc"]
 [ext_resource type="Script" uid="uid://dpwiw8kcafg17" path="res://scripts/floatup/floatup_spawnable.gd" id="4_1v4jr"]
+[ext_resource type="Texture2D" uid="uid://c3jw35g5gbip4" path="res://assets/player/player_dead.png" id="4_2a034"]
 [ext_resource type="FontFile" uid="uid://b6wp23t6o3aeu" path="res://assets/font/BNGAMMA.OTF" id="4_53lfo"]
 [ext_resource type="Texture2D" uid="uid://cnry0f2x7a20i" path="res://assets/player/player_flying.png" id="4_62d5f"]
 [ext_resource type="Texture2D" uid="uid://b0g8wsur8g0jj" path="res://assets/player/player-idle.png" id="4_bxjl1"]
 [ext_resource type="Texture2D" uid="uid://bsfvt0mvgd6b7" path="res://assets/player/player-walk.png" id="4_vi5ht"]
+[ext_resource type="Texture2D" uid="uid://0ycje5id0k5f" path="res://assets/player/player_flying_02.png" id="5_hwgr8"]
 [ext_resource type="PackedScene" uid="uid://b256xhtmy6ye8" path="res://prefabs/floatup/pf_shrink_powerup.tscn" id="5_k5oxv"]
 [ext_resource type="PackedScene" uid="uid://dlkcwjrbbpn7e" path="res://prefabs/floatup/pf_steer_powerup.tscn" id="5_v56gy"]
 [ext_resource type="Script" uid="uid://dd3q7t67ewfnb" path="res://scripts/floatup/player_float_up.gd" id="5_w36lc"]
+[ext_resource type="Texture2D" uid="uid://bmg04qprl1prh" path="res://assets/player/player_flying_03.png" id="6_2a034"]
 [ext_resource type="Texture2D" uid="uid://xjuay0xwtk3" path="res://assets/player/player.png" id="6_shggk"]
 [ext_resource type="Texture2D" uid="uid://5k7rd7y40eqe" path="res://assets/player/mouse_scroll_down.png" id="6_uyp7k"]
 [ext_resource type="Texture2D" uid="uid://dr0nhpi8eb7li" path="res://assets/interactables/logs.png" id="7_b7fmq"]
@@ -99,7 +102,24 @@ region = Rect2(96, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_2a034")
+}],
+"loop": 1,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.5,
 "texture": ExtResource("4_62d5f")
+}, {
+"duration": 1.5,
+"texture": ExtResource("5_hwgr8")
+}, {
+"duration": 1.5,
+"texture": ExtResource("4_62d5f")
+}, {
+"duration": 1.5,
+"texture": ExtResource("6_2a034")
 }],
 "loop": 1,
 "name": &"flying",
@@ -777,7 +797,7 @@ unique_name_in_owner = true
 z_index = 100
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_xvdk0")
-animation = &"flying"
+animation = &"death"
 
 [node name="Sprite2D" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Player" unique_id=839767947]
 visible = false

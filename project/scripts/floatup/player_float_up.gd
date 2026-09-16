@@ -54,7 +54,9 @@ func _process(delta: float) -> void:
 
 func disable_input() ->  void:
 	disable_player = true
+	animated_sprite_2d.play("death")
 	anim_player_main.play("death")
+	
 	
 func _physics_process(delta: float) -> void:
 	
