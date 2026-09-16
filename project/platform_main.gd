@@ -54,15 +54,21 @@ func _physics_process(_delta: float) -> void:
 		locked_door_opened = true
 	
 	if Input.is_action_just_pressed("platformer_player_interact") and locked_door_activated == true and locked_door_opened == true:
+		await create_tween().tween_property(platform_player, "modulate:a", 0, .5).finished
 		platform_player.position = Vector2(2303.0, -688.0)
+		await create_tween().tween_property(platform_player, "modulate:a", 1, .5).finished
 
 	if Input.is_action_just_pressed("platformer_player_interact") and doorway_activated == true and locked_door_opened == true:
+		await create_tween().tween_property(platform_player, "modulate:a", 0, .5).finished
 		platform_player.position = Vector2(2303.0, -301.0) 
+		await create_tween().tween_property(platform_player, "modulate:a", 1, .5).finished
 	elif Input.is_action_just_pressed("platformer_player_interact") and doorway_activated == true and locked_door_activated == false:
 		locked_door.play("open")
 		await locked_door.animation_finished
 		locked_door_opened = true
+		await create_tween().tween_property(platform_player, "modulate:a", 0, .5).finished
 		platform_player.position = Vector2(2303.0, -301.0)
+		await create_tween().tween_property(platform_player, "modulate:a", 1, .5).finished
 
 	if Input.is_action_just_pressed("platformer_player_drop"):
 		two_way_platform.collision_enabled = false
