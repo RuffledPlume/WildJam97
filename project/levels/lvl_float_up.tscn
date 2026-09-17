@@ -22,17 +22,25 @@
 [ext_resource type="Texture2D" uid="uid://cgojwbbvnvkdx" path="res://assets/interactables/fire.png" id="8_raika"]
 [ext_resource type="Texture2D" uid="uid://df5sv6hg07fyt" path="res://assets/enemies/fallboy_large.png" id="8_vi5ht"]
 [ext_resource type="Texture2D" uid="uid://xpmal63nbyes" path="res://assets/enemies/fallboy_long_normal.png" id="9_bxjl1"]
+[ext_resource type="Texture2D" uid="uid://bywp4dyc640gf" path="res://assets/player/gamegirl/gamergirl_player_01.png" id="10_1inwl"]
 [ext_resource type="Texture2D" uid="uid://dgejk6yfxl7pq" path="res://assets/enemies/fallboy_tall.png" id="10_62d5f"]
 [ext_resource type="Script" uid="uid://cmey5vg42dm3b" path="res://scripts/floatup/spawn_manager.gd" id="10_yuhyp"]
+[ext_resource type="Texture2D" uid="uid://cu55aksa62558" path="res://assets/player/gamegirl/gamergirl_flying_01.png" id="11_4gakt"]
 [ext_resource type="Texture2D" uid="uid://daephr2x6foox" path="res://assets/enemies/flyboy.png" id="11_kjb24"]
 [ext_resource type="PackedScene" uid="uid://cvdlq376avl1f" path="res://prefabs/floatup/pf_falling_object.tscn" id="11_y3spn"]
+[ext_resource type="Texture2D" uid="uid://7xnc30675rnl" path="res://assets/player/gamegirl/gamergirl_flying_02.png" id="12_elvqk"]
 [ext_resource type="Texture2D" uid="uid://u8i6bi7tp5a0" path="res://assets/enemies/fallboy_tall_shock.png" id="12_hwgr8"]
 [ext_resource type="Texture2D" uid="uid://dhqno2037edmm" path="res://assets/enemies/fallboy_long.png" id="13_2a034"]
 [ext_resource type="PackedScene" uid="uid://lyfqotn1ox6k" path="res://prefabs/floatup/pf_flying_object.tscn" id="13_44dkg"]
+[ext_resource type="Texture2D" uid="uid://4b4cb7yj85su" path="res://assets/player/gamegirl/gamergirl_flying_03.png" id="13_nywkm"]
 [ext_resource type="PackedScene" uid="uid://cxu0qesfjbwce" path="res://prefabs/floatup/pf_falling_object_large.tscn" id="13_vkjjv"]
+[ext_resource type="Texture2D" uid="uid://c6dt6vantxt8q" path="res://assets/player/gamegirl/walking/walk_01.png" id="14_stu34"]
 [ext_resource type="Texture2D" uid="uid://c2auhnshor5w8" path="res://assets/background/enemy_wall_image.png" id="14_xhklb"]
 [ext_resource type="PackedScene" uid="uid://bd3y20mn4t04o" path="res://prefabs/floatup/pf_falling_object_long.tscn" id="14_y1j1w"]
+[ext_resource type="Texture2D" uid="uid://lr0yolhrlnbl" path="res://assets/player/gamegirl/walking/walk_02.png" id="15_f3g7a"]
 [ext_resource type="PackedScene" uid="uid://befcd674fqd0l" path="res://prefabs/floatup/pf_falling_object_tall.tscn" id="15_wj86m"]
+[ext_resource type="Texture2D" uid="uid://djiugrtr34k3l" path="res://assets/player/gamegirl/walking/walk_03.png" id="16_jw5q6"]
+[ext_resource type="Texture2D" uid="uid://ps66ucxyrnuo" path="res://assets/player/gamegirl/walking/walk_04.png" id="17_fap12"]
 [ext_resource type="Texture2D" uid="uid://b0jfwy36pcb4o" path="res://assets/background/scene_mtn_front.png" id="17_gjakv"]
 [ext_resource type="Script" uid="uid://cw6hq8yuhfn5o" path="res://scripts/floatup/ui.gd" id="17_wj86m"]
 [ext_resource type="Texture2D" uid="uid://ds0232hojx0ax" path="res://assets/player/heart.png" id="17_y1j1w"]
@@ -154,6 +162,56 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hwgr8")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_he4c8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_1inwl")
+}],
+"loop": 1,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_4gakt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_elvqk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nywkm")
+}],
+"loop": 1,
+"name": &"flying",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_1inwl")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_stu34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_f3g7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_jw5q6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_fap12")
 }],
 "loop": 1,
 "name": &"walk",
@@ -799,6 +857,16 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_xvdk0")
 animation = &"death"
 
+[node name="AnimatedSprite2DGG" type="AnimatedSprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Player" unique_id=845332129]
+unique_name_in_owner = true
+visible = false
+z_index = 100
+texture_filter = 1
+position = Vector2(-1, -3)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_he4c8")
+animation = &"walk"
+
 [node name="Sprite2D" type="Sprite2D" parent="AspectRatioContainer/SubViewportContainer/SubViewport/Player" unique_id=839767947]
 visible = false
 z_index = 100
@@ -1365,6 +1433,7 @@ texture = ExtResource("19_x8h5e")
 position = Vector2(319.89197, -349.00003)
 
 [node name="DeathLabel" type="Label" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1373280721]
+unique_name_in_owner = true
 offset_left = -10.108032
 offset_top = 165.0
 offset_right = 650.89197
@@ -1372,8 +1441,9 @@ offset_bottom = 292.0
 theme_override_colors/font_color = Color(1, 1, 1, 0)
 theme_override_fonts/font = ExtResource("4_53lfo")
 theme_override_font_sizes/font_size = 60
-text = "GAMEMAN
-HAS PERISHED"
+text = "YOU
+HAVE
+PERISHED"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1435,7 +1505,6 @@ position = Vector2(316.89197, 595)
 
 [node name="UI" type="Control" parent="." unique_id=1830636579]
 unique_name_in_owner = true
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -1450,9 +1519,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = 516.0
-offset_top = 456.0
+offset_top = 61.0
 offset_right = 596.0
-offset_bottom = 496.0
+offset_bottom = 101.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 4
@@ -1475,9 +1544,9 @@ stretch_mode = 2
 [node name="HBoxContainer2" type="HBoxContainer" parent="UI" unique_id=1144935482]
 layout_mode = 0
 offset_left = 549.0
-offset_top = 460.0
+offset_top = 132.0
 offset_right = 601.0
-offset_bottom = 486.0
+offset_bottom = 158.0
 
 [node name="ShrinkIcon" type="TextureRect" parent="UI/HBoxContainer2" unique_id=1679212263]
 visible = false

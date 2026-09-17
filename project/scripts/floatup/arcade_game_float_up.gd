@@ -11,6 +11,7 @@ var menu_finished : bool = false
 var menu_array    : Array[CanvasLayer]
 var idx           : int
 var current_page  : CanvasLayer
+var chosen_sprite : AnimatedSprite2D
 
 @onready var title_page: CanvasLayer = %TitlePage
 @onready var how_to_page: CanvasLayer = %HowToPage
@@ -56,7 +57,7 @@ func _input(event: InputEvent) -> void:
 			menu_array[idx].visible = true   # Set new menu_array page to visbile
 		else:							     # Loop until idx is = to menu_array.size()
 			menu_array[idx].visible = false  # On the last page, start the game
-			menu_finished
+			menu_finished = true
 			animation_player.play("remove_scrolling_bg")
 			game_started = true
 			title_page.visible = false

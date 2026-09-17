@@ -20,19 +20,28 @@ var gravity           : float = 980.0
 var canvas_layer      : CanvasLayer
 var resize_factor     : float = 1.0
 var resize_multiplier : float = 0.01
+var current_sprite    : AnimatedSprite2D
+var old_sprite        : AnimatedSprite2D
+var is_repositioned   : bool = false
 
 @onready var damage_timer: Timer = %DamageTimer
 @onready var shrink_timer: Timer = %ShrinkTimer
 @onready var steer_timer: Timer = %SteerTimer
 @onready var anim_player_main: AnimationPlayer = %AnimPlayerMain
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
+@onready var animated_sprite_2dgg: AnimatedSprite2D = %AnimatedSprite2DGG
+@onready var death_label: Label = %DeathLabel
 
 func _ready() -> void:
+	animated_sprite_2d.stop()
 	canvas_layer = get_tree().get_first_node_in_group("CanvasLayer")
 	canvas_layer.start_flying.connect(set_to_flying)
 	shrink_timer.timeout.connect(remove_shrink)
 	steer_timer.timeout.connect(remove_steer)
 	player_died.connect(disable_input)
+	current_sprite = animated_sprite_2d
+	old_sprite     = animated_sprite_2dgg
+
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
@@ -41,20 +50,39 @@ func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("scroll_mouse_down"):
 		resize_factor -= resize_multiplier
 		self.scale = Vector2(resize_factor, resize_factor)
+	
+	if Input.is_action_just_pressed("X"):
+		printt(current_sprite, old_sprite)
+		if current_sprite == animated_sprite_2d:
+			old_sprite = animated_sprite_2d
+			current_sprite = animated_sprite_2dgg
+		else:
+			old_sprite = animated_sprite_2dgg
+			current_sprite = animated_sprite_2d
+		printt(current_sprite, old_sprite)
+		old_sprite.visible = false
+		current_sprite.visible = true
+		
 
 func _process(delta: float) -> void:
+
+	handle_bounds_death()
+	
 	if resize_factor < 1.0:
 		resize_factor += 0.001
 		self.scale = Vector2(resize_factor, resize_factor)
 	resize_factor = clamp(resize_factor, 0.5, 1.0)
 	
-	if health <= 0:
-		player_died.emit()
-		
+	if is_flying:
+		if is_repositioned:
+			return
+		animated_sprite_2dgg.position = Vector2(animated_sprite_2dgg.position.x, animated_sprite_2dgg.position.y - 15.0)
+		is_repositioned = true
+	
 
 func disable_input() ->  void:
 	disable_player = true
-	animated_sprite_2d.play("death")
+	current_sprite.play("death")
 	anim_player_main.play("death")
 	
 	
@@ -71,30 +99,28 @@ func _physics_process(delta: float) -> void:
 	
 	# HANDLE GROUND INPUTS AND SPEEDS
 	if not is_flying:
-		animated_sprite_2d.play("idle")
 		if Input.is_action_pressed("main_player_move_left"):
-			animated_sprite_2d.play("walk")
-			animated_sprite_2d.flip_h = true
+			current_sprite.play("walk")
+			current_sprite.flip_h = true
 			velocity += Vector2(-10.0, 0.0)
 		elif Input.is_action_pressed("main_player_move_right"):
-			animated_sprite_2d.play("walk")
-			animated_sprite_2d.flip_h = false
+			current_sprite.play("walk")
+			current_sprite.flip_h = false
 			velocity += Vector2(10.0, 0.0)
 		else:
-			animated_sprite_2d.play("idle")
+			current_sprite.play("idle")
 		
 		velocity = velocity.move_toward(Vector2.ZERO, 5.0)
 		velocity = velocity.limit_length(max_speed)
 	
 	# HANDLE FLYING INPUTS AND SPEEDS
 	if is_flying:
+		current_sprite.play("flying")
 		if Input.is_action_pressed("main_player_move_left"):
-			animated_sprite_2d.play("flying")
-			animated_sprite_2d.flip_h = true
+			current_sprite.flip_h = true
 			velocity += Vector2(-speed, 0.0)
 		if Input.is_action_pressed("main_player_move_right"):
-			animated_sprite_2d.play("flying")
-			animated_sprite_2d.flip_h = false
+			current_sprite.flip_h = false
 			velocity += Vector2(speed, 0.0)
 		if Input.is_action_pressed("main_player_move_forward"):
 			velocity += Vector2(0.0, -speed * 0.7)
@@ -121,8 +147,7 @@ func take_damage() -> void:
 	health -= damage
 	health = clamp(health, 0, 3)
 	if health <= 0:
-		print("Game Over")
-		# add death state
+		player_died.emit()
 	health_changed.emit()
 	print(health)
 
@@ -153,4 +178,16 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		steer_timer.start()
 		steering.emit()
 		area.get_parent().queue_free()
+
+func handle_bounds_death() -> void:
+	var screen = get_viewport_rect()
+	var min_x = screen.position.x
+	var max_x = screen.end.x
+	var min_y = screen.position.y
+	var max_y = screen.end.y
+	
+	if position.x < min_x || position.x > max_x:
+		player_died.emit()
 		
+	if position.y < min_y || position.y > max_y:
+		player_died.emit()
