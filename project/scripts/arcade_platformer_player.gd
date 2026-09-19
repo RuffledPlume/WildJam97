@@ -13,9 +13,6 @@ var can_move = false
 func play(param):
 	sprite_animation.play(param)
 
-func _ready() -> void:
-	can_move = true
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():

@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://d2dejs4wlbtlq"]
 
+[ext_resource type="Script" uid="uid://b0a003h0fqbmc" path="res://scripts/arcade_machine.gd" id="1_2su1k"]
 [ext_resource type="PackedScene" uid="uid://cntpcve5rjgqy" path="res://prefabs/pf_arcade_machine_base.tscn" id="1_34as7"]
 [ext_resource type="PackedScene" uid="uid://ckwv01j5apesh" path="res://prefabs/pf_arcade_screen.tscn" id="1_navsu"]
-[ext_resource type="PackedScene" uid="uid://i07ybshp4770" path="res://levels/lvl_example_arcade_game.tscn" id="2_vq7cp"]
+[ext_resource type="PackedScene" uid="uid://b4xvo1k3mtc0l" path="res://levels/arcade_platformer.tscn" id="3_varhu"]
 
 [node name="ExampleArcadeMachine" type="Node3D" unique_id=1824771371]
+script = ExtResource("1_2su1k")
 
 [node name="ArcadeScreen" parent="." unique_id=192009638 node_paths=PackedStringArray("viewport_target") instance=ExtResource("1_navsu")]
 process_mode = 0
@@ -16,6 +18,7 @@ viewport_target = NodePath("../SubViewport")
 [node name="SubViewport" type="SubViewport" parent="." unique_id=728090255]
 disable_3d = true
 own_world_3d = true
-size = Vector2i(1024, 1024)
+size = Vector2i(800, 600)
 
-[node name="Node2D" parent="SubViewport" unique_id=1313414700 instance=ExtResource("2_vq7cp")]
+[node name="platform_main" parent="SubViewport" unique_id=1539982560 node_paths=PackedStringArray("arcade") instance=ExtResource("3_varhu")]
+arcade = NodePath("../..")

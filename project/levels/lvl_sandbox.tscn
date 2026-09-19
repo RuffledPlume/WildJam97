@@ -4,6 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://d2dejs4wlbtlq" path="res://prefabs/pf_example_arcade_machine.tscn" id="2_gfot2"]
 [ext_resource type="Script" uid="uid://bg16tdgeajwvt" path="res://scripts/fps_counter.gd" id="3_p4efw"]
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_rltbh"]
+top_radius = 0.053710938
+bottom_radius = 0.053710938
+height = 0.08483887
+
 [sub_resource type="Environment" id="Environment_75r4t"]
 ambient_light_color = Color(0.01973007, 0.1839292, 0.41201982, 1)
 ambient_light_energy = 3.05
@@ -31,6 +36,11 @@ directional_shadow_mode = 0
 sky_mode = 2
 
 [node name="CharacterBody3D" parent="." unique_id=835210181 instance=ExtResource("1_pj36p")]
+transform = Transform3D(0.8882941, 0, -0.45927525, 0, 1, 0, 0.45927525, 0, 0.8882941, 5.5761895, 0, 0.5019584)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D" unique_id=1770172456]
+transform = Transform3D(0.9999843, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 0.9999843, -7.266739, 0.9422494, -2.9591522)
+mesh = SubResource("CylinderMesh_rltbh")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=236298632]
 environment = SubResource("Environment_75r4t")

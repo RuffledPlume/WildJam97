@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var arcade : ArcadeMachine
+
 var sign1_activated = false
 var sign2_activated = false
 var sign3_activated = false
@@ -98,17 +100,14 @@ func _ready() -> void:
 	textbox_animation.play("textblink")
 	start_pause_up = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
 func _physics_process(_delta: float) -> void:
-	if Input.is_anything_pressed() and start_pause_up == true:
+	if arcade.is_player_using && start_pause_up == true:
 		textbox_animation.stop()
 		press_anything_text.visible = false
 		platform_player.can_move = true
 		start_pause_up = false
 		textbox_animation.play("text_fade_in")
+		return
 	
 	if Input.is_action_just_pressed("platformer_player_interact") and picked_up1 == true and side_door_locked1_activated == true:
 		door_open_sfx.play()

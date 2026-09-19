@@ -12,7 +12,7 @@ var move_delta : Vector2
 var current_pitch : float
 
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED) # TODO: Implement proper mouse capture tracking, Maybe in the GameManager?
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _process(delta: float) -> void:
 	_handle_camera_rotation(delta)
@@ -33,11 +33,15 @@ func _handle_camera_rotation(delta: float) -> void:
 	rotate_y(mouse_delta.x)
 	camera.rotate_x(mouse_delta.y)
 	camera.rotation_degrees.x = clampf(camera.rotation_degrees.x, -90.0, 90.0)
-	
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 			mouse_delta = -event.relative * mouse_sense
-			
+	
+	if event is InputEventMouseButton:
+		if event.pressed:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

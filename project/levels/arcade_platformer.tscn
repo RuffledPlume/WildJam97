@@ -1128,10 +1128,13 @@ script = ExtResource("1_myh0b")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=79611357]
 texture_filter = 1
-offset_left = 176.0
-offset_top = 24.0
-offset_right = 976.0
-offset_bottom = 624.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 800.0
+offset_bottom = 600.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1089059723]
 handle_input_locally = false
@@ -1629,7 +1632,7 @@ offset_right = 386.0
 offset_bottom = 171.0
 theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 32
-text = "press anything to start"
+text = "Insert Coin to Start"
 horizontal_alignment = 1
 vertical_alignment = 1
 
