@@ -55,6 +55,7 @@ var start_pause_up = false
 @onready var door_open_sfx = %door_open
 @onready var background_music = %background_music
 @onready var textbox_popup_sfx = %textbox_popup
+@onready var title_music = %title_music
 
 var secrets_got = 0
 var seconds_passed = 0
@@ -207,7 +208,9 @@ func _physics_process(_delta: float) -> void:
 		endscreen_timer.start()
 	
 	if won_game == true and win_screen_activated == false:
+		background_music.stop()
 		secret_get_sfx.play()
+		title_music.play()
 		var hours = ""
 		var minutes = ""
 		var seconds = ""

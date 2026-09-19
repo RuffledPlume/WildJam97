@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://gwja4ed61nmd" path="res://assets/platformer/textbox.png" id="25_wy3k5"]
 [ext_resource type="AudioStream" uid="uid://b2534lsr7pweq" path="res://assets/platformer/audio/26-09-17 v2 sfx text.mp3" id="26_c0mwa"]
 [ext_resource type="AudioStream" uid="uid://b4kv5pi0m6377" path="res://assets/platformer/audio/26-09-17 game jam 2 - sfx footstep.mp3" id="26_fk33w"]
+[ext_resource type="AudioStream" uid="uid://b7sxiywn143l0" path="res://assets/platformer/audio/26-09-17 Game Jam Title Screen v1.mp3" id="26_h4ftt"]
 [ext_resource type="AudioStream" uid="uid://ba81ns0cp1brt" path="res://assets/platformer/audio/26-09-17 v2 game jam sarah.mp3" id="26_p7oax"]
 [ext_resource type="AudioStream" uid="uid://bk1mjga2jcask" path="res://assets/platformer/audio/26-09-17 game jam 2 - sfx shrink powerup.mp3" id="27_vkbdg"]
 [ext_resource type="AudioStream" uid="uid://bok4tv6dwlmx8" path="res://assets/platformer/audio/26-09-17 game jam 2 - sfx speedup powerup.mp3" id="28_mblnt"]
@@ -1764,15 +1765,23 @@ offset_top = -2029.0
 offset_right = 4098.0
 offset_bottom = 1655.0
 
+[node name="title_music" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport" unique_id=1636818529]
+unique_name_in_owner = true
+stream = ExtResource("26_h4ftt")
+volume_db = -22.0
+bus = &"music"
+
 [node name="textbox_popup" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport" unique_id=409667612]
 unique_name_in_owner = true
 stream = ExtResource("26_c0mwa")
 volume_db = -18.0
+bus = &"sfx"
 
 [node name="background_music" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport" unique_id=951244698]
 unique_name_in_owner = true
 stream = ExtResource("26_p7oax")
 volume_db = -22.0
+bus = &"music"
 
 [node name="door_open" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport" unique_id=1421544969]
 unique_name_in_owner = true
