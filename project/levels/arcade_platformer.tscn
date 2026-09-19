@@ -25,6 +25,12 @@
 [ext_resource type="Texture2D" uid="uid://cimlgtrot7lmh" path="res://assets/platformer/player-idle.png" id="23_l15nn"]
 [ext_resource type="Texture2D" uid="uid://yxqfwufdnklr" path="res://assets/platformer/player-walk.png" id="24_ei05k"]
 [ext_resource type="Texture2D" uid="uid://gwja4ed61nmd" path="res://assets/platformer/textbox.png" id="25_wy3k5"]
+[ext_resource type="AudioStream" uid="uid://b2534lsr7pweq" path="res://assets/platformer/audio/26-09-17 v2 sfx text.mp3" id="26_c0mwa"]
+[ext_resource type="AudioStream" uid="uid://b4kv5pi0m6377" path="res://assets/platformer/audio/26-09-17 game jam 2 - sfx footstep.mp3" id="26_fk33w"]
+[ext_resource type="AudioStream" uid="uid://ba81ns0cp1brt" path="res://assets/platformer/audio/26-09-17 v2 game jam sarah.mp3" id="26_p7oax"]
+[ext_resource type="AudioStream" uid="uid://bk1mjga2jcask" path="res://assets/platformer/audio/26-09-17 game jam 2 - sfx shrink powerup.mp3" id="27_vkbdg"]
+[ext_resource type="AudioStream" uid="uid://bok4tv6dwlmx8" path="res://assets/platformer/audio/26-09-17 game jam 2 - sfx speedup powerup.mp3" id="28_mblnt"]
+[ext_resource type="AudioStream" uid="uid://37him4tyo21v" path="res://assets/platformer/audio/26-09-17 v2 jump sfx.mp3" id="29_mblnt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0u2x"]
 bg_color = Color(0.9568326, 0.78957933, 0.25559357, 1)
@@ -662,6 +668,54 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(0, 160)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../fadeout:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("press_anything:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../interact_text:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../jump_secret:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_ag0c4"]
 resource_name = "death"
@@ -703,8 +757,83 @@ tracks/2/keys = {
 "values": [Vector2(0, 160), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_myh0b"]
+resource_name = "fade_transition_in"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../fadeout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fk33w"]
+resource_name = "fade_transition_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../fadeout:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_8wga3"]
 resource_name = "statue_move"
+
+[sub_resource type="Animation" id="Animation_vkbdg"]
+resource_name = "text_fade_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../interact_text:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../jump_secret:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_njs2y"]
+resource_name = "textblink"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("press_anything:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.21568628), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_lndvp"]
 resource_name = "textbox_fadein"
@@ -794,7 +923,11 @@ tracks/1/keys = {
 _data = {
 &"RESET": SubResource("Animation_g1ckr"),
 &"death": SubResource("Animation_ag0c4"),
+&"fade_transition_in": SubResource("Animation_myh0b"),
+&"fade_transition_out": SubResource("Animation_fk33w"),
 &"statue_move": SubResource("Animation_8wga3"),
+&"text_fade_in": SubResource("Animation_vkbdg"),
+&"textblink": SubResource("Animation_njs2y"),
 &"textbox_fadein": SubResource("Animation_lndvp"),
 &"textbox_fadeout": SubResource("Animation_00tp2"),
 &"won": SubResource("Animation_15xww")
@@ -1118,10 +1251,11 @@ tile_set = SubResource("TileSet_bdise")
 [node name="two_way_platform" type="TileMapLayer" parent="SubViewportContainer/SubViewport" unique_id=1980001289]
 unique_name_in_owner = true
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AAAGAAQAAQAAAAIAAAAFAAQAAQAAAAIAAAAEAAQAAQAAAAIAAAAVAAAAAQAAAAIAAAAUAAAAAQAAAAIAAAATAAAAAQAAAAIAAAAVAPL/AQAAAAIAAAAUAPL/AQAAAAIAAAATAPL/AQAAAAIAAAAVAPf/AQAAAAIAAAAUAPf/AQAAAAIAAAATAPf/AQAAAAIAAAAwAPL/AQAAAAIAAAAvAPL/AQAAAAIAAAAuAPL/AQAAAAIAAAAmAPz/AQAAAAIAAAAlAPz/AQAAAAIAAAAkAPz/AQAAAAIAAAAjAPz/AQAAAAIAAAAiAPz/AQAAAAIAAAAYAAAAAQAAAAIAAAAZAAAAAQAAAAIAAAAaAAAAAQAAAAIAAAAbAAAAAQAAAAIAAAAcAAAAAQAAAAIAAAAdAAAAAQABAAIAAAAhAPz/AQABAAMAAGAgAP3/AQABAAIAAGAfAP7/AQABAAMAAGAeAP//AQABAAIAAGAeAAEAAQABAAMAAAAfAAIAAQABAAIAAAAgAAMAAQABAAMAAAAiAAQAAQAAAAIAAAAjAAQAAQAAAAIAAAAkAAQAAQAAAAIAAAAlAAQAAQAAAAIAAAAmAAQAAQAAAAIAAAAeAAcAAQABAAMAAGAZAAgAAQAAAAIAAAAaAAgAAQAAAAIAAAAbAAgAAQAAAAIAAAAcAAgAAQAAAAIAAAAdAAgAAQABAAMAAAAeAAkAAQABAAIAAAAfAAoAAQABAAMAAAAgAAsAAQABAAIAAAATAO7/AQAAAAIAAAAUAO7/AQAAAAIAAAAVAO7/AQAAAAIAAAApAAQAAQAAAAIAAAAqAAQAAQAAAAIAAAArAAQAAQAAAAIAAAAsAAQAAQAAAAIAAAAuAAgAAQAAAAIAAAAvAAgAAQAAAAIAAAAwAAgAAQAAAAIAAAAxAAgAAQAAAAIAAAAgAAYAAQAAAAMAAGAfAAcAAQAAAAMAAGAfAAsAAQAAAAMAAHAeAAoAAQAAAAMAAHAdAAkAAQAAAAMAAHAhAAUAAQAAAAMAAGAfAAMAAQAAAAMAAAAeAAIAAQAAAAMAAAAdAAEAAQAAAAMAAAAfAP//AQAAAAMAAGAgAP7/AQAAAAMAAGAhAP3/AQAAAAMAAGAnAPn/AQAAAAIAAEAnAPr/AQAAAAIAAEAnAPv/AQAAAAIAAEADAAQAAQAAAAIAAAAJAAQAAQAAAAIAAAAAAAQAAQAAAAIAAAABAAQAAQAAAAIAAAAIAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAACAAQAAQAAAAIAAAABAPv/AQAAAAIAAAACAPv/AQAAAAIAAAADAPv/AQAAAAIAAAAEAPv/AQAAAAIAAAA=")
+tile_map_data = PackedByteArray("AAAGAAQAAQAAAAIAAAAFAAQAAQAAAAIAAAAEAAQAAQAAAAIAAAAVAAAAAQAAAAIAAAAUAAAAAQAAAAIAAAATAAAAAQAAAAIAAAAVAPL/AQAAAAIAAAAUAPL/AQAAAAIAAAATAPL/AQAAAAIAAAAVAPf/AQAAAAIAAAAUAPf/AQAAAAIAAAATAPf/AQAAAAIAAAAwAPL/AQAAAAIAAAAvAPL/AQAAAAIAAAAuAPL/AQAAAAIAAAAmAPz/AQAAAAIAAAAlAPz/AQAAAAIAAAAkAPz/AQAAAAIAAAAjAPz/AQAAAAIAAAAiAPz/AQAAAAIAAAAYAAAAAQAAAAIAAAAZAAAAAQAAAAIAAAAaAAAAAQAAAAIAAAAbAAAAAQAAAAIAAAAcAAAAAQAAAAIAAAAdAAAAAQABAAIAAAAhAPz/AQABAAMAAGAgAP3/AQABAAIAAGAfAP7/AQABAAMAAGAeAP//AQABAAIAAGAeAAEAAQABAAMAAAAfAAIAAQABAAIAAAAgAAMAAQABAAMAAAAiAAQAAQAAAAIAAAAjAAQAAQAAAAIAAAAkAAQAAQAAAAIAAAAlAAQAAQAAAAIAAAAmAAQAAQAAAAIAAAAeAAcAAQABAAMAAGAZAAgAAQAAAAIAAAAaAAgAAQAAAAIAAAAbAAgAAQAAAAIAAAAcAAgAAQAAAAIAAAAdAAgAAQABAAMAAAAeAAkAAQABAAIAAAAfAAoAAQABAAMAAAAgAAsAAQABAAIAAAATAO7/AQAAAAIAAAAUAO7/AQAAAAIAAAAVAO7/AQAAAAIAAAApAAQAAQAAAAIAAAAqAAQAAQAAAAIAAAArAAQAAQAAAAIAAAAsAAQAAQAAAAIAAAAuAAgAAQAAAAIAAAAvAAgAAQAAAAIAAAAwAAgAAQAAAAIAAAAxAAgAAQAAAAIAAAAgAAYAAQAAAAMAAGAfAAcAAQAAAAMAAGAfAAsAAQAAAAMAAHAeAAoAAQAAAAMAAHAdAAkAAQAAAAMAAHAhAAUAAQAAAAMAAGAfAAMAAQAAAAMAAAAeAAIAAQAAAAMAAAAdAAEAAQAAAAMAAAAfAP//AQAAAAMAAGAgAP7/AQAAAAMAAGAhAP3/AQAAAAMAAGAnAPn/AQAAAAIAAEAnAPr/AQAAAAIAAEAnAPv/AQAAAAIAAEADAAQAAQAAAAIAAAAJAAQAAQAAAAIAAAAAAAQAAQAAAAIAAAABAAQAAQAAAAIAAAAIAAQAAQAAAAIAAAAHAAQAAQAAAAIAAAACAAQAAQAAAAIAAAABAPv/AQAAAAIAAAACAPv/AQAAAAIAAAADAPv/AQAAAAIAAAAEAPv/AQAAAAIAAAAhAAQAAQABAAMAAGAgAAUAAQABAAIAAGAfAAYAAQABAAIAAGA=")
 tile_set = SubResource("TileSet_5jvox")
 
 [node name="interact_text" type="RichTextLabel" parent="SubViewportContainer/SubViewport" unique_id=247119925]
+modulate = Color(1, 1, 1, 0)
 offset_left = 92.0
 offset_top = 640.0
 offset_right = 375.0
@@ -1135,6 +1269,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="jump_secret" type="RichTextLabel" parent="SubViewportContainer/SubViewport" unique_id=1393994968]
+modulate = Color(1, 1, 1, 0)
 offset_left = 176.0
 offset_top = 387.0
 offset_right = 460.0
@@ -1275,7 +1410,7 @@ shape = SubResource("RectangleShape2D_jcg5t")
 
 [node name="player" type="CharacterBody2D" parent="SubViewportContainer/SubViewport" unique_id=861666152 groups=["platform_player"]]
 unique_name_in_owner = true
-position = Vector2(197, 529)
+position = Vector2(191, 532)
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("20_gsieq")
@@ -1484,6 +1619,19 @@ text = "0/3"
 horizontal_alignment = 2
 vertical_alignment = 2
 
+[node name="press_anything" type="RichTextLabel" parent="SubViewportContainer/SubViewport/player" unique_id=1332810368]
+unique_name_in_owner = true
+z_index = 20
+offset_left = -393.0
+offset_top = -313.0
+offset_right = 386.0
+offset_bottom = 171.0
+theme_override_fonts/normal_font = ExtResource("7_c0mwa")
+theme_override_font_sizes/normal_font_size = 32
+text = "press anything to start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="sidedoor" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1407673436]
 position = Vector2(1248, -101)
 scale = Vector2(2.208, 2.208)
@@ -1583,7 +1731,7 @@ position = Vector2(656.25, 497.5)
 shape = SubResource("RectangleShape2D_meboo")
 
 [node name="wallsymbols" type="TileMapLayer" parent="SubViewportContainer/SubViewport/foreground" unique_id=2059740024]
-tile_map_data = PackedByteArray("AAACAAUAAAAJAAQAAAAHAAUAAAAJAAQAADAGAAUAAAAKAAQAAAAFAAUAAAAKAAQAAAAEAAUAAAAKAAQAAAADAAUAAAAKAAQAAAACAAQAAAAJAAQAAAAHAAQAAAAJAAQAADADAAQAAAAKAAQAAAAEAAQAAAAKAAQAAAAFAAQAAAAKAAQAAAAGAAQAAAAKAAQAAAATAAgAAAAJAAQAAAAUAAgAAAAKAAQAAAAVAAgAAAAJAAQAADAVAAAAAAAJAAQAADATAAAAAAAJAAQAAAAUAAAAAAAKAAQAAAAUAPz/AAAKAAQAAAATAPz/AAAJAAQAAAAVAPz/AAAJAAQAADAUAPL/AAAKAAQAAAATAPL/AAAJAAQAAAAVAPL/AAAJAAQAADAVAO7/AAAJAAQAADAUAO7/AAAKAAQAAAATAO7/AAAJAAQAAAAuAPL/AAAJAAQAAAAwAPL/AAAJAAQAADAvAPL/AAAKAAQAAAA=")
+tile_map_data = PackedByteArray("AAACAAUAAAAJAAQAAAAHAAUAAAAJAAQAADAGAAUAAAAKAAQAAAAFAAUAAAAKAAQAAAAEAAUAAAAKAAQAAAADAAUAAAAKAAQAAAACAAQAAAAJAAQAAAAHAAQAAAAJAAQAADADAAQAAAAKAAQAAAAEAAQAAAAKAAQAAAAFAAQAAAAKAAQAAAAGAAQAAAAKAAQAAAATAAgAAAAJAAQAAAAUAAgAAAAKAAQAAAAVAAgAAAAJAAQAADAVAAAAAAAJAAQAADATAAAAAAAJAAQAAAAUAAAAAAAKAAQAAAAUAPz/AAAKAAQAAAATAPz/AAAJAAQAAAAVAPz/AAAJAAQAADAUAPL/AAAKAAQAAAATAPL/AAAJAAQAAAAVAPL/AAAJAAQAADAVAO7/AAAJAAQAADAUAO7/AAAKAAQAAAATAO7/AAAJAAQAAAAuAPL/AAAJAAQAAAAwAPL/AAAJAAQAADAvAPL/AAAKAAQAAAAnAPn/AAAJAAQAAFAnAPv/AAAJAAQAAGAnAPr/AAAKAAQAAFA=")
 tile_set = SubResource("TileSet_vs8mb")
 
 [node name="deathtrap" type="Area2D" parent="SubViewportContainer/SubViewport" unique_id=921428260]
@@ -1607,6 +1755,48 @@ ignore_time_scale = true
 [node name="end_screen_timer" type="Timer" parent="SubViewportContainer/SubViewport" unique_id=1813294256]
 unique_name_in_owner = true
 wait_time = 0.5
+
+[node name="fadeout" type="Panel" parent="SubViewportContainer/SubViewport" unique_id=1476869947]
+modulate = Color(1, 1, 1, 0)
+z_index = 15
+offset_left = -797.0
+offset_top = -2029.0
+offset_right = 4098.0
+offset_bottom = 1655.0
+
+[node name="textbox_popup" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport" unique_id=409667612]
+unique_name_in_owner = true
+stream = ExtResource("26_c0mwa")
+volume_db = -18.0
+
+[node name="background_music" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport" unique_id=951244698]
+unique_name_in_owner = true
+stream = ExtResource("26_p7oax")
+volume_db = -22.0
+
+[node name="door_open" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport" unique_id=1421544969]
+unique_name_in_owner = true
+stream = ExtResource("26_fk33w")
+volume_db = -12.0
+bus = &"sfx"
+
+[node name="key_pickup" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport" unique_id=1086597781]
+unique_name_in_owner = true
+stream = ExtResource("27_vkbdg")
+volume_db = -18.0
+bus = &"sfx"
+
+[node name="secret_get" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport" unique_id=1624663746]
+unique_name_in_owner = true
+stream = ExtResource("28_mblnt")
+volume_db = -18.0
+bus = &"sfx"
+
+[node name="jump" type="AudioStreamPlayer" parent="SubViewportContainer/SubViewport" unique_id=649382496]
+unique_name_in_owner = true
+stream = ExtResource("29_mblnt")
+volume_db = -12.0
+bus = &"sfx"
 
 [connection signal="body_entered" from="SubViewportContainer/SubViewport/items/sign1" to="." method="_on_sign_1_body_entered"]
 [connection signal="body_exited" from="SubViewportContainer/SubViewport/items/sign1" to="." method="_on_sign_1_body_exited"]

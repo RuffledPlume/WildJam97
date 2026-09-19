@@ -26,6 +26,7 @@ var won_game = false
 var endscreen_timer_activated = false
 var statue_activated = false
 var statue_moved = false
+var start_pause_up = false
 
 @onready var pick_up1 = %pick_up1
 @onready var pick_up2 = %pick_up2
@@ -48,6 +49,12 @@ var statue_moved = false
 @onready var secret_stat_label_won = %won_secret_stat
 @onready var endscreen_timer = %end_screen_timer
 @onready var player_sprite = %player_sprite
+@onready var press_anything_text = %press_anything
+@onready var key_pickup_sfx = %key_pickup
+@onready var secret_get_sfx = %secret_get
+@onready var door_open_sfx = %door_open
+@onready var background_music = %background_music
+@onready var textbox_popup_sfx = %textbox_popup
 
 var secrets_got = 0
 var seconds_passed = 0
@@ -55,6 +62,7 @@ var minutes_passed = 0
 var hours_passed = 0
 
 func textbox(param: String):
+	textbox_popup_sfx.play()
 	platform_player.can_move = false
 	text.text = ""
 	text.append_text(param)
@@ -67,6 +75,7 @@ func add_text_to_textbox(sign_number, text_param: String):
 
 func add_text_to_secret(sign_number, text_param: String, secret_param: int):
 	if Input.is_action_just_released("platformer_player_interact") and sign_number == true and textbox_up == false:
+		secret_get_sfx.play()
 		textbox(text_param)
 		if secret_param == 2:
 			secret2_got = true
@@ -81,14 +90,27 @@ func add_text_to_locked(door_activated, text_param: String, pickup_param):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	timer.start()
+	background_music.play()
+	textbox_animation.play("fade_transition_in")
+	await textbox_animation.animation_finished
+	platform_player.can_move = false
+	textbox_animation.play("textblink")
+	start_pause_up = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
+	if Input.is_anything_pressed() and start_pause_up == true:
+		textbox_animation.stop()
+		press_anything_text.visible = false
+		platform_player.can_move = true
+		start_pause_up = false
+		textbox_animation.play("text_fade_in")
+	
 	if Input.is_action_just_pressed("platformer_player_interact") and picked_up1 == true and side_door_locked1_activated == true:
+		door_open_sfx.play()
 		side_door_locked1.play("open")
 		side_door1_coll.disabled = true
 	elif Input.is_action_just_pressed("platformer_player_interact") and picked_up1 != true and side_door_locked1_activated == true:
@@ -111,12 +133,14 @@ func _physics_process(_delta: float) -> void:
 		textbox_up = false
 	
 	if Input.is_action_just_pressed("platformer_player_interact") and picked_up3 == true and side_door_locked2_activated == true:
+		door_open_sfx.play()
 		side_door_locked2.play("open")
 		side_door2_coll.disabled = true
 	elif Input.is_action_just_pressed("platformer_player_interact") and picked_up3 != true and side_door_locked2_activated == true:
 		add_text_to_textbox(side_door_locked2_activated, "Even the front door is locked?! I guess that makes sense...")
 
 	if Input.is_action_just_pressed("platformer_player_interact") and picked_up2 == true and locked_door_activated == true and locked_door_opened == false:
+		door_open_sfx.play()
 		locked_door.play("open")
 		await locked_door.animation_finished
 		locked_door_opened = true
@@ -138,6 +162,7 @@ func _physics_process(_delta: float) -> void:
 		platform_player.can_move = true
 	elif Input.is_action_just_pressed("platformer_player_interact") and doorway_activated == true and locked_door_opened == false:
 		platform_player.can_move = false
+		door_open_sfx.play()
 		locked_door.play("open")
 		await locked_door.animation_finished
 		locked_door_opened = true
@@ -152,6 +177,7 @@ func _physics_process(_delta: float) -> void:
 		two_way_platform.collision_enabled = true
 	
 	if is_dead == true and end_screen_activated == false:
+		key_pickup_sfx.play()
 		var hours = ""
 		var minutes = ""
 		var seconds = ""
@@ -181,6 +207,7 @@ func _physics_process(_delta: float) -> void:
 		endscreen_timer.start()
 	
 	if won_game == true and win_screen_activated == false:
+		secret_get_sfx.play()
 		var hours = ""
 		var minutes = ""
 		var seconds = ""
@@ -210,11 +237,15 @@ func _physics_process(_delta: float) -> void:
 		endscreen_timer.start()
 	
 	if Input.is_anything_pressed() and end_screen_activated == true and endscreen_timer_activated == true:
-		get_tree().reload_current_scene()
+		textbox_animation.play("fade_transition_out")
 		endscreen_timer_activated = false
+		queue_free()
+		get_tree().call_deferred("reload_current_scene")
 	if Input.is_anything_pressed() and win_screen_activated == true and endscreen_timer_activated == true:
-		get_tree().reload_current_scene()
+		textbox_animation.play("fade_transition_out")
 		endscreen_timer_activated = false
+		queue_free()
+		get_tree().call_deferred("reload_current_scene")
 	
 	if seconds_passed >= 60:
 		seconds_passed = 0
@@ -235,6 +266,8 @@ func foreground_on_area_2d_body_exited(body: Node2D) -> void:
 
 
 func key1_on_area_2d_body_entered(_body: Node2D) -> void:
+	if pick_up1.visible == true:
+		key_pickup_sfx.play()
 	picked_up1 = true
 	pick_up1.visible = false
 
@@ -247,6 +280,8 @@ func side_door_locked1_on_area_2d_body_exited(body: Node2D) -> void:
 		side_door_locked1_activated = false
 
 func key2_on_area_2d_body_entered(_body: Node2D) -> void:
+	if pick_up2.visible == true:
+		key_pickup_sfx.play()
 	picked_up2 = true
 	pick_up2.visible = false
 
@@ -267,6 +302,8 @@ func open_doorway_on_area_2d_body_exited(body: Node2D) -> void:
 		doorway_activated = false
 
 func key3_on_area_2d_body_entered(_body: Node2D) -> void:
+	if pick_up3.visible == true:
+		key_pickup_sfx.play()
 	picked_up3 = true
 	pick_up3.visible = false
 
@@ -285,6 +322,7 @@ func pickup4_on_area_2d_body_shape_entered(_body_rid: RID, _body: Node2D, _body_
 	picked_up3 = true
 	pick_upSkeleton.visible = false
 	if secret3_got == false:
+		secret_get_sfx.play()
 		secrets_got += 1
 		secret3_got = true
 

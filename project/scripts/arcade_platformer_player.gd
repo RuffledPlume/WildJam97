@@ -5,6 +5,7 @@ const SPEED = 400.0
 const JUMP_VELOCITY = -650.0
 
 @onready var sprite_animation = $player_sprite
+@onready var jump_sfx = %jump
 
 var can_doublejump = false
 var can_move = false
@@ -24,10 +25,12 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if can_move == true:
 		if Input.is_action_just_pressed("platformer_player_jump") and is_on_floor():
+			jump_sfx.play()
 			velocity.y = JUMP_VELOCITY
 			play("jump")
 			can_doublejump = true
 		elif Input.is_action_just_pressed("platformer_player_jump") and can_doublejump == true and !is_on_floor():
+			jump_sfx.play()
 			velocity.y = JUMP_VELOCITY
 			play("jump")
 			can_doublejump = false
