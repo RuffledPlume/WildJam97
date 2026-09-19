@@ -1,36 +1,36 @@
 [gd_scene format=4 uid="uid://b4xvo1k3mtc0l"]
 
-[ext_resource type="Script" uid="uid://rb1n6c26mwub" path="res://platform_main.gd" id="1_ai831"]
-[ext_resource type="Texture2D" uid="uid://cjxmeeilisb3f" path="res://assets/platformer/castle_tilemap.png" id="2_8j42p"]
-[ext_resource type="Script" uid="uid://c0m4k34026jij" path="res://arcade_platformer_player.gd" id="2_squqs"]
-[ext_resource type="Texture2D" uid="uid://dyni8pkbonk63" path="res://assets/platformer/mountains_back.png" id="2_uc8jj"]
-[ext_resource type="Texture2D" uid="uid://dj2iruls5hjnf" path="res://assets/platformer/key.png" id="3_8j42p"]
-[ext_resource type="Texture2D" uid="uid://g0dwl2rbm3eh" path="res://assets/platformer/mountains_mid.png" id="3_jqoge"]
-[ext_resource type="Texture2D" uid="uid://yy5vv6x3h48g" path="res://assets/platformer/mountains_frk t/mountains_front.png" id="4_f4may"]
-[ext_resource type="Texture2D" uid="uid://cimlgtrot7lmh" path="res://assets/platformer/player-idle.png" id="5_7wpxg"]
-[ext_resource type="Texture2D" uid="uid://cjg0pagm7rj6w" path="res://assets/platformer/torchglow_tilemap.png" id="6_00tp2"]
-[ext_resource type="Texture2D" uid="uid://yxqfwufdnklr" path="res://assets/platformer/player-walk.png" id="6_8j42p"]
-[ext_resource type="Texture2D" uid="uid://blpn07jfhtonl" path="res://assets/platformer/blue_key.png" id="6_w7u1f"]
-[ext_resource type="Texture2D" uid="uid://c5rnonyqhrfqf" path="res://assets/platformer/red_key.png" id="7_a3dt2"]
-[ext_resource type="Texture2D" uid="uid://cjy7tsmftn75a" path="res://assets/platformer/side_door_closed.png" id="8_c0u2x"]
-[ext_resource type="Texture2D" uid="uid://s0ucamv2asbe" path="res://assets/platformer/green_key.png" id="8_yufjl"]
-[ext_resource type="Texture2D" uid="uid://yseoytel526k" path="res://assets/platformer/side_door_closed_blue.png" id="11_a3dt2"]
-[ext_resource type="Texture2D" uid="uid://d107m6kfe38e3" path="res://assets/platformer/side_door_open_blue.png" id="12_yufjl"]
-[ext_resource type="Texture2D" uid="uid://dm5s1p1crft2d" path="res://assets/platformer/side_door_closed_green.png" id="13_g1ckr"]
-[ext_resource type="Texture2D" uid="uid://b2yk2s4bn20ee" path="res://assets/platformer/locked_door_red1.png" id="13_yufjl"]
-[ext_resource type="Texture2D" uid="uid://fmxnv78m0nbi" path="res://assets/platformer/locked_door_red2.png" id="14_g1ckr"]
-[ext_resource type="Texture2D" uid="uid://deuhr6d0aaki" path="res://assets/platformer/side_door_open_green.png" id="14_lndvp"]
-[ext_resource type="Texture2D" uid="uid://by1unx7qr5p1e" path="res://assets/platformer/locked_door_red3.png" id="15_lndvp"]
-[ext_resource type="Texture2D" uid="uid://cwn8rjg5a0s62" path="res://assets/platformer/player-fall-export.png" id="21_ag0c4"]
-[ext_resource type="FontFile" uid="uid://th3vhruanaks" path="res://assets/platformer/BNGAMMA.OTF" id="22_g1ckr"]
-[ext_resource type="Texture2D" uid="uid://gwja4ed61nmd" path="res://assets/platformer/textbox.png" id="23_lndvp"]
-[ext_resource type="Texture2D" uid="uid://bcxhf2i2t6pcg" path="res://assets/platformer/player-fall.png" id="24_15xww"]
+[ext_resource type="Script" uid="uid://rb1n6c26mwub" path="res://scripts/platform_main.gd" id="1_myh0b"]
+[ext_resource type="Texture2D" uid="uid://dyni8pkbonk63" path="res://assets/platformer/mountains_back.png" id="2_fk33w"]
+[ext_resource type="Texture2D" uid="uid://g0dwl2rbm3eh" path="res://assets/platformer/mountains_mid.png" id="3_njs2y"]
+[ext_resource type="Texture2D" uid="uid://yy5vv6x3h48g" path="res://assets/platformer/mountains_frk t/mountains_front.png" id="4_vkbdg"]
+[ext_resource type="Texture2D" uid="uid://cjxmeeilisb3f" path="res://assets/platformer/castle_tilemap.png" id="5_mblnt"]
+[ext_resource type="Texture2D" uid="uid://cjg0pagm7rj6w" path="res://assets/platformer/torchglow_tilemap.png" id="6_p7oax"]
+[ext_resource type="FontFile" uid="uid://th3vhruanaks" path="res://assets/platformer/BNGAMMA.OTF" id="7_c0mwa"]
+[ext_resource type="Texture2D" uid="uid://blpn07jfhtonl" path="res://assets/platformer/blue_key.png" id="8_h4ftt"]
+[ext_resource type="Texture2D" uid="uid://c5rnonyqhrfqf" path="res://assets/platformer/red_key.png" id="9_p00b8"]
+[ext_resource type="Texture2D" uid="uid://s0ucamv2asbe" path="res://assets/platformer/green_key.png" id="10_0tqfq"]
+[ext_resource type="Texture2D" uid="uid://dj2iruls5hjnf" path="res://assets/platformer/key.png" id="11_nn4mr"]
+[ext_resource type="Texture2D" uid="uid://cjy7tsmftn75a" path="res://assets/platformer/side_door_closed.png" id="12_n3npx"]
+[ext_resource type="Texture2D" uid="uid://yseoytel526k" path="res://assets/platformer/side_door_closed_blue.png" id="13_rmfm7"]
+[ext_resource type="Texture2D" uid="uid://d107m6kfe38e3" path="res://assets/platformer/side_door_open_blue.png" id="14_h2iq2"]
+[ext_resource type="Texture2D" uid="uid://dm5s1p1crft2d" path="res://assets/platformer/side_door_closed_green.png" id="15_asmej"]
+[ext_resource type="Texture2D" uid="uid://deuhr6d0aaki" path="res://assets/platformer/side_door_open_green.png" id="16_20sy8"]
+[ext_resource type="Texture2D" uid="uid://b2yk2s4bn20ee" path="res://assets/platformer/locked_door_red1.png" id="17_ytoms"]
+[ext_resource type="Texture2D" uid="uid://fmxnv78m0nbi" path="res://assets/platformer/locked_door_red2.png" id="18_8qcs8"]
+[ext_resource type="Texture2D" uid="uid://by1unx7qr5p1e" path="res://assets/platformer/locked_door_red3.png" id="19_k1acf"]
+[ext_resource type="Script" uid="uid://c0m4k34026jij" path="res://scripts/arcade_platformer_player.gd" id="20_gsieq"]
+[ext_resource type="Texture2D" uid="uid://bcxhf2i2t6pcg" path="res://assets/platformer/player-fall.png" id="21_dvyop"]
+[ext_resource type="Texture2D" uid="uid://cwn8rjg5a0s62" path="res://assets/platformer/player-fall-export.png" id="22_xgq5o"]
+[ext_resource type="Texture2D" uid="uid://cimlgtrot7lmh" path="res://assets/platformer/player-idle.png" id="23_l15nn"]
+[ext_resource type="Texture2D" uid="uid://yxqfwufdnklr" path="res://assets/platformer/player-walk.png" id="24_ei05k"]
+[ext_resource type="Texture2D" uid="uid://gwja4ed61nmd" path="res://assets/platformer/textbox.png" id="25_wy3k5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c0u2x"]
 bg_color = Color(0.9568326, 0.78957933, 0.25559357, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c0u2x"]
-texture = ExtResource("2_8j42p")
+texture = ExtResource("5_mblnt")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -104,7 +104,7 @@ texture_region_size = Vector2i(32, 32)
 0:4/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_00tp2"]
-texture = ExtResource("2_8j42p")
+texture = ExtResource("5_mblnt")
 texture_region_size = Vector2i(32, 32)
 3:4/animation_columns = 2
 3:4/animation_frame_0/duration = 1.0
@@ -117,7 +117,7 @@ sources/0 = SubResource("TileSetAtlasSource_c0u2x")
 sources/1 = SubResource("TileSetAtlasSource_00tp2")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g1ckr"]
-texture = ExtResource("2_8j42p")
+texture = ExtResource("5_mblnt")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -198,7 +198,7 @@ sources/0 = SubResource("TileSetAtlasSource_g1ckr")
 radius = 50.7001
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_15xww"]
-texture = ExtResource("2_8j42p")
+texture = ExtResource("5_mblnt")
 texture_region_size = Vector2i(32, 32)
 5:4/0 = 0
 4:4/0 = 0
@@ -209,7 +209,7 @@ tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_15xww")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8wga3"]
-texture = ExtResource("6_00tp2")
+texture = ExtResource("6_p7oax")
 texture_region_size = Vector2i(32, 32)
 0:0/animation_columns = 4
 0:0/animation_mode = 1
@@ -224,7 +224,7 @@ tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_8wga3")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_32241"]
-texture = ExtResource("2_8j42p")
+texture = ExtResource("5_mblnt")
 texture_region_size = Vector2i(32, 32)
 3:4/animation_columns = 2
 3:4/animation_mode = 1
@@ -237,7 +237,7 @@ tile_size = Vector2i(32, 32)
 sources/1 = SubResource("TileSetAtlasSource_32241")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8j42p"]
-texture = ExtResource("2_8j42p")
+texture = ExtResource("5_mblnt")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -319,7 +319,7 @@ texture_region_size = Vector2i(32, 32)
 9:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ag0c4"]
-texture = ExtResource("6_00tp2")
+texture = ExtResource("6_p7oax")
 texture_region_size = Vector2i(32, 32)
 0:0/animation_columns = 5
 0:0/animation_mode = 1
@@ -344,7 +344,7 @@ radius = 15.0
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_c0u2x")
+"texture": ExtResource("12_n3npx")
 }],
 "loop": 1,
 "name": &"closed",
@@ -352,10 +352,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("11_a3dt2")
+"texture": ExtResource("13_rmfm7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("12_yufjl")
+"texture": ExtResource("14_h2iq2")
 }],
 "loop": 0,
 "name": &"open",
@@ -372,7 +372,7 @@ size = Vector2(26.756409, 91.06476)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_g1ckr")
+"texture": ExtResource("15_asmej")
 }],
 "loop": 1,
 "name": &"closed",
@@ -380,10 +380,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_g1ckr")
+"texture": ExtResource("15_asmej")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_lndvp")
+"texture": ExtResource("16_20sy8")
 }],
 "loop": 0,
 "name": &"open",
@@ -397,7 +397,7 @@ size = Vector2(72.00717, 91.06475)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_yufjl")
+"texture": ExtResource("17_ytoms")
 }],
 "loop": 0,
 "name": &"closed",
@@ -405,10 +405,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("13_yufjl")
+"texture": ExtResource("17_ytoms")
 }, {
 "duration": 1.0,
-"texture": ExtResource("14_g1ckr")
+"texture": ExtResource("18_8qcs8")
 }],
 "loop": 0,
 "name": &"open",
@@ -422,7 +422,7 @@ size = Vector2(83.00009, 90)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("15_lndvp")
+"texture": ExtResource("19_k1acf")
 }],
 "loop": 1,
 "name": &"open",
@@ -433,63 +433,63 @@ animations = [{
 size = Vector2(81.99609, 89.99576)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_68urt"]
-atlas = ExtResource("24_15xww")
+atlas = ExtResource("21_dvyop")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r2h0q"]
-atlas = ExtResource("24_15xww")
+atlas = ExtResource("21_dvyop")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1mx8"]
-atlas = ExtResource("21_ag0c4")
+atlas = ExtResource("22_xgq5o")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f4may"]
-atlas = ExtResource("5_7wpxg")
+atlas = ExtResource("23_l15nn")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vxjfx"]
-atlas = ExtResource("5_7wpxg")
+atlas = ExtResource("23_l15nn")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cjt10"]
-atlas = ExtResource("5_7wpxg")
+atlas = ExtResource("23_l15nn")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6wcyx"]
-atlas = ExtResource("5_7wpxg")
+atlas = ExtResource("23_l15nn")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cth8f"]
-atlas = ExtResource("6_8j42p")
+atlas = ExtResource("24_ei05k")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4lovt"]
-atlas = ExtResource("6_8j42p")
+atlas = ExtResource("24_ei05k")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfqea"]
-atlas = ExtResource("6_8j42p")
+atlas = ExtResource("24_ei05k")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpapv"]
-atlas = ExtResource("6_8j42p")
+atlas = ExtResource("24_ei05k")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfvu2"]
-atlas = ExtResource("6_8j42p")
+atlas = ExtResource("24_ei05k")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w7u1f"]
-atlas = ExtResource("6_8j42p")
+atlas = ExtResource("24_ei05k")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_graph"]
-atlas = ExtResource("24_15xww")
+atlas = ExtResource("21_dvyop")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_timr1"]
-atlas = ExtResource("24_15xww")
+atlas = ExtResource("21_dvyop")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aw5qw"]
@@ -801,7 +801,7 @@ _data = {
 }
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yappi"]
-texture = ExtResource("2_8j42p")
+texture = ExtResource("5_mblnt")
 texture_region_size = Vector2i(32, 32)
 use_texture_padding = false
 0:0/0 = 0
@@ -904,7 +904,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_yappi")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uc8jj"]
-texture = ExtResource("2_8j42p")
+texture = ExtResource("5_mblnt")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -972,7 +972,7 @@ size = Vector2(103, 126)
 size = Vector2(102.5, 226)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x1mx8"]
-texture = ExtResource("2_8j42p")
+texture = ExtResource("5_mblnt")
 texture_region_size = Vector2i(32, 32)
 7:4/0 = 0
 8:4/0 = 0
@@ -990,7 +990,7 @@ size = Vector2(193, 64)
 size = Vector2(968, 1365)
 
 [node name="platform_main" type="Node2D" unique_id=1539982560]
-script = ExtResource("1_ai831")
+script = ExtResource("1_myh0b")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=79611357]
 texture_filter = 1
@@ -1025,7 +1025,7 @@ follow_viewport = false
 [node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/back_mount" unique_id=1594435017]
 position = Vector2(980, 179)
 scale = Vector2(2.490635, 2.490635)
-texture = ExtResource("2_uc8jj")
+texture = ExtResource("2_fk33w")
 
 [node name="mountain_mid" type="Parallax2D" parent="SubViewportContainer/SubViewport" unique_id=1270982064]
 z_index = -2
@@ -1038,7 +1038,7 @@ follow_viewport = false
 [node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/mountain_mid" unique_id=1540882398]
 position = Vector2(5889, 505)
 scale = Vector2(4, 4)
-texture = ExtResource("3_jqoge")
+texture = ExtResource("3_njs2y")
 
 [node name="mountain_front" type="Parallax2D" parent="SubViewportContainer/SubViewport" unique_id=645370817]
 z_index = -2
@@ -1051,7 +1051,7 @@ follow_viewport = false
 [node name="Sprite2D" type="Sprite2D" parent="SubViewportContainer/SubViewport/mountain_front" unique_id=1508384909]
 position = Vector2(4648, -441)
 scale = Vector2(4, 4)
-texture = ExtResource("4_f4may")
+texture = ExtResource("4_vkbdg")
 
 [node name="background" type="TileMapLayer" parent="SubViewportContainer/SubViewport" unique_id=1668738392]
 z_index = -2
@@ -1127,7 +1127,7 @@ offset_top = 640.0
 offset_right = 375.0
 offset_bottom = 771.0
 theme_override_colors/default_color = Color(0.07529042, 0.10662346, 0.19505367, 1)
-theme_override_fonts/normal_font = ExtResource("22_g1ckr")
+theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 32
 text = "Press E to Interact
 With Items"
@@ -1140,7 +1140,7 @@ offset_top = 387.0
 offset_right = 460.0
 offset_bottom = 451.0
 theme_override_colors/default_color = Color(0.07450981, 0.105882354, 0.19607843, 1)
-theme_override_fonts/normal_font = ExtResource("22_g1ckr")
+theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 32
 text = "⇑ jump ⇑"
 horizontal_alignment = 1
@@ -1149,7 +1149,7 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 position = Vector2(159, -441)
 scale = Vector2(3.12, 3.12)
-texture = ExtResource("6_w7u1f")
+texture = ExtResource("8_h4ftt")
 
 [node name="Area2D" type="Area2D" parent="SubViewportContainer/SubViewport/pick_up1" unique_id=730585952]
 
@@ -1160,7 +1160,7 @@ shape = SubResource("CircleShape2D_iw7bl")
 unique_name_in_owner = true
 position = Vector2(3092, 624)
 scale = Vector2(3.12, 3.12)
-texture = ExtResource("7_a3dt2")
+texture = ExtResource("9_p00b8")
 
 [node name="Area2D" type="Area2D" parent="SubViewportContainer/SubViewport/pick_up2" unique_id=1366059077]
 
@@ -1171,7 +1171,7 @@ shape = SubResource("CircleShape2D_iw7bl")
 unique_name_in_owner = true
 position = Vector2(2796, -544)
 scale = Vector2(3.12, 3.12)
-texture = ExtResource("8_yufjl")
+texture = ExtResource("10_0tqfq")
 
 [node name="Area2D" type="Area2D" parent="SubViewportContainer/SubViewport/pick_up3" unique_id=40051350]
 
@@ -1182,7 +1182,7 @@ shape = SubResource("CircleShape2D_iw7bl")
 unique_name_in_owner = true
 position = Vector2(1313, -702)
 scale = Vector2(3.12, 3.12)
-texture = ExtResource("3_8j42p")
+texture = ExtResource("11_nn4mr")
 
 [node name="Area2D" type="Area2D" parent="SubViewportContainer/SubViewport/pick_up4" unique_id=1412831009]
 
@@ -1278,14 +1278,14 @@ unique_name_in_owner = true
 position = Vector2(197, 529)
 collision_layer = 7
 collision_mask = 7
-script = ExtResource("2_squqs")
+script = ExtResource("20_gsieq")
 
 [node name="player_sprite" type="AnimatedSprite2D" parent="SubViewportContainer/SubViewport/player" unique_id=1538450612]
 unique_name_in_owner = true
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_aw5qw")
 animation = &"idle"
-frame_progress = 0.4259808
+frame_progress = 0.74443907
 
 [node name="player_collision" type="CollisionShape2D" parent="SubViewportContainer/SubViewport/player" unique_id=611599184]
 position = Vector2(1, 1.5)
@@ -1311,7 +1311,7 @@ offset_top = 15.0
 offset_right = 585.0
 offset_bottom = 185.0
 theme_override_colors/default_color = Color(0.1254902, 0.16862746, 0.2901961, 1)
-theme_override_fonts/normal_font = ExtResource("22_g1ckr")
+theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 32
 text = "Oh No!"
 scroll_active = false
@@ -1332,7 +1332,7 @@ offset_right = 350.0
 offset_bottom = 160.0
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, 160)
-texture = ExtResource("23_lndvp")
+texture = ExtResource("25_wy3k5")
 
 [node name="death_text" type="RichTextLabel" parent="SubViewportContainer/SubViewport/player/death_textbox" unique_id=1334686132]
 layout_mode = 0
@@ -1341,7 +1341,7 @@ offset_top = 38.0
 offset_right = 650.0
 offset_bottom = 118.0
 theme_override_colors/default_color = Color(0.1254902, 0.16862746, 0.2901961, 1)
-theme_override_fonts/normal_font = ExtResource("22_g1ckr")
+theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 55
 text = "You Died!"
 horizontal_alignment = 1
@@ -1354,7 +1354,7 @@ offset_top = 166.0
 offset_right = 302.0
 offset_bottom = 269.0
 theme_override_colors/default_color = Color(0.1254902, 0.16862746, 0.2901961, 1)
-theme_override_fonts/normal_font = ExtResource("22_g1ckr")
+theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 25
 text = "Time:
 
@@ -1369,7 +1369,7 @@ offset_top = 297.0
 offset_right = 540.0
 offset_bottom = 337.0
 theme_override_colors/default_color = Color(0.1254902, 0.16862746, 0.2901961, 1)
-theme_override_fonts/normal_font = ExtResource("22_g1ckr")
+theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 18
 text = "Press Anything to Restart"
 horizontal_alignment = 1
@@ -1383,7 +1383,7 @@ offset_top = 145.0
 offset_right = 540.0
 offset_bottom = 191.0
 theme_override_colors/default_color = Color(0.1254902, 0.16862746, 0.2901961, 1)
-theme_override_fonts/normal_font = ExtResource("22_g1ckr")
+theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 26
 text = "00:12:12"
 horizontal_alignment = 2
@@ -1397,7 +1397,7 @@ offset_top = 216.0
 offset_right = 540.0
 offset_bottom = 262.0
 theme_override_colors/default_color = Color(0.1254902, 0.16862746, 0.2901961, 1)
-theme_override_fonts/normal_font = ExtResource("22_g1ckr")
+theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 26
 text = "0/3"
 horizontal_alignment = 2
@@ -1413,7 +1413,7 @@ offset_right = 350.0
 offset_bottom = 160.0
 offset_transform_enabled = true
 offset_transform_position = Vector2(0, 160)
-texture = ExtResource("23_lndvp")
+texture = ExtResource("25_wy3k5")
 
 [node name="win_text" type="RichTextLabel" parent="SubViewportContainer/SubViewport/player/win_textbox" unique_id=2126812342]
 layout_mode = 0
@@ -1422,7 +1422,7 @@ offset_top = 38.0
 offset_right = 650.0
 offset_bottom = 118.0
 theme_override_colors/default_color = Color(0.1254902, 0.16862746, 0.2901961, 1)
-theme_override_fonts/normal_font = ExtResource("22_g1ckr")
+theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 55
 text = "You Won!"
 horizontal_alignment = 1
@@ -1435,7 +1435,7 @@ offset_top = 166.0
 offset_right = 302.0
 offset_bottom = 269.0
 theme_override_colors/default_color = Color(0.1254902, 0.16862746, 0.2901961, 1)
-theme_override_fonts/normal_font = ExtResource("22_g1ckr")
+theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 25
 text = "Time:
 
@@ -1450,7 +1450,7 @@ offset_top = 297.0
 offset_right = 540.0
 offset_bottom = 337.0
 theme_override_colors/default_color = Color(0.1254902, 0.16862746, 0.2901961, 1)
-theme_override_fonts/normal_font = ExtResource("22_g1ckr")
+theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 18
 text = "Press Anything to Restart"
 horizontal_alignment = 1
@@ -1464,7 +1464,7 @@ offset_top = 145.0
 offset_right = 540.0
 offset_bottom = 191.0
 theme_override_colors/default_color = Color(0.1254902, 0.16862746, 0.2901961, 1)
-theme_override_fonts/normal_font = ExtResource("22_g1ckr")
+theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 26
 text = "00:12:12"
 horizontal_alignment = 2
@@ -1478,7 +1478,7 @@ offset_top = 216.0
 offset_right = 540.0
 offset_bottom = 262.0
 theme_override_colors/default_color = Color(0.1254902, 0.16862746, 0.2901961, 1)
-theme_override_fonts/normal_font = ExtResource("22_g1ckr")
+theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 26
 text = "0/3"
 horizontal_alignment = 2
@@ -1487,53 +1487,53 @@ vertical_alignment = 2
 [node name="sidedoor" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1407673436]
 position = Vector2(1248, -101)
 scale = Vector2(2.208, 2.208)
-texture = ExtResource("11_a3dt2")
+texture = ExtResource("13_rmfm7")
 
 [node name="sidedoor7" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1488794613]
 position = Vector2(1248, 669)
 scale = Vector2(2.208, 2.208)
-texture = ExtResource("8_c0u2x")
+texture = ExtResource("12_n3npx")
 
 [node name="sidedoor8" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1346694217]
 position = Vector2(2636, 669)
 scale = Vector2(2.208, 2.208)
-texture = ExtResource("8_c0u2x")
+texture = ExtResource("12_n3npx")
 
 [node name="sidedoor9" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1948298728]
 position = Vector2(2636, 161)
 scale = Vector2(2.208, 2.208)
-texture = ExtResource("8_c0u2x")
+texture = ExtResource("12_n3npx")
 
 [node name="sidedoor4" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1008637765]
 position = Vector2(1553, -101)
 scale = Vector2(2.208, 2.208)
-texture = ExtResource("8_c0u2x")
+texture = ExtResource("12_n3npx")
 
 [node name="sidedoor10" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1088426533]
 position = Vector2(1553, -993)
 scale = Vector2(2.208, 2.208)
-texture = ExtResource("8_c0u2x")
+texture = ExtResource("12_n3npx")
 
 [node name="sidedoor5" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=557914073]
 position = Vector2(1553, 669)
 scale = Vector2(2.208, 2.208)
-texture = ExtResource("8_c0u2x")
+texture = ExtResource("12_n3npx")
 
 [node name="sidedoor6" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=761301345]
 position = Vector2(1553, 669)
 scale = Vector2(2.208, 2.208)
-texture = ExtResource("8_c0u2x")
+texture = ExtResource("12_n3npx")
 
 [node name="sidedoor2" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=195514895]
 position = Vector2(1025, -993)
 scale = Vector2(2.208, 2.208)
-texture = ExtResource("13_g1ckr")
+texture = ExtResource("15_asmej")
 flip_h = true
 
 [node name="sidedoor3" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=2115651101]
 position = Vector2(2457, -358)
 scale = Vector2(2.208, 2.208)
-texture = ExtResource("8_c0u2x")
+texture = ExtResource("12_n3npx")
 flip_h = true
 
 [node name="platforms" type="TileMapLayer" parent="SubViewportContainer/SubViewport" unique_id=736410569]

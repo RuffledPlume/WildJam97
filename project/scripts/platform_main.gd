@@ -234,7 +234,7 @@ func foreground_on_area_2d_body_exited(body: Node2D) -> void:
 		create_tween().tween_property(foreground_layer, "modulate:a", 1, .5)
 
 
-func key1_on_area_2d_body_entered(body: Node2D) -> void:
+func key1_on_area_2d_body_entered(_body: Node2D) -> void:
 	picked_up1 = true
 	pick_up1.visible = false
 
@@ -246,7 +246,7 @@ func side_door_locked1_on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("platform_player"):
 		side_door_locked1_activated = false
 
-func key2_on_area_2d_body_entered(body: Node2D) -> void:
+func key2_on_area_2d_body_entered(_body: Node2D) -> void:
 	picked_up2 = true
 	pick_up2.visible = false
 
@@ -266,7 +266,7 @@ func open_doorway_on_area_2d_body_exited(body: Node2D) -> void:
 	if body.is_in_group("platform_player"):
 		doorway_activated = false
 
-func key3_on_area_2d_body_entered(body: Node2D) -> void:
+func key3_on_area_2d_body_entered(_body: Node2D) -> void:
 	picked_up3 = true
 	pick_up3.visible = false
 
@@ -279,7 +279,7 @@ func side_door_locked2_on_area_2d_body_exited(body: Node2D) -> void:
 		side_door_locked2_activated = false
 
 
-func pickup4_on_area_2d_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+func pickup4_on_area_2d_body_shape_entered(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	picked_up1 = true
 	picked_up2 = true
 	picked_up3 = true
