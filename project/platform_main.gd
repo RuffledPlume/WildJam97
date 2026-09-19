@@ -23,6 +23,9 @@ var secret1_got = false
 var secret2_got = false
 var secret3_got = false
 var won_game = false
+var endscreen_timer_activated = false
+var statue_activated = false
+var statue_moved = false
 
 @onready var pick_up1 = %pick_up1
 @onready var pick_up2 = %pick_up2
@@ -43,6 +46,8 @@ var won_game = false
 @onready var secret_stat_label_death = %death_secret_stat
 @onready var time_stat_label_won = %won_time_stat
 @onready var secret_stat_label_won = %won_secret_stat
+@onready var endscreen_timer = %end_screen_timer
+@onready var player_sprite = %player_sprite
 
 var secrets_got = 0
 var seconds_passed = 0
@@ -70,6 +75,10 @@ func add_text_to_secret(sign_number, text_param: String, secret_param: int):
 		else:
 			pass
 
+func add_text_to_locked(door_activated, text_param: String, pickup_param):
+	if Input.is_action_just_released("platformer_player_interact") and door_activated == true and textbox_up == false and pickup_param == false:
+		textbox(text_param)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	timer.start()
@@ -91,6 +100,9 @@ func _physics_process(_delta: float) -> void:
 	add_text_to_textbox(sign4_activated, "There's a hidden key that unlocks all doors no matter the color.")
 	add_text_to_secret(sign5_activated, "Don't fall!", 2)
 	add_text_to_secret(sign6_activated, "You found me! Congrats!", 3)
+	add_text_to_locked(side_door_locked1_activated, "This door is locked! I wonder if a key is around here somewhere...", picked_up1)
+	add_text_to_locked(locked_door_activated, "Another locked door...", picked_up2)
+	add_text_to_locked(side_door_locked2_activated, "Even the front door is locked?! I guess that makes sense...", picked_up3)
 	
 	if Input.is_anything_pressed() and textbox_up == true:
 		textbox_animation.play("textbox_fadeout")
@@ -144,6 +156,7 @@ func _physics_process(_delta: float) -> void:
 		var minutes = ""
 		var seconds = ""
 		platform_player.can_move = false
+		player_sprite.play("death")
 		
 		if hours_passed < 10:
 			hours = "0" + str(hours_passed)
@@ -165,12 +178,14 @@ func _physics_process(_delta: float) -> void:
 		textbox_animation.play("death")
 		end_screen_activated = true
 		await textbox_animation.animation_finished
+		endscreen_timer.start()
 	
 	if won_game == true and win_screen_activated == false:
 		var hours = ""
 		var minutes = ""
 		var seconds = ""
 		platform_player.can_move = false
+		player_sprite.play("win")
 		
 		if hours_passed < 10:
 			hours = "0" + str(hours_passed)
@@ -192,11 +207,14 @@ func _physics_process(_delta: float) -> void:
 		textbox_animation.play("won")
 		win_screen_activated = true
 		await textbox_animation.animation_finished
+		endscreen_timer.start()
 	
-	if Input.is_anything_pressed() and end_screen_activated == true:
+	if Input.is_anything_pressed() and end_screen_activated == true and endscreen_timer_activated == true:
 		get_tree().reload_current_scene()
-	if Input.is_anything_pressed() and win_screen_activated == true:
+		endscreen_timer_activated = false
+	if Input.is_anything_pressed() and win_screen_activated == true and endscreen_timer_activated == true:
 		get_tree().reload_current_scene()
+		endscreen_timer_activated = false
 	
 	if seconds_passed >= 60:
 		seconds_passed = 0
@@ -348,3 +366,12 @@ func _on_timer_timeout() -> void:
 func _on_win_area_body_entered(body: Node2D) -> void:
 	if body.is_in_group("platform_player"):
 		won_game = true
+
+
+func _on_end_screen_timer_timeout() -> void:
+	endscreen_timer_activated = true
+
+
+func statue_on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("platform_player"):
+		statue_activated = true
