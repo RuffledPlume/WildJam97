@@ -55,6 +55,11 @@
 [ext_resource type="Texture2D" uid="uid://5lf7pyqxuhsf" path="res://assets/background/wheel.png" id="26_dboxl"]
 [ext_resource type="PackedScene" uid="uid://2hcyvhd1roiu" path="res://particles/floatup/enemy_wave_wall.tscn" id="30_yx21f"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xvdk0"]
+shader = ExtResource("25_hk1ll")
+shader_parameter/curvature = 0.0
+shader_parameter/border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_shggk"]
 size = Vector2(650, 20)
 
@@ -277,6 +282,13 @@ size = Vector2(640, 91)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xvdk0"]
 size = Vector2(80, 26)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxvu0"]
+bg_color = Color(0.15, 0.15, 0.15, 0.26666668)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bacrr"]
 shader = ExtResource("1_ym2jc")
@@ -766,14 +778,23 @@ _data = {
 &"display_death_screen": SubResource("Animation_uyp7k")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xvdk0"]
-shader = ExtResource("25_hk1ll")
-shader_parameter/curvature = 0.0
-shader_parameter/border_color = Color(0, 0, 0, 1)
-
 [node name="CanvasLayer" type="CanvasLayer" unique_id=148948161 groups=["CanvasLayer"]]
 script = ExtResource("1_u3qgh")
 metadata/_edit_vertical_guides_ = [572.0]
+
+[node name="CRTOverlay" type="ColorRect" parent="." unique_id=1091198159]
+z_index = 110
+material = SubResource("ShaderMaterial_xvdk0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 243.65845
+offset_top = 73.0
+offset_right = -253.65845
+offset_bottom = -87.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="." unique_id=758026311]
 anchors_preset = 15
@@ -1331,12 +1352,14 @@ texture = ExtResource("8_raika")
 unique_name_in_owner = true
 visible = false
 z_index = 100
-offset_left = -20.0
-offset_top = -52.0
-offset_right = 20.0
-offset_bottom = -29.0
+offset_left = -84.0
+offset_top = -68.0
+offset_right = 89.0
+offset_bottom = -31.0
 theme_override_fonts/font = ExtResource("4_53lfo")
-text = "E"
+theme_override_styles/normal = SubResource("StyleBoxFlat_qxvu0")
+text = "LIGHT THE FIRE
+[ E ]"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1592,20 +1615,6 @@ libraries/ = SubResource("AnimationLibrary_5snws")
 unique_name_in_owner = true
 root_node = NodePath("../CRTOverlay")
 libraries/ = SubResource("AnimationLibrary_xhklb")
-
-[node name="CRTOverlay" type="ColorRect" parent="." unique_id=1091198159]
-visible = false
-material = SubResource("ShaderMaterial_xvdk0")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 243.65845
-offset_top = 73.0
-offset_right = -253.65845
-offset_bottom = -87.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
 
 [connection signal="area_entered" from="AspectRatioContainer/SubViewportContainer/SubViewport/Player/Area2D" to="AspectRatioContainer/SubViewportContainer/SubViewport/Player" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="AspectRatioContainer/SubViewportContainer/SubViewport/Player/Area2D" to="AspectRatioContainer/SubViewportContainer/SubViewport/Player" method="_on_area_2d_body_entered"]
