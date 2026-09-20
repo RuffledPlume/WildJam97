@@ -9,6 +9,8 @@ class_name ArcadeScreen extends Node3D
 @export var notifier : VisibleOnScreenNotifier3D
 @export var on_screen_delay := 0.1
 @export var off_screen_delay := 1.0
+@export var broken := false
+@export var on := true
 
 var screen_texture : ViewportTexture
 var screen_material : ShaderMaterial
@@ -16,20 +18,26 @@ var drawable_texture := DrawableTexture2D.new()
 var next_update := off_screen_delay
 
 func _ready() -> void:
+	screen_material = ShaderMaterial.new()
+	screen_material.shader = screen_shader
+	screen_material.set_shader_parameter("on", on)
+	screen_material.set_shader_parameter("broken", broken)
+	screen_mesh.set_surface_override_material(0, screen_material)
+	
 	if viewport_target == null:
 		process_mode = Node.PROCESS_MODE_DISABLED
+		for i in screen_light_array.size():
+			screen_light_array[i].visible = false
 		return
 	process_mode = Node.PROCESS_MODE_INHERIT
 		
 	screen_texture = viewport_target.get_texture()
-	
-	screen_material = ShaderMaterial.new()
-	screen_material.shader = screen_shader
 	screen_material.set_shader_parameter("screen_texture", screen_texture)
-	
-	screen_mesh.set_surface_override_material(0, screen_material)
 
 func _process(_delta: float) -> void:
+	if viewport_target == null:
+		return
+	
 	if next_update > 0:
 		next_update -= _delta
 		return

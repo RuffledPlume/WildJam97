@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ds3c0x37bxseu"]
+
+[ext_resource type="Texture2D" uid="uid://bbju3l1bjbujd" path="res://assets/drop_ceiling.jpg" id="1_xv0v6"]
+
+[resource]
+albedo_texture = ExtResource("1_xv0v6")
+uv1_scale = Vector3(30, 30, 30)

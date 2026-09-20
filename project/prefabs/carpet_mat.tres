@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b4rxpu8mppqil"]
+
+[ext_resource type="Texture2D" uid="uid://crp17ufeixbx2" path="res://assets/carpet_pattern.png" id="1_37mt3"]
+
+[resource]
+albedo_texture = ExtResource("1_37mt3")
+uv1_scale = Vector3(50, 50, 50)

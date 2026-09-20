@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2ciy6p8i2c7d"
-path.s3tc="res://.godot/imported/float_up_ad.jpg-2ebdb13b87c0e26c628885f1f9a6b83f.s3tc.ctex"
+uid="uid://q84em7ggouvx"
+path.s3tc="res://.godot/imported/paper_albedo.png-6d3d7440cffdc9e93ca8c6351c3b8038.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/float_up_ad.jpg"
-dest_files=["res://.godot/imported/float_up_ad.jpg-2ebdb13b87c0e26c628885f1f9a6b83f.s3tc.ctex"]
+source_file="res://assets/paper_albedo.png"
+dest_files=["res://.godot/imported/paper_albedo.png-6d3d7440cffdc9e93ca8c6351c3b8038.s3tc.ctex"]
 
 [params]
 

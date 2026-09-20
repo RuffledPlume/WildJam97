@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b0b4q4bds0635"]
+
+[ext_resource type="ArrayMesh" uid="uid://clalg4ka4vnao" path="res://assets/paper_plate.obj" id="1_k3ie4"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rltbh"]
+
+[node name="Node3D" type="Node3D" unique_id=2131764497]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=916156272]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("1_k3ie4")
+surface_material_override/0 = SubResource("StandardMaterial3D_rltbh")

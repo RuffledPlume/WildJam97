@@ -5,6 +5,8 @@ global uniform bool CRT_ENABLED;
 global uniform float BRIGHTNESS;
 
 uniform sampler2D screen_texture : repeat_disable, filter_nearest;
+uniform bool broken;
+uniform bool on = true;
 
 // Loosely based on postprocessing shader by inigo quilez, License Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License.
 // Modified to work as a spatial so it can be applied to a viewport in a 3D scene
@@ -19,23 +21,31 @@ vec2 curve(vec2 uv) {
 	return uv;
 }
 
+vec3 sample_screen(vec2 uv) {
+	if(!on)
+		return vec3(0.0);
+	if(broken)
+		return vec3(fract(sin(dot(uv, vec2(12.9898, 78.233))) * 43758.5453));
+	return texture(screen_texture, uv).xyz;
+}
+
 void fragment( ) {
 	vec3 OutputColor;
-	if (CRT_ENABLED) {
+	if (CRT_ENABLED && on) {
 	    vec2 uv = curve(UV);
 		if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0)
 		    discard;
 		
-	    vec3 oricol = texture( screen_texture, vec2(UV.x,UV.y) ).xyz;
+	    vec3 oricol = sample_screen(vec2(UV.x,UV.y) ).xyz;
 		float x = sin(0.3*TIME+uv.y*21.0)*sin(0.7*TIME+uv.y*29.0)*sin(0.3+0.33*TIME+uv.y*31.0)*0.0017;
 
 	    vec3 col;
-	    col.r = texture(screen_texture,vec2(x+uv.x+0.001,uv.y+0.001)).x+0.05;
-	    col.g = texture(screen_texture,vec2(x+uv.x+0.000,uv.y-0.002)).y+0.05;
-	    col.b = texture(screen_texture,vec2(x+uv.x-0.002,uv.y+0.000)).z+0.05;
-	    col.r += 0.08*texture(screen_texture,0.75*vec2(x+0.025, -0.027)+vec2(uv.x+0.001,uv.y+0.001)).x;
-	    col.g += 0.05*texture(screen_texture,0.75*vec2(x+-0.022, -0.02)+vec2(uv.x+0.000,uv.y-0.002)).y;
-	    col.b += 0.08*texture(screen_texture,0.75*vec2(x+-0.02, -0.018)+vec2(uv.x-0.002,uv.y+0.000)).z;
+	    col.r = sample_screen(vec2(x+uv.x+0.001,uv.y+0.001)).x+0.05;
+	    col.g = sample_screen(vec2(x+uv.x+0.000,uv.y-0.002)).y+0.05;
+	    col.b = sample_screen(vec2(x+uv.x-0.002,uv.y+0.000)).z+0.05;
+	    col.r += 0.08*sample_screen(0.75*vec2(x+0.025, -0.027)+vec2(uv.x+0.001,uv.y+0.001)).x;
+	    col.g += 0.05*sample_screen(0.75*vec2(x+-0.022, -0.02)+vec2(uv.x+0.000,uv.y-0.002)).y;
+	    col.b += 0.08*sample_screen(0.75*vec2(x+-0.02, -0.018)+vec2(uv.x-0.002,uv.y+0.000)).z;
 
 	    col = clamp(col*0.6+0.4*col*col*1.0,0.0,1.0);
 
@@ -57,9 +67,9 @@ void fragment( ) {
 
 		float chroma = 0.003;
 		vec3 scan_col;
-		scan_col.r = texture(screen_texture, scan_uv + vec2(chroma, 0.0)).r;
-		scan_col.g = texture(screen_texture, scan_uv).g;
-		scan_col.b = texture(screen_texture, scan_uv - vec2(chroma, 0.0)).b;
+		scan_col.r = sample_screen(scan_uv + vec2(chroma, 0.0)).r;
+		scan_col.g = sample_screen(scan_uv).g;
+		scan_col.b = sample_screen(scan_uv - vec2(chroma, 0.0)).b;
 
 		col = mix(col, scan_col, scans);
 
@@ -69,7 +79,7 @@ void fragment( ) {
 			
 		OutputColor = col;
 	} else {
-		OutputColor = texture( screen_texture, vec2(UV.x,UV.y) ).xyz;
+		OutputColor = sample_screen(UV.xy).xyz;
 	}
 	OutputColor *= clamp(BRIGHTNESS, 1.0, 3.0);
 	ALBEDO = OutputColor;

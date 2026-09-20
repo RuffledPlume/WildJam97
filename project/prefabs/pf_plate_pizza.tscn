@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://b5ox1wv101aji"]
+
+[ext_resource type="ArrayMesh" uid="uid://clalg4ka4vnao" path="res://assets/paper_plate.obj" id="1_r1tul"]
+[ext_resource type="ArrayMesh" uid="uid://b63u3byjo654v" path="res://assets/pizza_slice.obj" id="2_oa007"]
+[ext_resource type="Texture2D" uid="uid://b0wl5ghid3kb5" path="res://assets/pizza_albedo.png" id="3_i5n74"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rltbh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2acqk"]
+albedo_texture = ExtResource("3_i5n74")
+
+[node name="Node3D" type="Node3D" unique_id=2131764497]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=916156272]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = ExtResource("1_r1tul")
+surface_material_override/0 = SubResource("StandardMaterial3D_rltbh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=681859000]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+cast_shadow = 0
+mesh = ExtResource("2_oa007")
+surface_material_override/0 = SubResource("StandardMaterial3D_2acqk")

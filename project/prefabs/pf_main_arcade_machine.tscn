@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://dd6f31q1jant6" path="res://levels/lvl_mainmenu.tscn" id="4_46k7r"]
 [ext_resource type="PackedScene" uid="uid://ckwv01j5apesh" path="res://prefabs/pf_arcade_screen.tscn" id="4_abkid"]
 [ext_resource type="ArrayMesh" uid="uid://dvg0tu52bmfbp" path="res://assets/arcade_machine.obj" id="5_wuxpm"]
-[ext_resource type="Texture2D" uid="uid://d306048bs4ww8" path="res://assets/arcade_machine_break_out_albedo.png" id="6_yxh8b"]
 [ext_resource type="ArrayMesh" uid="uid://cc6mgx4ku2a56" path="res://assets/arcade_coin_slot.obj" id="7_6ldd7"]
 [ext_resource type="Texture2D" uid="uid://d0jbooj06obt7" path="res://assets/arcade_coin_slot.png" id="8_4nhq2"]
 
@@ -13,12 +12,12 @@
 size = Vector3(1, 2.0166016, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rltbh"]
-albedo_texture = ExtResource("6_yxh8b")
+albedo_color = Color(0.012410754, 0.53475386, 0.57126546, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnmfv"]
 albedo_texture = ExtResource("8_4nhq2")
 
-[node name="PlatformArcadeMachine" type="StaticBody3D" unique_id=1330459841 node_paths=PackedStringArray("camera", "game_viewport", "screen")]
+[node name="MainMenu_ArcadeMachine" type="StaticBody3D" unique_id=1330459841 node_paths=PackedStringArray("camera", "game_viewport", "screen")]
 script = ExtResource("1_46k7r")
 camera = NodePath("Camera3D")
 game_viewport = NodePath("SubViewport")

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dxr2no03vdot5"]
+
+[ext_resource type="ArrayMesh" uid="uid://bl8puu70xn814" path="res://assets/Coin.obj" id="1_kgg5v"]
+[ext_resource type="Texture2D" uid="uid://68f17dnfq8l5" path="res://assets/coin_albedo.png" id="2_7c0c0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rltbh"]
+albedo_texture = ExtResource("2_7c0c0")
+
+[node name="Node3D" type="Node3D" unique_id=199277979]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1855678779]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+cast_shadow = 0
+mesh = ExtResource("1_kgg5v")
+surface_material_override/0 = SubResource("StandardMaterial3D_rltbh")
