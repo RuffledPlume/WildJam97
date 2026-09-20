@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cjg0pagm7rj6w" path="res://assets/platformer/torchglow_tilemap.png" id="6_p7oax"]
 [ext_resource type="FontFile" uid="uid://th3vhruanaks" path="res://assets/platformer/BNGAMMA.OTF" id="7_c0mwa"]
 [ext_resource type="Texture2D" uid="uid://blpn07jfhtonl" path="res://assets/platformer/blue_key.png" id="8_h4ftt"]
+[ext_resource type="Texture2D" uid="uid://en51w51ray06" path="res://assets/ui_up_arrow.png" id="8_p00b8"]
 [ext_resource type="Texture2D" uid="uid://c5rnonyqhrfqf" path="res://assets/platformer/red_key.png" id="9_p00b8"]
 [ext_resource type="Texture2D" uid="uid://s0ucamv2asbe" path="res://assets/platformer/green_key.png" id="10_0tqfq"]
 [ext_resource type="Texture2D" uid="uid://dj2iruls5hjnf" path="res://assets/platformer/key.png" id="11_nn4mr"]
@@ -1281,8 +1282,25 @@ offset_bottom = 451.0
 theme_override_colors/default_color = Color(0.07450981, 0.105882354, 0.19607843, 1)
 theme_override_fonts/normal_font = ExtResource("7_c0mwa")
 theme_override_font_sizes/normal_font_size = 32
-text = "⇑ jump ⇑"
+text = "jump"
 horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer/SubViewport/jump_secret" unique_id=1836276434]
+modulate = Color(0.07619464, 0.10105217, 0.16903087, 1)
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 1024.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_p00b8")
+
+[node name="TextureRect2" type="TextureRect" parent="SubViewportContainer/SubViewport/jump_secret" unique_id=150259319]
+modulate = Color(0.07619464, 0.10105217, 0.16903087, 1)
+layout_mode = 0
+offset_left = 171.84
+offset_right = 1195.84
+offset_bottom = 1024.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("8_p00b8")
 
 [node name="pick_up1" type="Sprite2D" parent="SubViewportContainer/SubViewport" unique_id=1636392527]
 unique_name_in_owner = true

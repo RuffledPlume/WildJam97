@@ -49,6 +49,7 @@
 [ext_resource type="Texture2D" uid="uid://nfl5t0ep7mh6" path="res://assets/background/scene_mtn_back.png" id="19_v56gy"]
 [ext_resource type="Texture2D" uid="uid://dbfyjsm7ov4dd" path="res://assets/background/bg_blue.png" id="19_x8h5e"]
 [ext_resource type="PackedScene" uid="uid://wkpbrbg34fsi" path="res://prefabs/floatup/pf_death_bg.tscn" id="20_2k0x2"]
+[ext_resource type="Texture2D" uid="uid://cvmborhcro20k" path="res://assets/ui_arrow_texture.png" id="21_f3g7a"]
 [ext_resource type="PackedScene" uid="uid://vfhg0txpkf0b" path="res://prefabs/floatup/pf_key.tscn" id="24_yx21f"]
 [ext_resource type="Shader" uid="uid://b64sp2qocrmfq" path="res://shaders/floatup_crt.gdshader" id="25_hk1ll"]
 [ext_resource type="Texture2D" uid="uid://dg6aracchcseu" path="res://assets/background/shrink_arrow.png" id="25_lvuo8"]
@@ -990,52 +991,15 @@ offset_bottom = 154.0
 theme_override_fonts/font = ExtResource("4_53lfo")
 text = "Movement"
 
-[node name="WASD" type="Label" parent="AspectRatioContainer/SubViewportContainer/SubViewport/HowToPage/Movement" unique_id=1764007708]
+[node name="TextureRect" type="TextureRect" parent="AspectRatioContainer/SubViewportContainer/SubViewport/HowToPage/Movement" unique_id=943625280]
 layout_mode = 0
-offset_left = 28.0
-offset_top = 49.0
-offset_right = 92.0
-offset_bottom = 81.0
-theme_override_fonts/font = ExtResource("4_53lfo")
-theme_override_font_sizes/font_size = 32
-text = "↑"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="AspectRatioContainer/SubViewportContainer/SubViewport/HowToPage/Movement/WASD" unique_id=1365481850]
-layout_mode = 0
-offset_left = -45.0
-offset_top = 34.0
-offset_right = 19.0
-offset_bottom = 66.0
-theme_override_fonts/font = ExtResource("4_53lfo")
-theme_override_font_sizes/font_size = 32
-text = "←"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label3" type="Label" parent="AspectRatioContainer/SubViewportContainer/SubViewport/HowToPage/Movement/WASD" unique_id=757383419]
-layout_mode = 0
-offset_top = 17.0
-offset_right = 63.99999
-offset_bottom = 84.0
-theme_override_fonts/font = ExtResource("4_53lfo")
-theme_override_font_sizes/font_size = 32
-text = "↓"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label4" type="Label" parent="AspectRatioContainer/SubViewportContainer/SubViewport/HowToPage/Movement/WASD" unique_id=706287077]
-layout_mode = 0
-offset_left = 45.0
-offset_top = 17.0
-offset_right = 109.0
-offset_bottom = 84.0
-theme_override_fonts/font = ExtResource("4_53lfo")
-theme_override_font_sizes/font_size = 32
-text = "→"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_left = 8.01
+offset_top = 40.2
+offset_right = 1032.01
+offset_bottom = 1064.1997
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("21_f3g7a")
+expand_mode = 2
 
 [node name="Interact" type="Label" parent="AspectRatioContainer/SubViewportContainer/SubViewport/HowToPage" unique_id=657897451]
 offset_left = 272.89197
