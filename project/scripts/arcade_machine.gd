@@ -4,12 +4,18 @@ class_name ArcadeMachine extends Interactable
 @export var game_prefab : PackedScene
 @export var game_viewport : SubViewport
 @export var screen : ArcadeScreen
+@export var start_current : bool
 
 var is_player_using : bool
 var game_instance : Node
 
 func _ready() -> void:
 	game_instance = game_viewport.get_child(0)
+	if start_current:
+		is_player_using = true
+		MainPlayer.INSTANCE.is_locked = true
+		camera.make_current()
+		
 	
 func _process(_delta : float) -> void:
 	var input_dir = Input.get_vector("main_player_move_left", "main_player_move_right", "main_player_move_forward", "main_player_move_back")

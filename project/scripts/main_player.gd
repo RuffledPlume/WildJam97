@@ -2,8 +2,7 @@ class_name MainPlayer extends CharacterBody3D
 
 static var INSTANCE : MainPlayer
 
-# TODO: Mouse Sense should live in a Game Settings so we can have it easily configureable
-@export var mouse_sense := 2.0
+@export var mouse_sense := 1.0
 @export var base_speed := 5.0
 @export var run_mod := 2.0
 @export var interaction_distance := 5.0

@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bw6na8nxxprek"]
+
+[ext_resource type="Script" uid="uid://b0a003h0fqbmc" path="res://scripts/arcade_machine.gd" id="1_46k7r"]
+[ext_resource type="PackedScene" uid="uid://c055y8tvqufrn" path="res://prefabs/pf_joy_stick.tscn" id="3_nksrr"]
+[ext_resource type="PackedScene" uid="uid://dd6f31q1jant6" path="res://levels/lvl_mainmenu.tscn" id="4_46k7r"]
+[ext_resource type="PackedScene" uid="uid://ckwv01j5apesh" path="res://prefabs/pf_arcade_screen.tscn" id="4_abkid"]
+[ext_resource type="ArrayMesh" uid="uid://dvg0tu52bmfbp" path="res://assets/arcade_machine.obj" id="5_wuxpm"]
+[ext_resource type="Texture2D" uid="uid://d306048bs4ww8" path="res://assets/arcade_machine_break_out_albedo.png" id="6_yxh8b"]
+[ext_resource type="ArrayMesh" uid="uid://cc6mgx4ku2a56" path="res://assets/arcade_coin_slot.obj" id="7_6ldd7"]
+[ext_resource type="Texture2D" uid="uid://d0jbooj06obt7" path="res://assets/arcade_coin_slot.png" id="8_4nhq2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rltbh"]
+size = Vector3(1, 2.0166016, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rltbh"]
+albedo_texture = ExtResource("6_yxh8b")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnmfv"]
+albedo_texture = ExtResource("8_4nhq2")
+
+[node name="PlatformArcadeMachine" type="StaticBody3D" unique_id=1330459841 node_paths=PackedStringArray("camera", "game_viewport", "screen")]
+script = ExtResource("1_46k7r")
+camera = NodePath("Camera3D")
+game_viewport = NodePath("SubViewport")
+screen = NodePath("ArcadeScreen")
+
+[node name="PF_JoyStick" parent="." unique_id=814214641 node_paths=PackedStringArray("arcade") instance=ExtResource("3_nksrr")]
+transform = Transform3D(0.74, 0, 0, 0, 0.7385795, -0.045828864, 0, 0.045828864, 0.7385795, -0.28509164, 0.5651179, 0.4351111)
+arcade = NodePath("..")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1034877264]
+transform = Transform3D(1, 0, 0, 0, 0.98554665, 0.16940422, 0, -0.16940422, 0.98554665, 0, 1.1098627, 1.3279772)
+fov = 40.995472
+
+[node name="ArcadeScreen" parent="." unique_id=192009638 node_paths=PackedStringArray("viewport_target") instance=ExtResource("4_abkid")]
+process_mode = 0
+transform = Transform3D(0.70682925, 0, 0, 0, 0.50911593, 0.18174277, 0, -0.1354342, 0.68319625, 0, 0.9020673, 0.11944463)
+viewport_target = NodePath("../SubViewport")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=728090255]
+disable_3d = true
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(800, 600)
+
+[node name="Node2D" parent="SubViewport" unique_id=1403951067 node_paths=PackedStringArray("arcade") instance=ExtResource("4_46k7r")]
+arcade = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=444902823]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5083008, 0)
+shape = SubResource("BoxShape3D_rltbh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=140267008]
+transform = Transform3D(-0.465793, 0, 4.6086697e-08, 0, 0.51159465, 0, -4.072092e-08, 0, -0.52717036, 0, 0.43182755, 0)
+mesh = ExtResource("5_wuxpm")
+surface_material_override/0 = SubResource("StandardMaterial3D_rltbh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=959672205]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.3923596e-08, -0.08058278, 0.4525631)
+mesh = ExtResource("7_6ldd7")
+surface_material_override/0 = SubResource("StandardMaterial3D_cnmfv")

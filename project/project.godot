@@ -126,3 +126,14 @@ limits/opengl/max_lights_per_object=32
 occlusion_culling/use_occlusion_culling=true
 2d/snap/snap_2d_transforms_to_pixel=true
 2d/snap/snap_2d_vertices_to_pixel=true
+
+[shader_globals]
+
+CRT_ENABLED={
+"type": "bool",
+"value": true
+}
+BRIGHTNESS={
+"type": "float",
+"value": 1.0
+}

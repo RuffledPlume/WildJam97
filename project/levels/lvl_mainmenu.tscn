@@ -1,0 +1,190 @@
+[gd_scene format=3 uid="uid://dd6f31q1jant6"]
+
+[ext_resource type="Texture2D" uid="uid://b2ciy6p8i2c7d" path="res://assets/float_up_ad.jpg" id="1_4mqdt"]
+[ext_resource type="Shader" uid="uid://b1tpmgqsdhadh" path="res://shaders/ui_scrolling_banner.gdshader" id="1_6dyo2"]
+[ext_resource type="Script" uid="uid://ed05tta6e3tu" path="res://scripts/main_menu.gd" id="1_jnlmd"]
+[ext_resource type="Texture2D" uid="uid://dld7boyo0pmwa" path="res://assets/gamegirl_ad.jpg" id="2_6dyo2"]
+[ext_resource type="Script" uid="uid://d3ma6qyvclfog" path="res://scripts/mouse_sense_widget.gd" id="5_jdbmf"]
+[ext_resource type="Script" uid="uid://devjyjbah0dxg" path="res://scripts/brightness_widget.gd" id="6_jrbyk"]
+[ext_resource type="Script" uid="uid://bar378t1nxfx2" path="res://scripts/crt_effect_button.gd" id="6_tdi04"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6dyo2"]
+shader = ExtResource("1_6dyo2")
+shader_parameter/scroll_speed = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jnlmd"]
+shader = ExtResource("1_6dyo2")
+shader_parameter/scroll_speed = -0.1
+
+[node name="Node2D" type="Node2D" unique_id=1403951067 node_paths=PackedStringArray("widgets")]
+script = ExtResource("1_jnlmd")
+widgets = [NodePath("Control/MouseSense"), NodePath("Control/Brightness"), NodePath("Control/CRTEffect")]
+
+[node name="Control" type="Control" parent="." unique_id=1760720549]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 770.0
+offset_bottom = 598.0
+
+[node name="TextureRect" type="TextureRect" parent="Control" unique_id=1293397525]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_6dyo2")
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_top = -1.0
+offset_right = 432.0
+offset_bottom = 135.0
+grow_vertical = 2
+texture = ExtResource("1_4mqdt")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="Control" unique_id=1702032642]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_jnlmd")
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 391.0
+offset_top = -4.0
+offset_right = 1052.0
+offset_bottom = 135.0
+grow_vertical = 2
+texture = ExtResource("2_6dyo2")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="Control" unique_id=721441232]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -357.0
+offset_top = -246.0
+offset_right = 429.0
+offset_bottom = -162.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3137255)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 55
+text = "GameMan in Escape Doom"
+
+[node name="Label2" type="Label" parent="Control" unique_id=1893965255]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -394.0
+offset_top = 193.0
+offset_right = 392.0
+offset_bottom = 277.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.3137255)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 5
+theme_override_font_sizes/font_size = 42
+text = "Use WASD to leave Arcade Machine"
+horizontal_alignment = 1
+
+[node name="MouseSense" type="Control" parent="Control" unique_id=373662637 node_paths=PackedStringArray("SenseLabel")]
+anchors_preset = 0
+offset_top = -66.595
+offset_right = 40.0
+offset_bottom = -26.595001
+script = ExtResource("5_jdbmf")
+SenseLabel = NodePath("Label3")
+
+[node name="Label2" type="Label" parent="Control/MouseSense" unique_id=768292771]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 271.0
+offset_right = 460.0
+offset_bottom = 335.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 46
+text = "Mouse Sensitivity: "
+
+[node name="Label3" type="Label" parent="Control/MouseSense" unique_id=832348404]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 274.0
+offset_right = 573.0
+offset_bottom = 338.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 46
+text = "1.0"
+
+[node name="Brightness" type="Control" parent="Control" unique_id=1306050599 node_paths=PackedStringArray("brightnessLabel")]
+anchors_preset = 0
+offset_top = 2.735
+offset_right = 40.0
+offset_bottom = 42.735
+script = ExtResource("6_jrbyk")
+brightnessLabel = NodePath("Label3")
+
+[node name="Label2" type="Label" parent="Control/Brightness" unique_id=259637633]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 271.0
+offset_right = 460.0
+offset_bottom = 335.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 46
+text = "Brightness: "
+
+[node name="Label3" type="Label" parent="Control/Brightness" unique_id=1598374836]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 274.0
+offset_right = 573.0
+offset_bottom = 338.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 46
+text = "1.0"
+
+[node name="CRTEffect" type="Control" parent="Control" unique_id=1236724027 node_paths=PackedStringArray("state_label")]
+anchors_preset = 0
+offset_top = 78.175
+offset_right = 40.0
+offset_bottom = 118.17495
+script = ExtResource("6_tdi04")
+state_label = NodePath("Label3")
+
+[node name="CRT Effect" type="Label" parent="Control/CRTEffect" unique_id=472267535]
+layout_mode = 0
+offset_left = 47.0
+offset_top = 270.0
+offset_right = 460.0
+offset_bottom = 334.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 46
+text = "CRT Effect:"
+
+[node name="Label3" type="Label" parent="Control/CRTEffect" unique_id=1771604809]
+layout_mode = 0
+offset_left = 455.0
+offset_top = 274.0
+offset_right = 573.0
+offset_bottom = 338.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 46
+text = "On"
