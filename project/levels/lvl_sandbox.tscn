@@ -23,7 +23,7 @@ directional_shadow_mode = 0
 sky_mode = 2
 
 [node name="CharacterBody3D" parent="." unique_id=835210181 node_paths=PackedStringArray("interact_label") instance=ExtResource("1_pj36p")]
-transform = Transform3D(0.8882941, 0, -0.45927525, 0, 1, 0, 0.45927525, 0, 0.8882941, 5.5761895, 0, 0.5019584)
+transform = Transform3D(0.8882941, 0, -0.45927525, 0, 1, 0, 0.45927525, 0, 0.8882941, 6.3511333, -4.7683716e-07, 9.7987385)
 interact_label = NodePath("../CanvasLayer/Control/InteractLabel")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=236298632]
@@ -37,7 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49206543, -0.16343701, 0.01
 size = Vector3(115, 0.32373047, 126)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=28121360]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9156149, 2.080431, -4.2823076)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.344636, 2.080431, 4.3781366)
 
 [node name="PlatformArcadeMachine" parent="." unique_id=1330459841 instance=ExtResource("2_gfot2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.280329, 0.5486026, 6.9395266)

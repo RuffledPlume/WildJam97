@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cc6mgx4ku2a56"
+path="res://.godot/imported/arcade_coin_slot.obj-84c9c5f0fea5f73d502efe42135e9cae.mesh"
+
+[deps]
+
+files=["res://.godot/imported/arcade_coin_slot.obj-84c9c5f0fea5f73d502efe42135e9cae.mesh"]
+
+source_file="res://assets/arcade_coin_slot.obj"
+dest_files=["res://.godot/imported/arcade_coin_slot.obj-84c9c5f0fea5f73d502efe42135e9cae.mesh", "res://.godot/imported/arcade_coin_slot.obj-84c9c5f0fea5f73d502efe42135e9cae.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct80fgi4xuyv"
-path.s3tc="res://.godot/imported/arcade_machine_albedo.png-c76da25caaf625c50d8b6b492ff63308.s3tc.ctex"
+uid="uid://d0jbooj06obt7"
+path.s3tc="res://.godot/imported/arcade_coin_slot.png-5adebebe221497eb6317cce80f6f0888.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/arcade_machine_albedo.png"
-dest_files=["res://.godot/imported/arcade_machine_albedo.png-c76da25caaf625c50d8b6b492ff63308.s3tc.ctex"]
+source_file="res://assets/arcade_coin_slot.png"
+dest_files=["res://.godot/imported/arcade_coin_slot.png-5adebebe221497eb6317cce80f6f0888.s3tc.ctex"]
 
 [params]
 

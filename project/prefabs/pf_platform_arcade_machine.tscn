@@ -4,13 +4,18 @@
 [ext_resource type="PackedScene" uid="uid://ckwv01j5apesh" path="res://prefabs/pf_arcade_screen.tscn" id="1_navsu"]
 [ext_resource type="PackedScene" uid="uid://b4xvo1k3mtc0l" path="res://levels/arcade_platformer.tscn" id="3_varhu"]
 [ext_resource type="ArrayMesh" uid="uid://dvg0tu52bmfbp" path="res://assets/arcade_machine.obj" id="5_u0gwm"]
-[ext_resource type="Texture2D" uid="uid://ct80fgi4xuyv" path="res://assets/arcade_machine_albedo.png" id="6_rql04"]
+[ext_resource type="Texture2D" uid="uid://d306048bs4ww8" path="res://assets/arcade_machine_break_out_albedo.png" id="5_vfpqt"]
+[ext_resource type="ArrayMesh" uid="uid://cc6mgx4ku2a56" path="res://assets/arcade_coin_slot.obj" id="6_vfpqt"]
+[ext_resource type="Texture2D" uid="uid://d0jbooj06obt7" path="res://assets/arcade_coin_slot.png" id="7_g44x2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rltbh"]
 size = Vector3(1, 2.0166016, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rltbh"]
-albedo_texture = ExtResource("6_rql04")
+albedo_texture = ExtResource("5_vfpqt")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cnmfv"]
+albedo_texture = ExtResource("7_g44x2")
 
 [node name="PlatformArcadeMachine" type="StaticBody3D" unique_id=1330459841 node_paths=PackedStringArray("camera", "game_viewport", "screen")]
 script = ExtResource("1_2su1k")
@@ -44,3 +49,8 @@ shape = SubResource("BoxShape3D_rltbh")
 transform = Transform3D(-0.465793, 0, 4.6086697e-08, 0, 0.51159465, 0, -4.072092e-08, 0, -0.52717036, 0, 0.43182755, 0)
 mesh = ExtResource("5_u0gwm")
 surface_material_override/0 = SubResource("StandardMaterial3D_rltbh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=959672205]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.3923596e-08, -0.08058278, 0.4525631)
+mesh = ExtResource("6_vfpqt")
+surface_material_override/0 = SubResource("StandardMaterial3D_cnmfv")
