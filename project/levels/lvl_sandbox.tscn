@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c72mf508kj7j3" path="res://prefabs/pf_main_player.tscn" id="1_pj36p"]
 [ext_resource type="PackedScene" uid="uid://d2dejs4wlbtlq" path="res://prefabs/pf_platform_arcade_machine.tscn" id="2_gfot2"]
 [ext_resource type="Script" uid="uid://bg16tdgeajwvt" path="res://scripts/fps_counter.gd" id="3_p4efw"]
+[ext_resource type="PackedScene" uid="uid://bhy3rxnm3vo6x" path="res://prefabs/pf_floatup_arcade_machine.tscn" id="4_75r4t"]
 
 [sub_resource type="Environment" id="Environment_75r4t"]
 ambient_light_color = Color(0.01973007, 0.1839292, 0.41201982, 1)
@@ -51,3 +52,6 @@ script = ExtResource("3_p4efw")
 
 [node name="PlatformArcadeMachine" parent="." unique_id=1330459841 instance=ExtResource("2_gfot2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.280329, 0.5486026, 6.9395266)
+
+[node name="FloatupArcadeMachine" parent="." unique_id=167233743 instance=ExtResource("4_75r4t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.226235, 0.5488243, 6.7670903)

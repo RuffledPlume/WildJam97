@@ -5,7 +5,7 @@ class_name ArcadeMachine extends Interactable
 @export var game_viewport : SubViewport
 
 var is_player_using : bool
-var game_instance : Node2D
+var game_instance : Node
 
 func _ready() -> void:
 	game_instance = game_viewport.get_child(0)
@@ -19,6 +19,8 @@ func on_interact_with_pressed() -> void:
 	camera.make_current()
 	
 func restart() -> void:
-	game_instance.queue_free()
+	if game_instance != null:
+		game_viewport.remove_child(game_instance)
+		game_instance.queue_free()
 	game_instance = game_prefab.instantiate()
 	game_viewport.add_child(game_instance)
