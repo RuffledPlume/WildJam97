@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://boghwbfflewsw"]
+
+[ext_resource type="Script" uid="uid://dlcv4vbij0xro" path="res://scripts/ar_room/moveable_block.gd" id="1_guyp0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_65ngb"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_x410q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bkiy6"]
+albedo_color = Color(0.33660764, 0.3366076, 0.3366076, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_guyp0"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="MoveableBlock" type="AnimatableBody3D" unique_id=1644578319 groups=["moveable"]]
+script = ExtResource("1_guyp0")
+move_axis = Vector3(0, 1, 0)
+min_offset = -1.0
+max_offset = 1.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1245833589]
+shape = SubResource("BoxShape3D_65ngb")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=615898884]
+mesh = SubResource("BoxMesh_x410q")
+
+[node name="Mesh2" type="MeshInstance3D" parent="." unique_id=1678412055]
+transform = Transform3D(0.70710677, -0.70710677, 0, 0.70710677, 0.70710677, 0, 0, 0, 1, 0, 0, -0.27317744)
+material_override = SubResource("StandardMaterial3D_bkiy6")
+mesh = SubResource("BoxMesh_guyp0")

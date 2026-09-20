@@ -1,0 +1,122 @@
+[gd_scene format=3 uid="uid://bop0yfsd2rvc8"]
+
+[ext_resource type="Script" uid="uid://jflrxtugkkka" path="res://scripts/ar_room/player3Dto2D.gd" id="1_65ngb"]
+[ext_resource type="Texture2D" uid="uid://xjuay0xwtk3" path="res://assets/player/player.png" id="2_jugep"]
+[ext_resource type="Script" uid="uid://cky2ms7cqxgwn" path="res://scripts/ar_room/door.gd" id="3_bkiy6"]
+[ext_resource type="Script" uid="uid://dw68wdhuogtoc" path="res://scripts/ar_room/mouse_handler.gd" id="3_jugep"]
+[ext_resource type="PackedScene" uid="uid://boghwbfflewsw" path="res://prefabs/ar_room/moveable_block.tscn" id="3_x410q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_65ngb"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_jugep"]
+sky_material = SubResource("ProceduralSkyMaterial_65ngb")
+
+[sub_resource type="Environment" id="Environment_x410q"]
+background_mode = 2
+sky = SubResource("Sky_jugep")
+glow_enabled = true
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bacrr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jugep")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bacrr"]
+radius = 0.16601563
+height = 0.33203125
+
+[sub_resource type="BoxMesh" id="BoxMesh_65ngb"]
+size = Vector3(5, 3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jugep"]
+size = Vector3(5, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x410q"]
+size = Vector3(5, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gc6ay"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ix5c2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gc6ay"]
+albedo_color = Color(0.19076231, 0.19076234, 0.19076231, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x410q"]
+size = Vector3(0.5, 0.7, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bacrr"]
+size = Vector3(0.5, 0.7, 1)
+
+[node name="Node3D" type="Node3D" unique_id=1647299699]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=290241255]
+environment = SubResource("Environment_x410q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=721390667]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=977889485 groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7273035, 1.7813255)
+script = ExtResource("1_65ngb")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="Player" unique_id=747821871]
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_bacrr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=344375155]
+shape = SubResource("CapsuleShape3D_bacrr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1331192416]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4984281, 2.2892895)
+mesh = SubResource("BoxMesh_65ngb")
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1434027129]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49842823, 2.1769567)
+
+[node name="Mesh" type="MeshInstance3D" parent="Ground" unique_id=1206131178]
+mesh = SubResource("BoxMesh_jugep")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1825284123]
+shape = SubResource("BoxShape3D_x410q")
+
+[node name="Ground2" type="StaticBody3D" parent="." unique_id=372341809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.379626, 1.6112055, 2.1769567)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground2" unique_id=492190078]
+shape = SubResource("BoxShape3D_gc6ay")
+
+[node name="Mesh" type="MeshInstance3D" parent="Ground2" unique_id=935623483]
+mesh = SubResource("BoxMesh_ix5c2")
+
+[node name="Door" type="Area3D" parent="." unique_id=953277794]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3705499, 2.4690635, 2.0195518)
+script = ExtResource("3_bkiy6")
+
+[node name="Mesh" type="MeshInstance3D" parent="Door" unique_id=1345634862]
+material_override = SubResource("StandardMaterial3D_gc6ay")
+mesh = SubResource("BoxMesh_x410q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door" unique_id=568337771]
+shape = SubResource("BoxShape3D_bacrr")
+
+[node name="MoveableBlock" parent="." unique_id=1644578319 instance=ExtResource("3_x410q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37541252, 0.6876502, 2.1722822)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1089834730]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.669055, 0)
+fov = 95.0
+
+[node name="MouseHandler" type="Node3D" parent="." unique_id=1786626245 groups=["mouse_handler"]]
+script = ExtResource("3_jugep")
+
+[connection signal="body_entered" from="Door" to="Door" method="_on_body_entered"]

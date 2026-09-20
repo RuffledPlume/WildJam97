@@ -1,0 +1,161 @@
+[gd_scene format=3 uid="uid://vfhg0txpkf0b"]
+
+[ext_resource type="Texture2D" uid="uid://b0xyvwr8bbef0" path="res://assets/interactables/key.png" id="1_03akj"]
+[ext_resource type="Script" uid="uid://bwpvny1m6em4v" path="res://scripts/floatup/key.gd" id="1_w3pc2"]
+[ext_resource type="Texture2D" uid="uid://rcknmluhxchk" path="res://assets/interactables/key_star.png" id="3_n72ub"]
+[ext_resource type="Texture2D" uid="uid://c4nr2s0dmskdl" path="res://assets/interactables/key_star_glow_large.png" id="4_7egrl"]
+[ext_resource type="Texture2D" uid="uid://cninpwuhlg3vr" path="res://assets/interactables/key_star_glow.png" id="5_x4fhg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xvdk0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_03akj")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xvdk0"]
+radius = 95.0
+
+[sub_resource type="Animation" id="Animation_lvupb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KeyStar:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KeyStarGlowLarge:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KeyStarGlow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("KeyStar:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hvggv"]
+resource_name = "key_star"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("KeyStar:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.2831855]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("KeyStarGlowLarge:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(0.9, 0.9), Vector2(1.2, 1.2), Vector2(0.9, 0.9), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("KeyStarGlow:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 5, 7, 10),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("KeyStar:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3, 5, 7, 10),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a2yvw"]
+_data = {
+&"RESET": SubResource("Animation_lvupb"),
+&"key_star": SubResource("Animation_hvggv")
+}
+
+[node name="Key" type="Node2D" unique_id=159230492]
+script = ExtResource("1_w3pc2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=33377022]
+z_index = 20
+sprite_frames = SubResource("SpriteFrames_xvdk0")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1481867950]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=339424743]
+shape = SubResource("CircleShape2D_xvdk0")
+
+[node name="KeyStar" type="Sprite2D" parent="." unique_id=1508843810]
+z_index = 17
+texture = ExtResource("3_n72ub")
+
+[node name="KeyStarGlowLarge" type="Sprite2D" parent="." unique_id=2002218088]
+z_index = 18
+texture = ExtResource("4_7egrl")
+
+[node name="KeyStarGlow" type="Sprite2D" parent="." unique_id=1122299527]
+z_index = 19
+texture = ExtResource("5_x4fhg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1725360072]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_a2yvw")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

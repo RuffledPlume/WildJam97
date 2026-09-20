@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://2hcyvhd1roiu"]
+
+[ext_resource type="Texture2D" uid="uid://e63iq8f78ik" path="res://assets/enemies/fallboy.png" id="1_3l42p"]
+[ext_resource type="Script" uid="uid://de6u66jj4cmdc" path="res://scripts/floatup/enemy_wave_wall.gd" id="1_ivpy3"]
+[ext_resource type="Texture2D" uid="uid://u8i6bi7tp5a0" path="res://assets/enemies/fallboy_tall_shock.png" id="2_ivpy3"]
+[ext_resource type="Texture2D" uid="uid://dhqno2037edmm" path="res://assets/enemies/fallboy_long.png" id="3_366gl"]
+[ext_resource type="Texture2D" uid="uid://df5sv6hg07fyt" path="res://assets/enemies/fallboy_large.png" id="4_0tjr7"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bacrr"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(320, 1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 60.0
+initial_velocity_max = 80.0
+angular_velocity_min = -100.000015
+angular_velocity_max = 99.999985
+gravity = Vector3(0, 50, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bacrr"]
+size = Vector2(640, 91)
+
+[node name="EnemyWaveWall" type="Node2D" unique_id=1524459046]
+script = ExtResource("1_ivpy3")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=88982404]
+position = Vector2(-2, 0)
+amount = 300
+texture = ExtResource("1_3l42p")
+lifetime = 5.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_bacrr")
+
+[node name="GPUParticles2D4" type="GPUParticles2D" parent="." unique_id=1800811435]
+amount = 30
+texture = ExtResource("2_ivpy3")
+lifetime = 5.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_bacrr")
+
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="." unique_id=1549312392]
+amount = 30
+texture = ExtResource("3_366gl")
+lifetime = 5.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_bacrr")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="." unique_id=1503916248]
+z_index = -1
+amount = 20
+texture = ExtResource("4_0tjr7")
+lifetime = 5.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_bacrr")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1111822082]
+position = Vector2(-1, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=274043203]
+position = Vector2(0, -35.5)
+shape = SubResource("RectangleShape2D_bacrr")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

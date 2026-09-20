@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://ccj8tt5cnw6v2"]
+
+[ext_resource type="PackedScene" uid="uid://c72mf508kj7j3" path="res://prefabs/pf_main_player.tscn" id="1_pj36p"]
+[ext_resource type="PackedScene" uid="uid://d2dejs4wlbtlq" path="res://prefabs/pf_example_arcade_machine.tscn" id="2_gfot2"]
+[ext_resource type="Script" uid="uid://jflrxtugkkka" path="res://levels/player3Dto2D.gd" id="3_75r4t"]
+[ext_resource type="Texture2D" uid="uid://xjuay0xwtk3" path="res://assets/player/player.png" id="3_p4efw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gfot2"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_p4efw"]
+sky_material = SubResource("ProceduralSkyMaterial_gfot2")
+
+[sub_resource type="Environment" id="Environment_75r4t"]
+background_mode = 2
+sky = SubResource("Sky_p4efw")
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_bacrr"]
+size = Vector3(5, 3, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vfjr8"]
+size = Vector3(5, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sceuq"]
+size = Vector3(5, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bacrr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_p4efw")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bacrr"]
+radius = 0.16601563
+height = 0.33203125
+
+[node name="LvlSandbox" type="Node3D" unique_id=103237972]
+
+[node name="CharacterBody3D" parent="." unique_id=835210181 instance=ExtResource("1_pj36p")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=236298632]
+environment = SubResource("Environment_75r4t")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=943372227]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 2.098584, 0)
+shadow_enabled = true
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1492821613]
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1451904502]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.49206543, -0.16343701, 0.019042969)
+size = Vector3(115, 0.32373047, 126)
+
+[node name="ExampleArcadeMachine" parent="." unique_id=1824771371 instance=ExtResource("2_gfot2")]
+transform = Transform3D(-0.7071068, 0, -0.7071068, 0, 1, 0, 0.7071068, 0, -0.7071068, 3.0394742, 0.50563294, 4.3236146)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=796996075]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4984281, 17.067387)
+mesh = SubResource("BoxMesh_bacrr")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1631425719]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49842823, 16.694305)
+mesh = SubResource("BoxMesh_vfjr8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2" unique_id=1045250947]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D" unique_id=1539128123]
+shape = SubResource("BoxShape3D_sceuq")
+
+[node name="CharacterBody3D2" type="CharacterBody3D" parent="." unique_id=309848912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7974343, 2.0153491, 16.561981)
+script = ExtResource("3_75r4t")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="CharacterBody3D2" unique_id=962790772]
+flip_h = true
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_bacrr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D2" unique_id=1329700464]
+shape = SubResource("CapsuleShape3D_bacrr")
