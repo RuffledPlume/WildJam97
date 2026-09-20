@@ -99,8 +99,13 @@ func _ready() -> void:
 	platform_player.can_move = false
 	textbox_animation.play("textblink")
 	start_pause_up = true
+	if arcade == null:
+		arcade = get_parent().get_parent() as ArcadeMachine # It is what it is
 
 func _physics_process(_delta: float) -> void:
+	if arcade == null:
+		return
+		
 	if arcade.is_player_using && start_pause_up == true:
 		textbox_animation.stop()
 		press_anything_text.visible = false
@@ -241,13 +246,11 @@ func _physics_process(_delta: float) -> void:
 	if Input.is_anything_pressed() and end_screen_activated == true and endscreen_timer_activated == true:
 		textbox_animation.play("fade_transition_out")
 		endscreen_timer_activated = false
-		queue_free()
-		get_tree().call_deferred("reload_current_scene")
+		arcade.restart()
 	if Input.is_anything_pressed() and win_screen_activated == true and endscreen_timer_activated == true:
 		textbox_animation.play("fade_transition_out")
 		endscreen_timer_activated = false
-		queue_free()
-		get_tree().call_deferred("reload_current_scene")
+		arcade.restart()
 	
 	if seconds_passed >= 60:
 		seconds_passed = 0

@@ -13,9 +13,11 @@ size = Vector3(1, 2.0166016, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rltbh"]
 albedo_texture = ExtResource("6_rql04")
 
-[node name="ExampleArcadeMachine" type="StaticBody3D" unique_id=1330459841 node_paths=PackedStringArray("camera")]
+[node name="PlatformArcadeMachine" type="StaticBody3D" unique_id=1330459841 node_paths=PackedStringArray("camera", "game_viewport")]
 script = ExtResource("1_2su1k")
 camera = NodePath("Camera3D")
+game_prefab = ExtResource("3_varhu")
+game_viewport = NodePath("SubViewport")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1034877264]
 transform = Transform3D(1, 0, 0, 0, 0.9526516, 0.30406415, 0, -0.30406415, 0.9526516, 0, 1.0953968, 0.59534836)

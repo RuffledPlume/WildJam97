@@ -47,6 +47,9 @@ func _ready() -> void:
 	menu_array.append(powerup_page)
 	
 	current_page = title_page
+	
+	if arcade == null:
+		arcade = get_parent().get_parent() as ArcadeMachine # It is what it is
 
 func _process(delta: float) -> void:
 	if menu_finished || !arcade.is_player_using:
@@ -77,8 +80,7 @@ func death_screen() -> void:
 	anim_player_death_screen.play("display_death_screen")
 	spawn_manager.end_game = true
 	await get_tree().create_timer(9.0).timeout
-	get_tree().reload_current_scene()
-	
+	arcade.restart()
 	
 func handle_animations() -> void:
 	anim_player_enemy_wave.play("move_wall")

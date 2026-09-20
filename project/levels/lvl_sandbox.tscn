@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://c72mf508kj7j3" path="res://prefabs/pf_main_player.tscn" id="1_pj36p"]
 [ext_resource type="PackedScene" uid="uid://d2dejs4wlbtlq" path="res://prefabs/pf_platform_arcade_machine.tscn" id="2_gfot2"]
 [ext_resource type="Script" uid="uid://bg16tdgeajwvt" path="res://scripts/fps_counter.gd" id="3_p4efw"]
-[ext_resource type="PackedScene" uid="uid://bhy3rxnm3vo6x" path="res://prefabs/pf_floatup_arcade_machine.tscn" id="4_75r4t"]
 
 [sub_resource type="Environment" id="Environment_75r4t"]
 ambient_light_color = Color(0.01973007, 0.1839292, 0.41201982, 1)
@@ -15,9 +14,6 @@ sdfgi_use_occlusion = true
 glow_enabled = true
 
 [node name="LvlSandbox" type="Node3D" unique_id=103237972]
-
-[node name="ExampleArcadeMachine3" parent="." unique_id=839034064 instance=ExtResource("2_gfot2")]
-transform = Transform3D(-0.02659759, 0, -0.9996462, 0, 1, 0, 0.9996462, 0, -0.02659759, 9.711819, 0.50568414, 5.8979006)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1607199037]
 transform = Transform3D(-0.01785189, -0.86588746, 0.49992025, 2.7805946e-08, 0.49999994, 0.86602545, -0.9998407, 0.015460163, -0.0089259595, 0, 0, 0)
@@ -53,5 +49,5 @@ offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("3_p4efw")
 
-[node name="ExampleArcadeMachine" parent="." unique_id=1330459841 instance=ExtResource("4_75r4t")]
-transform = Transform3D(-0.8660254, 0, -0.50000006, 0, 1, 0, 0.50000006, 0, -0.8660254, 5.052839, 0.5736426, 6.3582315)
+[node name="PlatformArcadeMachine" parent="." unique_id=1330459841 instance=ExtResource("2_gfot2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.280329, 0.5486026, 6.9395266)
