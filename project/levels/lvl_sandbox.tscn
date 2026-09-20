@@ -22,8 +22,9 @@ shadow_enabled = true
 directional_shadow_mode = 0
 sky_mode = 2
 
-[node name="CharacterBody3D" parent="." unique_id=835210181 instance=ExtResource("1_pj36p")]
+[node name="CharacterBody3D" parent="." unique_id=835210181 node_paths=PackedStringArray("interact_label") instance=ExtResource("1_pj36p")]
 transform = Transform3D(0.8882941, 0, -0.45927525, 0, 1, 0, 0.45927525, 0, 0.8882941, 5.5761895, 0, 0.5019584)
+interact_label = NodePath("../CanvasLayer/Control/InteractLabel")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=236298632]
 environment = SubResource("Environment_75r4t")
@@ -38,20 +39,40 @@ size = Vector3(115, 0.32373047, 126)
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=28121360]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9156149, 2.080431, -4.2823076)
 
-[node name="Control" type="Control" parent="." unique_id=399168336]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Control" unique_id=1453716743]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-script = ExtResource("3_p4efw")
-
 [node name="PlatformArcadeMachine" parent="." unique_id=1330459841 instance=ExtResource("2_gfot2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.280329, 0.5486026, 6.9395266)
 
 [node name="FloatupArcadeMachine" parent="." unique_id=167233743 instance=ExtResource("4_75r4t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.226235, 0.5488243, 6.7670903)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=926123184]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1514328256]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FPSLabel" type="Label" parent="CanvasLayer/Control" unique_id=1453716743]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "60"
+script = ExtResource("3_p4efw")
+
+[node name="InteractLabel" type="Label" parent="CanvasLayer/Control" unique_id=1026238997]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -11.5
+offset_right = 40.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press E %s"

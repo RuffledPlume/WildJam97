@@ -9,6 +9,7 @@ static var INSTANCE : MainPlayer
 @export var interaction_distance := 5.0
 
 @export var camera: Camera3D
+@export var interact_label: Label
 
 var mouse_delta : Vector2
 var move_delta : Vector2
@@ -25,6 +26,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if is_locked:
+		interact_label.visible = false
 		return
 		
 	_handle_camera_rotation(delta)
@@ -78,6 +80,18 @@ func _handle_interactions() -> void:
 			hovering_interactable.on_interact_with_held()
 		elif Input.is_action_just_released("main_player_interact"):
 			hovering_interactable.on_interact_with_released()
+			
+	interact_label.visible = hovering_interactable != null
+	if hovering_interactable != null:
+		interact_label.visible = true
+		interact_label.position = camera.unproject_position(hovering_interactable.get_interact_label_position())
+		var interact_text = hovering_interactable.get_interact_text()
+		if interact_text != null && !interact_text.is_empty():
+			interact_label.text = hovering_interactable.get_interact_text()
+		else:
+			interact_label.text = "Press E"
+	else:
+		interact_label.visible = false
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:

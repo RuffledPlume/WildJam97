@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://d2dejs4wlbtlq"]
 
 [ext_resource type="Script" uid="uid://b0a003h0fqbmc" path="res://scripts/arcade_machine.gd" id="1_2su1k"]
-[ext_resource type="PackedScene" uid="uid://cntpcve5rjgqy" path="res://prefabs/pf_arcade_machine_base.tscn" id="1_34as7"]
 [ext_resource type="PackedScene" uid="uid://ckwv01j5apesh" path="res://prefabs/pf_arcade_screen.tscn" id="1_navsu"]
 [ext_resource type="PackedScene" uid="uid://b4xvo1k3mtc0l" path="res://levels/arcade_platformer.tscn" id="3_varhu"]
 [ext_resource type="ArrayMesh" uid="uid://dvg0tu52bmfbp" path="res://assets/arcade_machine.obj" id="5_u0gwm"]
@@ -13,11 +12,12 @@ size = Vector3(1, 2.0166016, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rltbh"]
 albedo_texture = ExtResource("6_rql04")
 
-[node name="PlatformArcadeMachine" type="StaticBody3D" unique_id=1330459841 node_paths=PackedStringArray("camera", "game_viewport")]
+[node name="PlatformArcadeMachine" type="StaticBody3D" unique_id=1330459841 node_paths=PackedStringArray("camera", "game_viewport", "screen")]
 script = ExtResource("1_2su1k")
 camera = NodePath("Camera3D")
 game_prefab = ExtResource("3_varhu")
 game_viewport = NodePath("SubViewport")
+screen = NodePath("ArcadeScreen")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1034877264]
 transform = Transform3D(1, 0, 0, 0, 0.9526516, 0.30406415, 0, -0.30406415, 0.9526516, 0, 1.0953968, 0.59534836)
@@ -26,9 +26,6 @@ transform = Transform3D(1, 0, 0, 0, 0.9526516, 0.30406415, 0, -0.30406415, 0.952
 process_mode = 0
 transform = Transform3D(0.70682925, 0, 0, 0, 0.50911593, 0.18174277, 0, -0.1354342, 0.68319625, 0, 0.9020673, 0.11944463)
 viewport_target = NodePath("../SubViewport")
-
-[node name="BaseArcadeMachine" parent="." unique_id=1087995022 instance=ExtResource("1_34as7")]
-visible = false
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=728090255]
 disable_3d = true

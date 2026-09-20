@@ -1,5 +1,5 @@
 @tool
-class_name ArcadeScreen extends Node
+class_name ArcadeScreen extends Node3D
 
 @export var viewport_target : SubViewport
 

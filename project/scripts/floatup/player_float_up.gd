@@ -87,7 +87,6 @@ func disable_input() ->  void:
 	
 	
 func _physics_process(delta: float) -> void:
-	
 	if disable_player:
 		return 
 		
@@ -99,11 +98,11 @@ func _physics_process(delta: float) -> void:
 	
 	# HANDLE GROUND INPUTS AND SPEEDS
 	if not is_flying:
-		if Input.is_action_pressed("main_player_move_left"):
+		if Input.is_action_pressed("platformer_player_left"):
 			current_sprite.play("walk")
 			current_sprite.flip_h = true
 			velocity += Vector2(-10.0, 0.0)
-		elif Input.is_action_pressed("main_player_move_right"):
+		elif Input.is_action_pressed("platformer_player_right"):
 			current_sprite.play("walk")
 			current_sprite.flip_h = false
 			velocity += Vector2(10.0, 0.0)
@@ -116,15 +115,15 @@ func _physics_process(delta: float) -> void:
 	# HANDLE FLYING INPUTS AND SPEEDS
 	if is_flying:
 		current_sprite.play("flying")
-		if Input.is_action_pressed("main_player_move_left"):
+		if Input.is_action_pressed("platformer_player_left"):
 			current_sprite.flip_h = true
 			velocity += Vector2(-speed, 0.0)
-		if Input.is_action_pressed("main_player_move_right"):
+		if Input.is_action_pressed("platformer_player_right"):
 			current_sprite.flip_h = false
 			velocity += Vector2(speed, 0.0)
-		if Input.is_action_pressed("main_player_move_forward"):
+		if Input.is_action_pressed("platformer_player_jump"):
 			velocity += Vector2(0.0, -speed * 0.7)
-		if Input.is_action_pressed("main_player_move_back"):
+		if Input.is_action_pressed("platformer_player_drop"):
 			velocity += Vector2(0.0, speed * 0.7)
 		
 		velocity = velocity.move_toward(Vector2.ZERO, drag)

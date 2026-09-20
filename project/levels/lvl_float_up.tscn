@@ -970,7 +970,6 @@ metadata/_edit_use_anchors_ = true
 
 [node name="HowToPage" type="CanvasLayer" parent="AspectRatioContainer/SubViewportContainer/SubViewport" unique_id=1934873592]
 unique_name_in_owner = true
-visible = false
 
 [node name="CONTROLS" type="Label" parent="AspectRatioContainer/SubViewportContainer/SubViewport/HowToPage" unique_id=1058500475]
 offset_left = 204.89197
@@ -999,7 +998,7 @@ offset_right = 92.0
 offset_bottom = 81.0
 theme_override_fonts/font = ExtResource("4_53lfo")
 theme_override_font_sizes/font_size = 32
-text = "W"
+text = "↑"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1011,19 +1010,18 @@ offset_right = 19.0
 offset_bottom = 66.0
 theme_override_fonts/font = ExtResource("4_53lfo")
 theme_override_font_sizes/font_size = 32
-text = "A"
+text = "←"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label3" type="Label" parent="AspectRatioContainer/SubViewportContainer/SubViewport/HowToPage/Movement/WASD" unique_id=757383419]
 layout_mode = 0
-offset_left = 2.0
 offset_top = 17.0
-offset_right = 66.0
+offset_right = 63.99999
 offset_bottom = 84.0
 theme_override_fonts/font = ExtResource("4_53lfo")
 theme_override_font_sizes/font_size = 32
-text = "S"
+text = "↓"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -1035,7 +1033,7 @@ offset_right = 109.0
 offset_bottom = 84.0
 theme_override_fonts/font = ExtResource("4_53lfo")
 theme_override_font_sizes/font_size = 32
-text = "D"
+text = "→"
 horizontal_alignment = 1
 vertical_alignment = 1
 

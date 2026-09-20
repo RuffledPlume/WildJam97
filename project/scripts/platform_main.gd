@@ -1,4 +1,4 @@
-extends Node2D
+class_name Platformer extends Node2D
 
 @export var arcade : ArcadeMachine
 
@@ -73,11 +73,11 @@ func textbox(param: String):
 	textbox_up = true
 
 func add_text_to_textbox(sign_number, text_param: String):
-	if Input.is_action_just_released("platformer_player_interact") and sign_number == true and textbox_up == false:
+	if arcade.is_action_just_released("platformer_player_interact") and sign_number == true and textbox_up == false:
 		textbox(text_param)
 
 func add_text_to_secret(sign_number, text_param: String, secret_param: int):
-	if Input.is_action_just_released("platformer_player_interact") and sign_number == true and textbox_up == false:
+	if arcade.is_action_just_released("platformer_player_interact") and sign_number == true and textbox_up == false:
 		secret_get_sfx.play()
 		textbox(text_param)
 		if secret_param == 2:
@@ -88,7 +88,7 @@ func add_text_to_secret(sign_number, text_param: String, secret_param: int):
 			pass
 
 func add_text_to_locked(door_activated, text_param: String, pickup_param):
-	if Input.is_action_just_released("platformer_player_interact") and door_activated == true and textbox_up == false and pickup_param == false:
+	if arcade.is_action_just_released("platformer_player_interact") and door_activated == true and textbox_up == false and pickup_param == false:
 		textbox(text_param)
 
 # Called when the node enters the scene tree for the first time.
@@ -101,6 +101,7 @@ func _ready() -> void:
 	start_pause_up = true
 	if arcade == null:
 		arcade = get_parent().get_parent() as ArcadeMachine # It is what it is
+	platform_player.arcade = arcade
 
 func _physics_process(_delta: float) -> void:
 	if arcade == null:
@@ -114,11 +115,11 @@ func _physics_process(_delta: float) -> void:
 		textbox_animation.play("text_fade_in")
 		return
 	
-	if Input.is_action_just_pressed("platformer_player_interact") and picked_up1 == true and side_door_locked1_activated == true:
+	if arcade.is_action_just_pressed("platformer_player_interact") and picked_up1 == true and side_door_locked1_activated == true:
 		door_open_sfx.play()
 		side_door_locked1.play("open")
 		side_door1_coll.disabled = true
-	elif Input.is_action_just_pressed("platformer_player_interact") and picked_up1 != true and side_door_locked1_activated == true:
+	elif arcade.is_action_just_pressed("platformer_player_interact") and picked_up1 != true and side_door_locked1_activated == true:
 		add_text_to_textbox(side_door_locked1_activated, "This door is locked! I wonder if there's a key nearby.")
 	
 	add_text_to_textbox(sign1_activated, "Press W to jump, press it twice to double jump!")
@@ -131,41 +132,41 @@ func _physics_process(_delta: float) -> void:
 	add_text_to_locked(locked_door_activated, "Another locked door...", picked_up2)
 	add_text_to_locked(side_door_locked2_activated, "Even the front door is locked?! I guess that makes sense...", picked_up3)
 	
-	if Input.is_anything_pressed() and textbox_up == true:
+	if arcade.is_anything_pressed() and textbox_up == true:
 		textbox_animation.play("textbox_fadeout")
 		await textbox_animation.animation_finished
 		platform_player.can_move = true
 		textbox_up = false
 	
-	if Input.is_action_just_pressed("platformer_player_interact") and picked_up3 == true and side_door_locked2_activated == true:
+	if arcade.is_action_just_pressed("platformer_player_interact") and picked_up3 == true and side_door_locked2_activated == true:
 		door_open_sfx.play()
 		side_door_locked2.play("open")
 		side_door2_coll.disabled = true
-	elif Input.is_action_just_pressed("platformer_player_interact") and picked_up3 != true and side_door_locked2_activated == true:
+	elif arcade.is_action_just_pressed("platformer_player_interact") and picked_up3 != true and side_door_locked2_activated == true:
 		add_text_to_textbox(side_door_locked2_activated, "Even the front door is locked?! I guess that makes sense...")
 
-	if Input.is_action_just_pressed("platformer_player_interact") and picked_up2 == true and locked_door_activated == true and locked_door_opened == false:
+	if arcade.is_action_just_pressed("platformer_player_interact") and picked_up2 == true and locked_door_activated == true and locked_door_opened == false:
 		door_open_sfx.play()
 		locked_door.play("open")
 		await locked_door.animation_finished
 		locked_door_opened = true
-	elif Input.is_action_just_pressed("platformer_player_interact") and picked_up2 != true and locked_door_activated == true and locked_door_opened == false:
+	elif arcade.is_action_just_pressed("platformer_player_interact") and picked_up2 != true and locked_door_activated == true and locked_door_opened == false:
 		add_text_to_textbox(locked_door_activated, "Another locked door...")
 	
-	if Input.is_action_just_pressed("platformer_player_interact") and locked_door_activated == true and locked_door_opened == true:
+	if arcade.is_action_just_pressed("platformer_player_interact") and locked_door_activated == true and locked_door_opened == true:
 		platform_player.can_move = false
 		await create_tween().tween_property(platform_player, "modulate:a", 0, .5).finished
 		platform_player.position = Vector2(2303.0, -688.0)
 		await create_tween().tween_property(platform_player, "modulate:a", 1, .5).finished
 		platform_player.can_move = true
 
-	if Input.is_action_just_pressed("platformer_player_interact") and doorway_activated == true and locked_door_opened == true:
+	if arcade.is_action_just_pressed("platformer_player_interact") and doorway_activated == true and locked_door_opened == true:
 		platform_player.can_move = false
 		await create_tween().tween_property(platform_player, "modulate:a", 0, .5).finished
 		platform_player.position = Vector2(2303.0, -301.0) 
 		await create_tween().tween_property(platform_player, "modulate:a", 1, .5).finished
 		platform_player.can_move = true
-	elif Input.is_action_just_pressed("platformer_player_interact") and doorway_activated == true and locked_door_opened == false:
+	elif arcade.is_action_just_pressed("platformer_player_interact") and doorway_activated == true and locked_door_opened == false:
 		platform_player.can_move = false
 		door_open_sfx.play()
 		locked_door.play("open")
@@ -176,9 +177,9 @@ func _physics_process(_delta: float) -> void:
 		await create_tween().tween_property(platform_player, "modulate:a", 1, .5).finished
 		platform_player.can_move = true
 
-	if Input.is_action_just_pressed("platformer_player_drop"):
+	if arcade.is_action_just_pressed("platformer_player_drop"):
 		two_way_platform.collision_enabled = false
-	elif Input.is_action_just_released("platformer_player_drop"):
+	elif arcade.is_action_just_released("platformer_player_drop"):
 		two_way_platform.collision_enabled = true
 	
 	if is_dead == true and end_screen_activated == false:
@@ -243,11 +244,11 @@ func _physics_process(_delta: float) -> void:
 		await textbox_animation.animation_finished
 		endscreen_timer.start()
 	
-	if Input.is_anything_pressed() and end_screen_activated == true and endscreen_timer_activated == true:
+	if arcade.is_anything_pressed() and end_screen_activated == true and endscreen_timer_activated == true:
 		textbox_animation.play("fade_transition_out")
 		endscreen_timer_activated = false
 		arcade.restart()
-	if Input.is_anything_pressed() and win_screen_activated == true and endscreen_timer_activated == true:
+	if arcade.is_anything_pressed() and win_screen_activated == true and endscreen_timer_activated == true:
 		textbox_animation.play("fade_transition_out")
 		endscreen_timer_activated = false
 		arcade.restart()
