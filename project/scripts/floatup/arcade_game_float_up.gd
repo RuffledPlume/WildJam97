@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@export var arcade : ArcadeMachine
+
 signal start_flying
 signal drop_key
 signal new_sky
@@ -46,11 +48,11 @@ func _ready() -> void:
 	
 	current_page = title_page
 
-func _input(event: InputEvent) -> void:
-	if menu_finished:
+func _process(delta: float) -> void:
+	if menu_finished || !arcade.is_player_using:
 		return
 		
-	if Input.is_action_pressed("enter") and not menu_finished:
+	if (idx == 0 || Input.is_action_just_pressed("enter")) and not menu_finished:
 		if idx < menu_array.size() - 1:      # Check if current idx is less than menu_array size
 			menu_array[idx].visible = false  # Set current menu_array page to invisible
 			idx += 1                         # Add 1 to the idx so it moves from 0 > 1 > 2 > 3 each time

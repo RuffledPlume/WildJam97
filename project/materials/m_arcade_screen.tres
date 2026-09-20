@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bk1mmavk2yfcf"]
+
+[ext_resource type="Shader" uid="uid://dp27kn2wv3fv1" path="res://shaders/arcade_crt.gdshader" id="1_7k5g3"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rysxw"]
+size = Vector2(1024, 1024)
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_7k5g3")
+shader_parameter/screen_texture = SubResource("PlaceholderTexture2D_rysxw")

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://ckwv01j5apesh"]
+
+[ext_resource type="Script" uid="uid://bc6iikjpbrjxo" path="res://scripts/arcade_screen.gd" id="1_nna46"]
+[ext_resource type="Material" uid="uid://bk1mmavk2yfcf" path="res://materials/m_arcade_screen.tres" id="2_nna46"]
+[ext_resource type="Shader" uid="uid://dp27kn2wv3fv1" path="res://shaders/arcade_crt.gdshader" id="2_rysxw"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_2mwys"]
+
+[node name="ArcadeScreen" type="Node3D" unique_id=192009638 node_paths=PackedStringArray("screen_mesh", "screen_light_array", "notifier")]
+process_mode = 4
+script = ExtResource("1_nna46")
+screen_shader = ExtResource("2_rysxw")
+screen_mesh = NodePath("ScreenMesh")
+screen_light_array = [NodePath("ScreenLightArray/SpotLight3D"), NodePath("ScreenLightArray/SpotLight3D2"), NodePath("ScreenLightArray/SpotLight3D3"), NodePath("ScreenLightArray/SpotLight3D4"), NodePath("ScreenLightArray/SpotLight3D5"), NodePath("ScreenLightArray/SpotLight3D6"), NodePath("ScreenLightArray/SpotLight3D7"), NodePath("ScreenLightArray/SpotLight3D8"), NodePath("ScreenLightArray/SpotLight3D9")]
+notifier = NodePath("VisibleOnScreenNotifier3D")
+
+[node name="ScreenMesh" type="MeshInstance3D" parent="." unique_id=1746502718]
+mesh = SubResource("QuadMesh_2mwys")
+surface_material_override/0 = ExtResource("2_nna46")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="." unique_id=993755341]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5859034)
+aabb = AABB(-1, -1, -0.957, 2, 2, 2)
+
+[node name="ScreenLightArray" type="Node3D" parent="." unique_id=1968608924]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="ScreenLightArray" unique_id=1109185146]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.3725977, 0.3392942, 0.019412741)
+light_energy = 0.1
+spot_angle = 78.28092
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="ScreenLightArray" unique_id=2023740572]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.0047843456, 0.3392942, 0.019412773)
+light_energy = 0.1
+spot_angle = 78.28092
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="ScreenLightArray" unique_id=1726273101]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.37531227, 0.3392942, 0.019412806)
+light_energy = 0.1
+spot_angle = 78.28092
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="ScreenLightArray" unique_id=1731037667]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.3725977, 0.00074636936, 0.019412741)
+light_energy = 0.1
+spot_angle = 78.28092
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="ScreenLightArray" unique_id=493195518]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.0047843456, 0.00074636936, 0.019412773)
+light_energy = 0.1
+spot_angle = 78.28092
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="ScreenLightArray" unique_id=237348968]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.37531227, 0.00074636936, 0.019412806)
+light_energy = 0.1
+spot_angle = 78.28092
+
+[node name="SpotLight3D7" type="SpotLight3D" parent="ScreenLightArray" unique_id=2068786912]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.3725977, -0.3373876, 0.019412741)
+light_energy = 0.1
+spot_angle = 78.28092
+
+[node name="SpotLight3D8" type="SpotLight3D" parent="ScreenLightArray" unique_id=1463525029]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -0.0047843456, -0.3373876, 0.019412773)
+light_energy = 0.1
+spot_angle = 78.28092
+
+[node name="SpotLight3D9" type="SpotLight3D" parent="ScreenLightArray" unique_id=1203483727]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0.37531227, -0.3373876, 0.019412806)
+light_energy = 0.1
+spot_angle = 78.28092

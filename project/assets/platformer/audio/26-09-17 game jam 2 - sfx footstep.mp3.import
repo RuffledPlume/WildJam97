@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b4kv5pi0m6377"
+path="res://.godot/imported/26-09-17 game jam 2 - sfx footstep.mp3-2a1f0a95df36d755c69259196cdeef0c.mp3str"
+
+[deps]
+
+source_file="res://assets/platformer/audio/26-09-17 game jam 2 - sfx footstep.mp3"
+dest_files=["res://.godot/imported/26-09-17 game jam 2 - sfx footstep.mp3-2a1f0a95df36d755c69259196cdeef0c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

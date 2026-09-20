@@ -783,6 +783,7 @@ script = ExtResource("1_u3qgh")
 metadata/_edit_vertical_guides_ = [572.0]
 
 [node name="CRTOverlay" type="ColorRect" parent="." unique_id=1091198159]
+visible = false
 z_index = 110
 material = SubResource("ShaderMaterial_xvdk0")
 anchors_preset = 15
@@ -962,8 +963,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 theme_override_fonts/font = ExtResource("4_53lfo")
 theme_override_font_sizes/font_size = 12
-text = "Insert Coin
-[press enter]"
+text = "Insert Coin"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true

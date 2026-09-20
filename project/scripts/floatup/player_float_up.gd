@@ -42,8 +42,25 @@ func _ready() -> void:
 	current_sprite = animated_sprite_2d
 	old_sprite     = animated_sprite_2dgg
 
+func _process(delta: float) -> void:
+	_handle_input()
+	handle_bounds_death()
+	
+	if resize_factor < 1.0:
+		resize_factor += 0.001
+		self.scale = Vector2(resize_factor, resize_factor)
+	resize_factor = clamp(resize_factor, 0.5, 1.0)
+	
+	if is_flying:
+		if is_repositioned:
+			return
+		animated_sprite_2dgg.position = Vector2(animated_sprite_2dgg.position.x, animated_sprite_2dgg.position.y - 15.0)
+		is_repositioned = true
 
-func _input(event: InputEvent) -> void:
+func _handle_input() -> void:
+	if disable_player:
+		return
+		
 	if Input.is_action_just_pressed("interact"):
 		interacted.emit()
 	
@@ -62,23 +79,6 @@ func _input(event: InputEvent) -> void:
 		printt(current_sprite, old_sprite)
 		old_sprite.visible = false
 		current_sprite.visible = true
-		
-
-func _process(delta: float) -> void:
-
-	handle_bounds_death()
-	
-	if resize_factor < 1.0:
-		resize_factor += 0.001
-		self.scale = Vector2(resize_factor, resize_factor)
-	resize_factor = clamp(resize_factor, 0.5, 1.0)
-	
-	if is_flying:
-		if is_repositioned:
-			return
-		animated_sprite_2dgg.position = Vector2(animated_sprite_2dgg.position.x, animated_sprite_2dgg.position.y - 15.0)
-		is_repositioned = true
-	
 
 func disable_input() ->  void:
 	disable_player = true
