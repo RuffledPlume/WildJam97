@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://c055y8tvqufrn"]
+
+[ext_resource type="Script" uid="uid://cln2g2b75lvl5" path="res://scripts/arcade_joystick.gd" id="1_rxogb"]
+[ext_resource type="ArrayMesh" uid="uid://druuackh801w1" path="res://assets/arcade_stick_base.obj" id="1_sq2as"]
+[ext_resource type="ArrayMesh" uid="uid://ch78ga5xioefl" path="res://assets/arcade_joystick.obj" id="2_rxogb"]
+[ext_resource type="Texture2D" uid="uid://iuky757x2aow" path="res://assets/arcade_stick_base.png" id="3_tntao"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rltbh"]
+albedo_color = Color(0.22670749, 0.22670749, 0.22670746, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u0wdl"]
+albedo_texture = ExtResource("3_tntao")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rltbh"]
+top_radius = 0.03955078
+bottom_radius = 0.03955078
+height = 0.13085938
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kci16"]
+albedo_color = Color(0.68235296, 0.15294118, 0.15294118, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rxogb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tntao"]
+albedo_color = Color(0.40388715, 0.81574833, 0.15622863, 1)
+
+[node name="PF_JoyStick" type="Node3D" unique_id=814214641 node_paths=PackedStringArray("pivot")]
+script = ExtResource("1_rxogb")
+pivot = NodePath("Pivot")
+
+[node name="Base" type="MeshInstance3D" parent="." unique_id=1660675619]
+transform = Transform3D(1, 0, 0, 0, 0.9773674, -0.21154904, 0, 0.21154904, 0.9773674, -0.5802493, -0.42823336, 0.6860338)
+mesh = ExtResource("1_sq2as")
+surface_material_override/0 = SubResource("StandardMaterial3D_rltbh")
+
+[node name="Pivot" type="Node3D" parent="." unique_id=16090932]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.050271392, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot" unique_id=184369514]
+transform = Transform3D(1, 0, 0, 0, 0.9758838, -0.21829076, 0, 0.21829076, 0.9758838, -0.57916826, -0.47074607, 0.67815423)
+mesh = ExtResource("2_rxogb")
+surface_material_override/0 = SubResource("StandardMaterial3D_u0wdl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=464324635]
+transform = Transform3D(1, 0, 0, 0, 0.9947502, -0.10233272, 0, 0.10233272, 0.9947502, 0.22277734, 0.015078217, -0.13116579)
+mesh = SubResource("CylinderMesh_rltbh")
+surface_material_override/0 = SubResource("StandardMaterial3D_kci16")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1787150809]
+transform = Transform3D(1, 0, 0, 0, 0.9947502, -0.10233272, 0, 0.10233272, 0.9947502, 0.1873297, -0.00028288437, 0.018155735)
+mesh = SubResource("CylinderMesh_rltbh")
+surface_material_override/0 = SubResource("StandardMaterial3D_kci16")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="." unique_id=1401332543]
+transform = Transform3D(1, 0, 0, 0, 0.9947502, -0.10233272, 0, 0.10233272, 0.9947502, 0.3438818, 0.017850906, -0.15811852)
+mesh = SubResource("CylinderMesh_rltbh")
+surface_material_override/0 = SubResource("StandardMaterial3D_rxogb")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="." unique_id=454640832]
+transform = Transform3D(1, 0, 0, 0, 0.9947502, -0.10233272, 0, 0.10233272, 0.9947502, 0.30843416, 0.0024898045, -0.0087969955)
+mesh = SubResource("CylinderMesh_rltbh")
+surface_material_override/0 = SubResource("StandardMaterial3D_rxogb")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="." unique_id=282105271]
+transform = Transform3D(1, 0, 0, 0, 0.9947502, -0.10233272, 0, 0.10233272, 0.9947502, 0.46755472, 0.025823206, -0.14309141)
+mesh = SubResource("CylinderMesh_rltbh")
+surface_material_override/0 = SubResource("StandardMaterial3D_tntao")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="." unique_id=560076942]
+transform = Transform3D(1, 0, 0, 0, 0.9947502, -0.10233272, 0, 0.10233272, 0.9947502, 0.4321071, 0.010462104, 0.006230103)
+mesh = SubResource("CylinderMesh_rltbh")
+surface_material_override/0 = SubResource("StandardMaterial3D_tntao")
