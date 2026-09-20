@@ -31,7 +31,6 @@ var chosen_sprite : AnimatedSprite2D
 @onready var spawn_manager: Node2D = %SpawnManager
 @onready var e_label: Label = %Label
 
-
 func _ready() -> void:
 	animation_player.play("turn_on")
 	player = get_tree().get_first_node_in_group("Player")
@@ -50,12 +49,13 @@ func _ready() -> void:
 	
 	if arcade == null:
 		arcade = get_parent().get_parent() as ArcadeMachine # It is what it is
+	player.arcade = arcade
 
 func _process(delta: float) -> void:
 	if menu_finished || !arcade.is_player_using:
 		return
 		
-	if (idx == 0 || Input.is_action_just_pressed("enter")) and not menu_finished:
+	if (idx == 0 || arcade.is_action_just_pressed("enter")) and not menu_finished:
 		if idx < menu_array.size() - 1:      # Check if current idx is less than menu_array size
 			menu_array[idx].visible = false  # Set current menu_array page to invisible
 			idx += 1                         # Add 1 to the idx so it moves from 0 > 1 > 2 > 3 each time

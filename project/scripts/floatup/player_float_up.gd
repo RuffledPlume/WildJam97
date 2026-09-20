@@ -23,6 +23,7 @@ var resize_multiplier : float = 0.01
 var current_sprite    : AnimatedSprite2D
 var old_sprite        : AnimatedSprite2D
 var is_repositioned   : bool = false
+var arcade : ArcadeMachine
 
 @onready var damage_timer: Timer = %DamageTimer
 @onready var shrink_timer: Timer = %ShrinkTimer
@@ -61,14 +62,14 @@ func _handle_input() -> void:
 	if disable_player:
 		return
 		
-	if Input.is_action_just_pressed("interact"):
+	if arcade.is_action_just_pressed("interact"):
 		interacted.emit()
 	
-	if Input.is_action_just_pressed("scroll_mouse_down"):
+	if arcade.is_action_just_pressed("scroll_mouse_down"):
 		resize_factor -= resize_multiplier
 		self.scale = Vector2(resize_factor, resize_factor)
 	
-	if Input.is_action_just_pressed("X"):
+	if arcade.is_action_just_pressed("X"):
 		printt(current_sprite, old_sprite)
 		if current_sprite == animated_sprite_2d:
 			old_sprite = animated_sprite_2d
@@ -93,16 +94,16 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor() and not is_flying:
 		velocity.y += gravity * delta
 		
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if arcade.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_velocity
 	
 	# HANDLE GROUND INPUTS AND SPEEDS
 	if not is_flying:
-		if Input.is_action_pressed("platformer_player_left"):
+		if arcade.is_action_pressed("platformer_player_left"):
 			current_sprite.play("walk")
 			current_sprite.flip_h = true
 			velocity += Vector2(-10.0, 0.0)
-		elif Input.is_action_pressed("platformer_player_right"):
+		elif arcade.is_action_pressed("platformer_player_right"):
 			current_sprite.play("walk")
 			current_sprite.flip_h = false
 			velocity += Vector2(10.0, 0.0)
@@ -115,15 +116,15 @@ func _physics_process(delta: float) -> void:
 	# HANDLE FLYING INPUTS AND SPEEDS
 	if is_flying:
 		current_sprite.play("flying")
-		if Input.is_action_pressed("platformer_player_left"):
+		if arcade.is_action_pressed("platformer_player_left"):
 			current_sprite.flip_h = true
 			velocity += Vector2(-speed, 0.0)
-		if Input.is_action_pressed("platformer_player_right"):
+		if arcade.is_action_pressed("platformer_player_right"):
 			current_sprite.flip_h = false
 			velocity += Vector2(speed, 0.0)
-		if Input.is_action_pressed("platformer_player_jump"):
+		if arcade.is_action_pressed("platformer_player_jump"):
 			velocity += Vector2(0.0, -speed * 0.7)
-		if Input.is_action_pressed("platformer_player_drop"):
+		if arcade.is_action_pressed("platformer_player_drop"):
 			velocity += Vector2(0.0, speed * 0.7)
 		
 		velocity = velocity.move_toward(Vector2.ZERO, drag)

@@ -49,4 +49,6 @@ func is_action_just_released(action : String) -> bool:
 	return is_player_using && Input.is_action_just_released(action)
 	
 func get_axis(negative_action : String, positive_action : String) -> float:
-	return is_player_using && Input.get_axis(negative_action, positive_action)
+	if !is_player_using:
+		return 0
+	return Input.get_axis(negative_action, positive_action)
